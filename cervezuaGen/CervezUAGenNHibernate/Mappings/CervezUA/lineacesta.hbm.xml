@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="CervezUAGenNHibernate"
+		                   namespace="CervezUAGenNHibernate.EN.CervezUA">
+		    
+		    
+			
+				<class name="LineaCestaEN" table="LineaCesta"> 
+				  	
+						<id name="Id" column="idLineaCesta" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Numero" type="integer"> 
+						<column name="numero"  not-null="true"/>
+					</property>
+			
+			
+		  			
+						<many-to-one name="Cesta" class="CervezUAGenNHibernate.EN.CervezUA.CestaEN" >	
+								<column name="FK_idCesta_idCesta"/> 
+						</many-to-one>
+											 					
+			
+			
+		  			
+						<many-to-one name="Articulo" class="CervezUAGenNHibernate.EN.CervezUA.ArticuloEN" >	
+								<column name="FK_id_idArticulo"/> 
+						</many-to-one>
+											 					
+			
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="LineaCestaENReadAllHQL">from LineaCestaEN</query>
+		</hibernate-mapping>
+	

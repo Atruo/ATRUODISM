@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+		<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		  <PropertyGroup>
+		    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		    <ProductVersion>8.0.30703</ProductVersion>
+		    <SchemaVersion>2.0</SchemaVersion>
+		    <ProjectGuid>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</ProjectGuid>
+		    <OutputType>Library</OutputType>
+		    <AppDesignerFolder>Properties</AppDesignerFolder>
+		    <RootNamespace>CervezUAGenNHibernate</RootNamespace>
+		    <AssemblyName>CervezUAGenNHibernate</AssemblyName>
+		    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+		    <FileAlignment>512</FileAlignment>
+		    <PublishUrl>publish\</PublishUrl>
+		    <Install>true</Install>
+		    <InstallFrom>Disk</InstallFrom>
+		    <UpdateEnabled>false</UpdateEnabled>
+		    <UpdateMode>Foreground</UpdateMode>
+		    <UpdateInterval>7</UpdateInterval>
+		    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+		    <UpdatePeriodically>false</UpdatePeriodically>
+		    <UpdateRequired>false</UpdateRequired>
+		    <MapFileExtensions>true</MapFileExtensions>
+		    <ApplicationRevision>0</ApplicationRevision>
+		    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+		    <IsWebBootstrapper>false</IsWebBootstrapper>
+		    <UseApplicationTrust>false</UseApplicationTrust>
+		    <BootstrapperEnabled>true</BootstrapperEnabled>
+		  </PropertyGroup>
+		  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		    <DebugSymbols>true</DebugSymbols>
+		    <DebugType>full</DebugType>
+		    <Optimize>false</Optimize>
+		    <OutputPath>bin\Debug\</OutputPath>
+		    <DefineConstants>DEBUG;TRACE</DefineConstants>
+		    <ErrorReport>prompt</ErrorReport>
+		    <WarningLevel>4</WarningLevel>
+		  </PropertyGroup>
+		  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		    <DebugType>pdbonly</DebugType>
+		    <Optimize>true</Optimize>
+		    <OutputPath>bin\Release\</OutputPath>
+		    <DefineConstants>TRACE</DefineConstants>
+		    <ErrorReport>prompt</ErrorReport>
+		    <WarningLevel>4</WarningLevel>
+		  </PropertyGroup>
+		<ItemGroup>
+		    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\CervezUAGenNHibernate\AppLib\Castle.DynamicProxy2.dll</HintPath>
+		    </Reference>
+		    <Reference Include="LinFu.DynamicProxy, Version=1.0.3.14911, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\CervezUAGenNHibernate\AppLib\LinFu.DynamicProxy.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\CervezUAGenNHibernate\AppLib\NHibernate.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\CervezUAGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate.ByteCode.LinFu, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\CervezUAGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
+		    </Reference>
+		    <Reference Include="Newtonsoft.Json, Version=4.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\CervezUAGenNHibernate\AppLib\Newtonsoft.Json.dll</HintPath>
+		    </Reference>
+		     <Reference Include="jose-jwt, Version=4.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\CervezUAGenNHibernate\AppLib\jose-jwt.dll</HintPath>
+		    </Reference>
+		    <Reference Include="System" />
+		    <Reference Include="System.Core">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    
+		    <Reference Include="System.Transactions" />
+		    <Reference Include="System.Xml.Linq">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data.DataSetExtensions">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data" />
+		    <Reference Include="System.Xml" />
+		</ItemGroup>
+		
+		<ItemGroup>
+		    <Content Include="..\CervezUAGenNHibernate\AppLib\Antlr3.Runtime.dll" />
+		    <Content Include="..\CervezUAGenNHibernate\AppLib\Castle.DynamicProxy2.dll" />
+		    <Content Include="..\CervezUAGenNHibernate\AppLib\Iesi.Collections.dll" />
+		    <Content Include="..\CervezUAGenNHibernate\AppLib\LinFu.DynamicProxy.dll" />
+		    <Content Include="..\CervezUAGenNHibernate\AppLib\log4net.dll" />
+		    <Content Include="..\CervezUAGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll" />
+		    <Content Include="..\CervezUAGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll" />
+		    <Content Include="..\CervezUAGenNHibernate\AppLib\NHibernate.dll" />
+		    <Content Include="..\CervezUAGenNHibernate\AppLib\nunit.core.dll" />
+		    <Content Include="..\CervezUAGenNHibernate\AppLib\nunit.framework.dll" />
+  		    <Content Include="..\CervezUAGenNHibernate\AppLib\jose-jwt.dll" />
+  		</ItemGroup>
+  		
+		<ItemGroup>
+			<Compile Include="NHibernateHelper.cs" />
+		    <Compile Include="Utils\Util.cs" />
+		    <Compile Include="Exceptions\ModelException.cs"/>
+		    <Compile Include="Exceptions\DataLayerException.cs"/>
+		    
+	<Compile Include="CAD\BasicCAD.cs"/>
+	<Compile Include="CP\BasicCP.cs"/>
+	<Compile Include="EN\CervezUA\UsuarioEN.cs" />
+	<Compile Include="CEN\CervezUA\UsuarioCEN.cs" />
+	<Compile Include="CAD\CervezUA\IUsuarioCAD.cs" />
+	<Compile Include="CAD\CervezUA\UsuarioCAD.cs" />
+	<Compile Include="CP\CervezUA\UsuarioCP.cs" />
+			
+			
+			
+			
+			
+			
+			<Compile Include="CEN\CervezUA\UsuarioCEN_Login.cs" />
+			
+			<Compile Include="CEN\CervezUA\UsuarioCEN_ObtenerNUSUARIO.cs" />
+			
+			<Compile Include="CP\CervezUA\UsuarioCP_Comprar.cs" />
+			
+	<Compile Include="EN\CervezUA\CervezaEN.cs" />
+	<Compile Include="CEN\CervezUA\CervezaCEN.cs" />
+	<Compile Include="CAD\CervezUA\ICervezaCAD.cs" />
+	<Compile Include="CAD\CervezUA\CervezaCAD.cs" />
+	<Compile Include="CP\CervezUA\CervezaCP.cs" />
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\CervezUA\ArticuloEN.cs" />
+	<Compile Include="CEN\CervezUA\ArticuloCEN.cs" />
+	<Compile Include="CAD\CervezUA\IArticuloCAD.cs" />
+	<Compile Include="CAD\CervezUA\ArticuloCAD.cs" />
+	<Compile Include="CP\CervezUA\ArticuloCP.cs" />
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\CervezUA\CopaEN.cs" />
+	<Compile Include="CEN\CervezUA\CopaCEN.cs" />
+	<Compile Include="CAD\CervezUA\ICopaCAD.cs" />
+	<Compile Include="CAD\CervezUA\CopaCAD.cs" />
+	<Compile Include="CP\CervezUA\CopaCP.cs" />
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\CervezUA\AdministradorEN.cs" />
+	<Compile Include="CEN\CervezUA\AdministradorCEN.cs" />
+	<Compile Include="CAD\CervezUA\IAdministradorCAD.cs" />
+	<Compile Include="CAD\CervezUA\AdministradorCAD.cs" />
+	<Compile Include="CP\CervezUA\AdministradorCP.cs" />
+			
+			
+			
+			
+			
+	<Compile Include="EN\CervezUA\PedidoEN.cs" />
+	<Compile Include="CEN\CervezUA\PedidoCEN.cs" />
+	<Compile Include="CAD\CervezUA\IPedidoCAD.cs" />
+	<Compile Include="CAD\CervezUA\PedidoCAD.cs" />
+	<Compile Include="CP\CervezUA\PedidoCP.cs" />
+			<Compile Include="CEN\CervezUA\PedidoCEN_New_.cs" />
+			
+			
+			
+			
+			
+			<Compile Include="CEN\CervezUA\PedidoCEN_AnadeProducto.cs" />
+			
+			<Compile Include="CEN\CervezUA\PedidoCEN_QuitaProducto.cs" />
+			
+			
+			<Compile Include="CEN\CervezUA\PedidoCEN_CalculaPrecio.cs" />
+			
+	<Compile Include="EN\CervezUA\LineaPedidoEN.cs" />
+	<Compile Include="CEN\CervezUA\LineaPedidoCEN.cs" />
+	<Compile Include="CAD\CervezUA\ILineaPedidoCAD.cs" />
+	<Compile Include="CAD\CervezUA\LineaPedidoCAD.cs" />
+	<Compile Include="CP\CervezUA\LineaPedidoCP.cs" />
+			
+			
+			
+			
+			
+	<Compile Include="EN\CervezUA\ValoracionEN.cs" />
+	<Compile Include="CEN\CervezUA\ValoracionCEN.cs" />
+	<Compile Include="CAD\CervezUA\IValoracionCAD.cs" />
+	<Compile Include="CAD\CervezUA\ValoracionCAD.cs" />
+	<Compile Include="CP\CervezUA\ValoracionCP.cs" />
+			
+			
+			
+			
+			
+	<Compile Include="EN\CervezUA\FacturaEN.cs" />
+	<Compile Include="CEN\CervezUA\FacturaCEN.cs" />
+	<Compile Include="CAD\CervezUA\IFacturaCAD.cs" />
+	<Compile Include="CAD\CervezUA\FacturaCAD.cs" />
+	<Compile Include="CP\CervezUA\FacturaCP.cs" />
+			
+			
+			
+			<Compile Include="CP\CervezUA\FacturaCP_CalculaIVA.cs" />
+			
+			
+			
+	<Compile Include="Enumerated\CervezUA\TipoUsuarioEnum.cs" />
+	<Compile Include="Enumerated\CervezUA\TipoCervezaEnum.cs" />
+	<Compile Include="Enumerated\CervezUA\TipoCopaEnum.cs" />
+	<Compile Include="Enumerated\CervezUA\EstadoPedidoEnum.cs" />
+	<Compile Include="Enumerated\CervezUA\MetodoPagoEnum.cs" />
+	
+	
+
+		    
+	
+
+		    <Compile Include="Properties\AssemblyInfo.cs" />
+		    <Compile Include="Properties\Settings.Designer.cs">
+		      <AutoGen>True</AutoGen>
+		      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		      <DependentUpon>Settings.settings</DependentUpon>
+		    </Compile>
+		  </ItemGroup>
+		  <ItemGroup>
+		  
+	<EmbeddedResource Include="Mappings\CervezUA\usuario.hbm.xml" />
+	<EmbeddedResource Include="Mappings\CervezUA\cerveza.hbm.xml" />
+	<EmbeddedResource Include="Mappings\CervezUA\articulo.hbm.xml" />
+	<EmbeddedResource Include="Mappings\CervezUA\copa.hbm.xml" />
+	<EmbeddedResource Include="Mappings\CervezUA\administrador.hbm.xml" />
+	<EmbeddedResource Include="Mappings\CervezUA\pedido.hbm.xml" />
+	<EmbeddedResource Include="Mappings\CervezUA\lineapedido.hbm.xml" />
+	<EmbeddedResource Include="Mappings\CervezUA\valoracion.hbm.xml" />
+	<EmbeddedResource Include="Mappings\CervezUA\factura.hbm.xml" />
+	
+	
+
+		  </ItemGroup>
+		  <ItemGroup>
+		    <Content Include="hibernate.cfg.xml">
+		      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		    </Content>
+		  </ItemGroup>
+		  <ItemGroup>
+		    <None Include="app.config" />
+		    <None Include="Properties\Settings.settings">
+		      <Generator>SettingsSingleFileGenerator</Generator>
+		      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		    </None>
+		        <None Include="Resources\xsd\nhibernate-configuration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\xsd\nhibernate-mapping.xsd">
+      <SubType>Designer</SubType>
+    </None>
+		  </ItemGroup>
+	 	
+		
+	
+		<ItemGroup>
+		    <ProjectReference Include="..\APIExterna\APIExterna.csproj">
+		      <Project>{4ade35c8-a0c3-49da-9e1a-11a53ca19214}</Project>
+		      <Name>APIExterna</Name>
+		    </ProjectReference>
+	    </ItemGroup>
+	    
+		  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+		  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+		       Other similar extension points exist, see Microsoft.Common.targets.
+		  <Target Name="BeforeBuild">
+		  </Target>
+		  <Target Name="AfterBuild">
+		  </Target>
+		  -->
+		</Project>

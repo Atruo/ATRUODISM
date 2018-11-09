@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="CervezUAGenNHibernate"
+		                   namespace="CervezUAGenNHibernate.EN.CervezUA">
+		    
+		    
+			
+				
+<joined-subclass name="CopaEN" extends="CervezUAGenNHibernate.EN.CervezUA.ArticuloEN" table="Copa"> 
+	<key>
+    	
+				<column name="id"/>
+		
+    	
+   	</key>
+
+			
+					
+					<property name="Capacidad" type="double"> 
+						<column name="capacidad"  not-null="true"/>
+					</property>
+					<property name="Forma" > 
+						<column name="forma"  not-null="true"/>
+					</property>
+			
+			
+			
+					
+					
+		
+ 	  
+		 </joined-subclass>
+		  
+		  <query name="CopaENReadAllHQL">from CopaEN</query>
+		  <query name="CopaENdevuelvePorTipoHQL"><![CDATA[FROM CopaEN where forma = :tipo]]></query>
+		</hibernate-mapping>
+	

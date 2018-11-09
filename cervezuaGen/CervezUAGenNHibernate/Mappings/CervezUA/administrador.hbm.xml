@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="CervezUAGenNHibernate"
+		                   namespace="CervezUAGenNHibernate.EN.CervezUA">
+		    
+		    
+			
+				
+<joined-subclass name="AdministradorEN" extends="CervezUAGenNHibernate.EN.CervezUA.UsuarioEN" table="Administrador"> 
+	<key>
+    	
+				<column name="idUsuario"/>
+		
+    	
+   	</key>
+
+			
+					
+					<property name="Sueldo" type="double"> 
+						<column name="sueldo"  not-null="true"/>
+					</property>
+			
+			
+					
+		
+ 	  
+		 </joined-subclass>
+		  
+		  <query name="AdministradorENReadAllHQL">from AdministradorEN</query>
+		</hibernate-mapping>
+	

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="CervezUAGenNHibernate"
+		                   namespace="CervezUAGenNHibernate.EN.CervezUA">
+		    
+		    
+			
+				<class name="UsuarioEN" table="Usuario"> 
+						<id name="NUsuario" column="idUsuario"/> 
+			
+					
+					<property name="Email" type="string"> 
+						<column name="email"  not-null="true"/>
+					</property>
+					<property name="FecNam" type="date"> 
+						<column name="fecNam"  not-null="true"/>
+					</property>
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="Apellidos" type="string"> 
+						<column name="apellidos"  not-null="true"/>
+					</property>
+					<property name="Foto" type="string"> 
+						<column name="foto"  not-null="true"/>
+					</property>
+					<property name="Tipo" > 
+						<column name="tipo"  not-null="true"/>
+					</property>
+					<property name="Pass" type="string"> 
+						<column name="pass"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Pedido" >
+							<key>
+							
+								
+								<column name="FK_idUsuario_idUsuario"/>
+					      	</key>
+							<one-to-many class="CervezUAGenNHibernate.EN.CervezUA.PedidoEN"/>
+					    </bag>
+					
+			
+		  			
+					
+							   <one-to-one name="Valoracion" class="CervezUAGenNHibernate.EN.CervezUA.ValoracionEN" property-ref="Usuario" />							
+					 
+						
+			
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
+		  <query name="UsuarioENdevuelveTipoHQL"><![CDATA[FROM UsuarioEN where tipoUsuario = :tipo]]></query>
+		</hibernate-mapping>
+	
