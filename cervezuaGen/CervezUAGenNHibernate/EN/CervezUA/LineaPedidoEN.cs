@@ -20,16 +20,16 @@ private int id;
 
 
 /**
- *	Atributo articulo
+ *	Atributo numero
  */
-private CervezUAGenNHibernate.EN.CervezUA.ArticuloEN articulo;
+private int numero;
 
 
 
 /**
- *	Atributo numero
+ *	Atributo articulo
  */
-private int numero;
+private CervezUAGenNHibernate.EN.CervezUA.ArticuloEN articulo;
 
 
 
@@ -48,14 +48,14 @@ public virtual int Id {
 
 
 
-public virtual CervezUAGenNHibernate.EN.CervezUA.ArticuloEN Articulo {
-        get { return articulo; } set { articulo = value;  }
+public virtual int Numero {
+        get { return numero; } set { numero = value;  }
 }
 
 
 
-public virtual int Numero {
-        get { return numero; } set { numero = value;  }
+public virtual CervezUAGenNHibernate.EN.CervezUA.ArticuloEN Articulo {
+        get { return articulo; } set { articulo = value;  }
 }
 
 
@@ -68,29 +68,29 @@ public LineaPedidoEN()
 
 
 
-public LineaPedidoEN(int id, CervezUAGenNHibernate.EN.CervezUA.PedidoEN pedido, CervezUAGenNHibernate.EN.CervezUA.ArticuloEN articulo, int numero
+public LineaPedidoEN(int id, CervezUAGenNHibernate.EN.CervezUA.PedidoEN pedido, int numero, CervezUAGenNHibernate.EN.CervezUA.ArticuloEN articulo
                      )
 {
-        this.init (Id, pedido, articulo, numero);
+        this.init (Id, pedido, numero, articulo);
 }
 
 
 public LineaPedidoEN(LineaPedidoEN lineaPedido)
 {
-        this.init (Id, lineaPedido.Pedido, lineaPedido.Articulo, lineaPedido.Numero);
+        this.init (Id, lineaPedido.Pedido, lineaPedido.Numero, lineaPedido.Articulo);
 }
 
 private void init (int id
-                   , CervezUAGenNHibernate.EN.CervezUA.PedidoEN pedido, CervezUAGenNHibernate.EN.CervezUA.ArticuloEN articulo, int numero)
+                   , CervezUAGenNHibernate.EN.CervezUA.PedidoEN pedido, int numero, CervezUAGenNHibernate.EN.CervezUA.ArticuloEN articulo)
 {
         this.Id = id;
 
 
         this.Pedido = pedido;
 
-        this.Articulo = articulo;
-
         this.Numero = numero;
+
+        this.Articulo = articulo;
 }
 
 public override bool Equals (object obj)

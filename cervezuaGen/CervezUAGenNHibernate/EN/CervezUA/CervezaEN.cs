@@ -71,20 +71,20 @@ public CervezaEN() : base ()
 
 
 public CervezaEN(int id, double volumen, int unidades, double graduacion, CervezUAGenNHibernate.Enumerated.CervezUA.TipoCervezaEnum tipo
-                 , string nombre, int stock, double precio, double valMedia, string descripcion, string imagen, string marca, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineaPedido, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.ValoracionEN> valoracion
+                 , string nombre, int stock, double precio, double valMedia, string descripcion, string imagen, string marca, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.ValoracionEN> valoracion, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineaPedido
                  )
 {
-        this.init (Id, volumen, unidades, graduacion, tipo, nombre, stock, precio, valMedia, descripcion, imagen, marca, lineaPedido, valoracion);
+        this.init (Id, volumen, unidades, graduacion, tipo, nombre, stock, precio, valMedia, descripcion, imagen, marca, valoracion, lineaPedido);
 }
 
 
 public CervezaEN(CervezaEN cerveza)
 {
-        this.init (Id, cerveza.Volumen, cerveza.Unidades, cerveza.Graduacion, cerveza.Tipo, cerveza.Nombre, cerveza.Stock, cerveza.Precio, cerveza.ValMedia, cerveza.Descripcion, cerveza.Imagen, cerveza.Marca, cerveza.LineaPedido, cerveza.Valoracion);
+        this.init (Id, cerveza.Volumen, cerveza.Unidades, cerveza.Graduacion, cerveza.Tipo, cerveza.Nombre, cerveza.Stock, cerveza.Precio, cerveza.ValMedia, cerveza.Descripcion, cerveza.Imagen, cerveza.Marca, cerveza.Valoracion, cerveza.LineaPedido);
 }
 
 private void init (int id
-                   , double volumen, int unidades, double graduacion, CervezUAGenNHibernate.Enumerated.CervezUA.TipoCervezaEnum tipo, string nombre, int stock, double precio, double valMedia, string descripcion, string imagen, string marca, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineaPedido, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.ValoracionEN> valoracion)
+                   , double volumen, int unidades, double graduacion, CervezUAGenNHibernate.Enumerated.CervezUA.TipoCervezaEnum tipo, string nombre, int stock, double precio, double valMedia, string descripcion, string imagen, string marca, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.ValoracionEN> valoracion, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineaPedido)
 {
         this.Id = id;
 
@@ -111,9 +111,9 @@ private void init (int id
 
         this.Marca = marca;
 
-        this.LineaPedido = lineaPedido;
-
         this.Valoracion = valoracion;
+
+        this.LineaPedido = lineaPedido;
 }
 
 public override bool Equals (object obj)

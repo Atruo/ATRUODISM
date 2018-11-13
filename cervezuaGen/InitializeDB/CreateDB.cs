@@ -80,13 +80,28 @@ public static void InitializeData ()
                 // Insert the initilizations of entities using the CEN classes
 
 
-                // p.e. CustomerCEN customer = new CustomerCEN();
-                // customer.New_ (p_user:"user", p_password:"1234");
+                UsuarioCEN customer = new UsuarioCEN ();
+                PedidoCEN pedido = new PedidoCEN ();
+                LineaPedidoCEN lineaPedido = new LineaPedidoCEN ();
+
+                ValoracionCEN valoracion = new ValoracionCEN ();
+                ArticuloCEN articulo = new ArticuloCEN ();
+                
+                
+               // ArticuloEN articuloNuevo = new ArticuloEN ();
+
+
+                customer.New_ (p_nUsuario: "Mau", p_email: "mau@mau.mau", p_fecNam: DateTime.Parse ("2018-01-01"), p_nombre: "Mau", p_apellidos: "Morant", p_foto: "mau.png", p_tipo: (CervezUAGenNHibernate.Enumerated.CervezUA.TipoUsuarioEnum) 1, p_pass: "mau123");
+                pedido.New_ (p_usuario:"Mau");
+                //lineaPedido.New_ (p_pedido: 1, p_articulo: articuloNuevo, p_numero: 2);
+                //valoracion.New_ (p_articulo: 1, p_usuario: "Mau", p_valoracion: 3, p_texto: "Maravilloso licor de fresa");
+               // articulo.New_(p_nombre: "Agua Fresca", p_stock: 13, p_precio: 13, p_valMedia: 2, p_descripcion: "Agua del grifo", p_imagen: "agua.png", p_marca: "Fontbella");
+
 
 
 
                 /*PROTECTED REGION END*/
-        }
+            }
         catch (Exception ex)
         {
                 System.Console.WriteLine (ex.InnerException);

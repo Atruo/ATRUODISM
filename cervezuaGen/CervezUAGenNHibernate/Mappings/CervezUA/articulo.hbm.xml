@@ -44,17 +44,6 @@
 			
 			
 		  			
-						<bag name="LineaPedido" >
-							<key>
-							
-								
-								<column name="FK_id_idArticulo"/>
-					      	</key>
-							<one-to-many class="CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN"/>
-					    </bag>
-					
-			
-		  			
 						<bag name="Valoracion" >
 							<key>
 							
@@ -62,6 +51,17 @@
 								<column name="FK_id_idArticulo"/>
 					      	</key>
 							<one-to-many class="CervezUAGenNHibernate.EN.CervezUA.ValoracionEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="LineaPedido" >
+							<key>
+							
+								
+								<column name="FK_id_idArticulo"/>
+					      	</key>
+							<one-to-many class="CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN"/>
 					    </bag>
 					
 					

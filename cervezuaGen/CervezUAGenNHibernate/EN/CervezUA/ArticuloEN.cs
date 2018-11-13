@@ -62,16 +62,16 @@ private string marca;
 
 
 /**
- *	Atributo lineaPedido
+ *	Atributo valoracion
  */
-private System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineaPedido;
+private System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.ValoracionEN> valoracion;
 
 
 
 /**
- *	Atributo valoracion
+ *	Atributo lineaPedido
  */
-private System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.ValoracionEN> valoracion;
+private System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineaPedido;
 
 
 
@@ -126,14 +126,14 @@ public virtual string Marca {
 
 
 
-public virtual System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> LineaPedido {
-        get { return lineaPedido; } set { lineaPedido = value;  }
+public virtual System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.ValoracionEN> Valoracion {
+        get { return valoracion; } set { valoracion = value;  }
 }
 
 
 
-public virtual System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.ValoracionEN> Valoracion {
-        get { return valoracion; } set { valoracion = value;  }
+public virtual System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> LineaPedido {
+        get { return lineaPedido; } set { lineaPedido = value;  }
 }
 
 
@@ -142,26 +142,26 @@ public virtual System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezU
 
 public ArticuloEN()
 {
-        lineaPedido = new System.Collections.Generic.List<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN>();
         valoracion = new System.Collections.Generic.List<CervezUAGenNHibernate.EN.CervezUA.ValoracionEN>();
+        lineaPedido = new System.Collections.Generic.List<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN>();
 }
 
 
 
-public ArticuloEN(int id, string nombre, int stock, double precio, double valMedia, string descripcion, string imagen, string marca, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineaPedido, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.ValoracionEN> valoracion
+public ArticuloEN(int id, string nombre, int stock, double precio, double valMedia, string descripcion, string imagen, string marca, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.ValoracionEN> valoracion, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineaPedido
                   )
 {
-        this.init (Id, nombre, stock, precio, valMedia, descripcion, imagen, marca, lineaPedido, valoracion);
+        this.init (Id, nombre, stock, precio, valMedia, descripcion, imagen, marca, valoracion, lineaPedido);
 }
 
 
 public ArticuloEN(ArticuloEN articulo)
 {
-        this.init (Id, articulo.Nombre, articulo.Stock, articulo.Precio, articulo.ValMedia, articulo.Descripcion, articulo.Imagen, articulo.Marca, articulo.LineaPedido, articulo.Valoracion);
+        this.init (Id, articulo.Nombre, articulo.Stock, articulo.Precio, articulo.ValMedia, articulo.Descripcion, articulo.Imagen, articulo.Marca, articulo.Valoracion, articulo.LineaPedido);
 }
 
 private void init (int id
-                   , string nombre, int stock, double precio, double valMedia, string descripcion, string imagen, string marca, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineaPedido, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.ValoracionEN> valoracion)
+                   , string nombre, int stock, double precio, double valMedia, string descripcion, string imagen, string marca, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.ValoracionEN> valoracion, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineaPedido)
 {
         this.Id = id;
 
@@ -180,9 +180,9 @@ private void init (int id
 
         this.Marca = marca;
 
-        this.LineaPedido = lineaPedido;
-
         this.Valoracion = valoracion;
+
+        this.LineaPedido = lineaPedido;
 }
 
 public override bool Equals (object obj)

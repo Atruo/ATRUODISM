@@ -24,12 +24,12 @@
 											 					
 			
 			
+			
 		  			
 						<many-to-one name="Articulo" class="CervezUAGenNHibernate.EN.CervezUA.ArticuloEN" cascade="delete">	
 								<column name="FK_id_idArticulo"/> 
 						</many-to-one>
 											 					
-			
 					
 					
 					

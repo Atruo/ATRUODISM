@@ -37,13 +37,13 @@ public void CalculaIVA (double iva, int pedido, int p_oid)
                 SessionInitializeTransaction ();
                 facturaCAD = new FacturaCAD (session);
                 facturaCEN = new  FacturaCEN (facturaCAD);
-                FacturaEN factura = facturaCEN.ReadOID(p_oid);
+                FacturaEN factura = facturaCEN.ReadOID (p_oid);
 
-                double precio_sinIVA = pedido_a_tratar.CalculaPrecio(pedido);
+                double precio_sinIVA = pedido_a_tratar.CalculaPrecio (pedido);
                 precio_sinIVA = precio_sinIVA * iva;
 
                 factura.Importe = precio_sinIVA;
-                     
+
 
                 SessionCommit ();
         }

@@ -92,8 +92,8 @@ public void ModifyDefault (LineaPedidoEN lineaPedido)
                 LineaPedidoEN lineaPedidoEN = (LineaPedidoEN)session.Load (typeof(LineaPedidoEN), lineaPedido.Id);
 
 
-
                 lineaPedidoEN.Numero = lineaPedido.Numero;
+
 
                 session.Update (lineaPedidoEN);
                 SessionCommit ();
