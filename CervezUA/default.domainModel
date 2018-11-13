@@ -339,10 +339,9 @@
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_PPs24txJEeiEDIyUeyrHBg" name="destroy" operationType="Destroy" type="Void">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_Ny7TgONzEei6aq1s4ds9fA" name="p_Factura_OID" type="OID" typeObject="_CLk5QNxJEeiEDIyUeyrHBg"/>
       </operations>
-      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_g-P8QNxJEeiEDIyUeyrHBg" name="calculaIVA" operationType="CustomTransaction" type="Void">
+      <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_g-P8QNxJEeiEDIyUeyrHBg" name="calculaIVA" type="Void">
+        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_g-RKYNxJEeiEDIyUeyrHBg" name="p_oid" type="OID" typeObject="_CLk5QNxJEeiEDIyUeyrHBg"/>
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_l_F_8NxJEeiEDIyUeyrHBg" name="iva" type="Double"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_pQOfoORDEeiJbqeKF3jHhA" name="pedido" type="OID" typeObject="__7pG8Na2EeiRncW1Ln6m6Q"/>
-        <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_lQ87wORFEeiJbqeKF3jHhA" name="p_oid" type="OID" typeObject="_CLk5QNxJEeiEDIyUeyrHBg"/>
       </operations>
       <operations xmi:type="es.ua.dlsi.ooh:Operation" xmi:id="_sOAJUOEXEeikjfrQ4KDTjQ" name="readOID" operationType="ReadOID" type="Object" typeObject="_CLk5QNxJEeiEDIyUeyrHBg">
         <arguments xmi:type="es.ua.dlsi.ooh:Argument" xmi:id="_Ny7TgeNzEei6aq1s4ds9fA" name="p_Factura_OID" type="OID" typeObject="_CLk5QNxJEeiEDIyUeyrHBg"/>

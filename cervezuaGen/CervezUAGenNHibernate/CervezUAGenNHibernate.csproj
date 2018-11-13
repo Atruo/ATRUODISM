@@ -218,7 +218,7 @@
 			
 			
 			
-			<Compile Include="CP\CervezUA\FacturaCP_CalculaIVA.cs" />
+			<Compile Include="CEN\CervezUA\FacturaCEN_CalculaIVA.cs" />
 			
 			
 			

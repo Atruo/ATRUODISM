@@ -19,15 +19,15 @@ namespace CervezUAGenNHibernate.CEN.CervezUA
 {
 public partial class FacturaCEN
 {
-public void CalculaIVA (int p_oid, double iva, double precio)
+public void CalculaIVA (int p_oid, double iva)
 {
         /*PROTECTED REGION ID(CervezUAGenNHibernate.CEN.CervezUA_Factura_calculaIVA) ENABLED START*/
         FacturaEN factura = ReadOID (p_oid);
-        double res = precio * iva;
+        double precio = PedidoCEN_CalculaPrecio (factura.Pedido.Id);
 
-           
+        precio = precio * iva;
 
-        factura.Importe = res;
+        factura.Importe = precio;
         /*PROTECTED REGION END*/
 }
 }
