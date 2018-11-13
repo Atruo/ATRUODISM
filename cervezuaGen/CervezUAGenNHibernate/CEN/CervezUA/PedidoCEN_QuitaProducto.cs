@@ -26,7 +26,7 @@ public void QuitaProducto (int p_oid, CervezUAGenNHibernate.EN.CervezUA.LineaPed
         // Write here your custom code...
         PedidoEN pedido = ReadOID (p_oid);
 
-            pedido.Lineas.Remove(producto);
+        pedido.Lineas.Remove (producto);
 
         /*PROTECTED REGION END*/
 }

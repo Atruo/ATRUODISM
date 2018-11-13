@@ -21,14 +21,14 @@ public partial class PedidoCEN
 {
 public void AnadeProducto (int p_oid, CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN producto)
 {
-            /*PROTECTED REGION ID(CervezUAGenNHibernate.CEN.CervezUA_Pedido_anadeProducto) ENABLED START*/
+        /*PROTECTED REGION ID(CervezUAGenNHibernate.CEN.CervezUA_Pedido_anadeProducto) ENABLED START*/
 
-            // Write here your custom code...
-            PedidoEN pedido = ReadOID(p_oid);
+        // Write here your custom code...
+        PedidoEN pedido = ReadOID (p_oid);
 
-            pedido.Lineas.Add(producto);
+        pedido.Lineas.Add (producto);
 
-            /*PROTECTED REGION END*/
-        }
+        /*PROTECTED REGION END*/
+}
 }
 }
