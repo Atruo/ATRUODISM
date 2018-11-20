@@ -71,3 +71,4 @@ C:\Users\EPS\git\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAG
 C:\Users\EPS\git\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.csproj.CopyComplete
 C:\Users\EPS\git\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.dll
 C:\Users\EPS\git\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.pdb
+C:\Users\EPS\git\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.csprojAssemblyReference.cache
