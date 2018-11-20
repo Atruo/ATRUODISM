@@ -1,4 +1,5 @@
-﻿using CervezUAGenNHibernate.CEN.CervezUA;
+﻿using CervezUAGenNHibernate.CAD.CervezUA;
+using CervezUAGenNHibernate.CEN.CervezUA;
 using CervezUAGenNHibernate.EN.CervezUA;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ namespace CervezUAWeb.Controllers
 {
     public class UsuarioController : BasicController
     {
+        private object articuloCAD;
+
         // GET: Usuario
         public ActionResult Index()
         {
@@ -27,17 +30,20 @@ namespace CervezUAWeb.Controllers
         // GET: Usuario/Create
         public ActionResult Create()
         {
-            return View();
+            UsuarioEN usuarioEN = new UsuarioEN();
+            return View(usuarioEN);
         }
 
         // POST: Usuario/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(UsuarioEN usuarioEN)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                UsuarioCAD usuarioCAD = new UsuarioCAD(session);
+                usuarioCAD.New_(usuarioEN);
+                this.SessionClose();
                 return RedirectToAction("Index");
             }
             catch
