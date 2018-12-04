@@ -21,12 +21,16 @@ namespace CervezUAGenNHibernate.CP.CervezUA
 {
 public partial class UsuarioCP : BasicCP
 {
-public void Comprar (string p_oid)
+public void Comprar (string p_oid, int idPedido, CervezUAGenNHibernate.Enumerated.CervezUA.MetodoPagoEnum pago, string dirEnvio)
 {
         /*PROTECTED REGION ID(CervezUAGenNHibernate.CP.CervezUA_Usuario_comprar) ENABLED START*/
 
         IUsuarioCAD usuarioCAD = null;
         UsuarioCEN usuarioCEN = null;
+        PedidoCEN pedidoCEN = null;
+        FacturaCEN facturaCEN = null;
+        ArticuloCEN articuloCEN = null;
+
 
 
 
@@ -34,14 +38,23 @@ public void Comprar (string p_oid)
         {
                 SessionInitializeTransaction ();
                 usuarioCAD = new UsuarioCAD (session);
+                PedidoCAD pedidoCAD = new PedidoCAD (session);
+                ArticuloCAD articuloCAD = new ArticuloCAD (session);
+                PedidoEN pedido = pedidoCAD.ReadOIDDefault (idPedido);
                 usuarioCEN = new  UsuarioCEN (usuarioCAD);
+                double importe = 0;
 
+                foreach (LineaPedidoEN l in pedido.Lineas) {
+                        ArticuloEN articulo = l.Articulo;
+                        articuloCEN = new ArticuloCEN (articuloCAD);
+                        articuloCEN.DecrementaStock (articulo.Id, l.Numero);
+                        importe += l.Numero * l.Articulo.Precio;
+                }
 
-
-                // Write here your custom transaction ...
-
-                throw new NotImplementedException ("Method Comprar() not yet implemented.");
-
+                pedido.Estado = (Enumerated.CervezUA.EstadoPedidoEnum) 1;
+                //FacturaEN factura = new FacturaEN (pedido,importe, dirEnvio, pago);
+                facturaCEN = new FacturaCEN ();
+                facturaCEN.New_ (pedido.Id, importe, dirEnvio, pago);
 
 
                 SessionCommit ();

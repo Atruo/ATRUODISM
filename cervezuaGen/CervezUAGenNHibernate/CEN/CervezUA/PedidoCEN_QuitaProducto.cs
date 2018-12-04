@@ -27,7 +27,7 @@ public void QuitaProducto (int p_oid, CervezUAGenNHibernate.EN.CervezUA.LineaPed
         PedidoEN pedido = ReadOID (p_oid);
 
         pedido.Lineas.Remove (producto);
-
+        _IPedidoCAD.Modify (pedido);
         /*PROTECTED REGION END*/
 }
 }

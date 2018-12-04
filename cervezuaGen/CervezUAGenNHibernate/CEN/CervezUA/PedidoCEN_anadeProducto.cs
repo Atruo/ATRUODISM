@@ -28,6 +28,8 @@ public void AnadeProducto (int p_oid, CervezUAGenNHibernate.EN.CervezUA.LineaPed
 
         pedido.Lineas.Add (producto);
 
+        _IPedidoCAD.Modify (pedido);
+
         /*PROTECTED REGION END*/
 }
 }
