@@ -1,14 +1,14 @@
 ﻿@model CervezUAGenNHibernate.EN.CervezUA.UsuarioEN
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
@@ -23,6 +23,7 @@
             @Html.ValidationMessageFor(model => model.NUsuario, "", new { @class = "text-danger" })
         </div>
     </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -30,6 +31,7 @@
             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
         </div>
     </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.FecNam, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -37,6 +39,7 @@
             @Html.ValidationMessageFor(model => model.FecNam, "", new { @class = "text-danger" })
         </div>
     </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -44,6 +47,7 @@
             @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
         </div>
     </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.Apellidos, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -51,6 +55,7 @@
             @Html.ValidationMessageFor(model => model.Apellidos, "", new { @class = "text-danger" })
         </div>
     </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -58,13 +63,15 @@
             @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
         </div>
     </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Tipo, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
         </div>
     </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.Pass, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -72,9 +79,10 @@
             @Html.ValidationMessageFor(model => model.Pass, "", new { @class = "text-danger" })
         </div>
     </div>
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Save" class="btn btn-default" />
         </div>
     </div>
 </div>
