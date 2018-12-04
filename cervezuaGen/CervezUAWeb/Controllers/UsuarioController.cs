@@ -36,13 +36,13 @@ namespace CervezUAWeb.Controllers
 
         // POST: Usuario/Create
         [HttpPost]
-        public ActionResult Create(UsuarioEN usuarioEN)
+        public ActionResult Create(UsuarioEN usu)
         {
             try
             {
                 // TODO: Add insert logic here
-                UsuarioCAD usuarioCAD = new UsuarioCAD(session);
-                usuarioCAD.New_(usuarioEN);
+                UsuarioCEN usuarioCEN = new UsuarioCEN();
+                usuarioCEN.New_(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, usu.Foto, usu.Tipo, usu.Pass);
                 this.SessionClose();
                 return RedirectToAction("Index");
             }
@@ -53,8 +53,12 @@ namespace CervezUAWeb.Controllers
         }
 
         // GET: Usuario/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(String id)
         {
+            UsuarioEN usu = null;
+            SessionInitialize();
+            UsuarioEN usuEN = new UsuarioCAD(session).ReadOIDDefault(id);
+
             return View();
         }
 
