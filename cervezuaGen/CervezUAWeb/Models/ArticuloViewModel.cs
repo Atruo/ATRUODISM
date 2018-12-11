@@ -29,7 +29,7 @@ namespace CervezUAWeb.Models
         [Required(ErrorMessage = "Debe indicar un stock para el artículo")]
         [DataType(DataType.Currency, ErrorMessage = "El stock debe ser un valor entero")]
         [Range(minimum: 0, maximum: 10000, ErrorMessage = "El stock debe ser mayor que cero y menor de 10000")]
-        public double Stock { get; set; }
+        public int Stock { get; set; }
 
         [Display(Prompt = "Descripción del artículo", Description = "Descripción del artículo", Name = "Descripción ")]
         [Required(ErrorMessage = "Debe indicar un nombre para el artículo")]
