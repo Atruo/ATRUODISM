@@ -22,7 +22,7 @@ namespace CervezUAWeb.Models
 
         [Display(Prompt = "Fecha de nacimiento", Description = "Fecha de nacimiento", Name = "Fecha de nacimiento ")]
         [Required(ErrorMessage = "Debe indicar una fecha de nacimiento")]
-        public Nullable<DateTime> FecNam { get; set; }
+        public DateTime? FecNam { get; set; }
 
         [Display(Prompt = "Nombre real", Description = "Nombre real", Name = "Nombre ")]
         [Required(ErrorMessage = "Debe indicar un nombre")]
@@ -41,7 +41,7 @@ namespace CervezUAWeb.Models
 
         [Display(Prompt = "Tipo de usuario", Description = "Tipo de usuario", Name = "Tipo de usuario ")]
         [Required(ErrorMessage = "Debe añadir un tipo")]
-        
+
         public CervezUAGenNHibernate.Enumerated.CervezUA.TipoUsuarioEnum Tipo { get; set; }
 
         [Display(Prompt = "Contraseña", Description = "Contraseña", Name = "Contraseña ")]

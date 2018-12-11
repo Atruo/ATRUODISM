@@ -1,6 +1,7 @@
 ﻿using CervezUAGenNHibernate.CAD.CervezUA;
 using CervezUAGenNHibernate.CEN.CervezUA;
 using CervezUAGenNHibernate.EN.CervezUA;
+using CervezUAWeb.Controllers;
 using CervezUAWeb.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Web.Mvc;
 
 namespace CervezUAWeb.Views.Articulo
 {
-    public class ArticuloController : Controller
+    public class ArticuloController : BasicController
     {
         // GET: Articulo
         public ActionResult Index()
@@ -86,17 +87,22 @@ namespace CervezUAWeb.Views.Articulo
         // GET: Articulo/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            ArticuloViewModel usu = null;
+            SessionInitialize();
+            ArticuloEN usuEN = new ArticuloCAD(session).ReadOIDDefault(id);
+            usu = new AssemblerArticulo().ConvertENToModelUI(usuEN);
+            SessionClose();
+            return View(usu);
         }
 
         // POST: Articulo/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(ArticuloViewModel articulo)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                ArticuloCEN art = new ArticuloCEN();
+                art.Destroy(articulo.id);
                 return RedirectToAction("Index");
             }
             catch

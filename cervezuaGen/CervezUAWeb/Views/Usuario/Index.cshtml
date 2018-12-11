@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CervezUAGenNHibernate.EN.CervezUA.UsuarioEN>
+﻿@model IEnumerable<CervezUAWeb.Models.UsuarioViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -34,7 +34,7 @@
             @Html.DisplayNameFor(model => model.Tipo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Pass)
+            @Html.DisplayNameFor(model => model.Password)
         </th>
         <th></th>
     </tr>
@@ -63,7 +63,7 @@
             @Html.DisplayFor(modelItem => item.Tipo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Pass)
+            @Html.DisplayFor(modelItem => item.Password)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

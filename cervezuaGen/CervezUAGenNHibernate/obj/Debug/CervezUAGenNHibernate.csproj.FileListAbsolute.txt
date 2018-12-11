@@ -108,5 +108,4 @@ C:\Users\pablo\Source\Repos\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debu
 C:\Users\pablo\Source\Repos\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.csproj.CopyComplete
 C:\Users\pablo\Source\Repos\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.dll
 C:\Users\pablo\Source\Repos\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.pdb
-C:\Users\pablo\Source\Repos\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.csprojAssemblyReference.cache
 C:\Users\EPS\git\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.csprojAssemblyReference.cache
