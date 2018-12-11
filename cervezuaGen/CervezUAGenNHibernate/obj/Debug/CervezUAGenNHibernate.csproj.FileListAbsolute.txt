@@ -105,8 +105,8 @@ C:\Users\pablo\Source\Repos\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\bin\Debu
 C:\Users\pablo\Source\Repos\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\bin\Debug\Iesi.Collections.dll
 C:\Users\pablo\Source\Repos\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\bin\Debug\Antlr3.Runtime.dll
 C:\Users\pablo\Source\Repos\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\bin\Debug\log4net.dll
-C:\Users\pablo\Source\Repos\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.csprojAssemblyReference.cache
 C:\Users\pablo\Source\Repos\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.csproj.CoreCompileInputs.cache
 C:\Users\pablo\Source\Repos\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.csproj.CopyComplete
 C:\Users\pablo\Source\Repos\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.dll
 C:\Users\pablo\Source\Repos\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.pdb
+C:\Users\pablo\Source\Repos\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.csprojAssemblyReference.cache
