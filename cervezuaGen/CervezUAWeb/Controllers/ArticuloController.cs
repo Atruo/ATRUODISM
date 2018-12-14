@@ -26,7 +26,13 @@ namespace CervezUAWeb.Views.Articulo
         // GET: Articulo/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            ArticuloViewModel usu = null;
+            SessionInitialize();
+            ArticuloEN usuEN = new ArticuloCAD(session).ReadOIDDefault(id);
+            usu = new AssemblerArticulo().ConvertENToModelUI(usuEN);
+            SessionClose();
+
+            return View(usu);
         }
 
         // GET: Articulo/Create

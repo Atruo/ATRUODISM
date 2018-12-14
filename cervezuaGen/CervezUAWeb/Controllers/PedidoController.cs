@@ -24,7 +24,12 @@ namespace CervezUAWeb.Controllers
         // GET: Pedido/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            PedidoViewModel ped = null;
+            SessionInitialize();
+            PedidoEN pedEN = new PedidoCAD(session).ReadOIDDefault(id);
+            ped = new AssemblerPedido().ConvertENToModelUI(pedEN);
+            SessionClose();
+            return View(ped);
         }
 
         // GET: Pedido/Create

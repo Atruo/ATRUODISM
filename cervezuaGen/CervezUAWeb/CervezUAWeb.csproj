@@ -250,6 +250,13 @@
     <Content Include="Views\LineaPedido\Edit.cshtml" />
     <Content Include="Views\LineaPedido\Delete.cshtml" />
     <Content Include="Views\LineaPedido\Create.cshtml" />
+    <Content Include="Views\Copa\Details.cshtml" />
+    <Content Include="Views\Cerveza\Details.cshtml" />
+    <Content Include="Views\Articulo\Details.cshtml" />
+    <Content Include="Views\Usuario\Details.cshtml" />
+    <Content Include="Views\Pedido\Details.cshtml" />
+    <Content Include="Views\LineaPedido\Details.cshtml" />
+    <Content Include="Views\Valoracion\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

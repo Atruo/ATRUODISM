@@ -26,7 +26,12 @@ namespace CervezUAWeb.Controllers
         // GET: Cerveza/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            CervezaViewModel usu = null;
+            SessionInitialize();
+            CervezaEN usuEN = new CervezaCAD(session).ReadOIDDefault(id);
+            usu = new AssemblerCerveza().ConvertENToModelUI(usuEN);
+            SessionClose();
+            return View(usu);
         }
 
         // GET: Cerveza/Create

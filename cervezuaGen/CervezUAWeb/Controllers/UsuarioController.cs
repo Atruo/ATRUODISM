@@ -23,9 +23,14 @@ namespace CervezUAWeb.Controllers
         }
 
         // GET: Usuario/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(String id)
         {
-            return View();
+            UsuarioViewModel usu = null;
+            SessionInitialize();
+            UsuarioEN usuEN = new UsuarioCAD(session).ReadOIDDefault(id);
+            usu = new AssemblerUsuario().ConvertENToModelUI(usuEN);
+            SessionClose();
+            return View(usu);
         }
 
         // GET: Usuario/Create

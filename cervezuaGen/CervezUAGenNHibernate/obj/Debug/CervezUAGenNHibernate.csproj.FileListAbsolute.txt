@@ -128,3 +128,4 @@ D:\Biblioteca\Documentos\GitHub\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\
 D:\Biblioteca\Documentos\GitHub\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.csproj.CopyComplete
 D:\Biblioteca\Documentos\GitHub\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.dll
 D:\Biblioteca\Documentos\GitHub\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.pdb
+D:\Biblioteca\Documentos\GitHub\ATRUODISM\cervezuaGen\CervezUAGenNHibernate\obj\Debug\CervezUAGenNHibernate.csprojAssemblyReference.cache

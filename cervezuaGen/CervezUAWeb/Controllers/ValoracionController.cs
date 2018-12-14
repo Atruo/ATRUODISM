@@ -26,7 +26,13 @@ namespace CervezUAWeb.Controllers
         // GET: Valoracion/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            ValoracionViewModel val = null;
+            SessionInitialize();
+            ValoracionEN valEN = new ValoracionCAD(session).ReadOIDDefault(id);
+            val = new AssemblerValoracion().ConvertENToModelUI(valEN);
+            SessionClose();
+
+            return View(val);
         }
 
         // GET: Valoracion/Create

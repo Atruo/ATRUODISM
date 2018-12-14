@@ -27,7 +27,13 @@ namespace CervezUAWeb.Views.Copa
         // GET: Copa/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            CopaViewModel copa = null;
+            SessionInitialize();
+            CopaEN copaEN = new CopaCAD(session).ReadOIDDefault(id);
+            copa = new AssemblerCopa().ConvertENToModelUI(copaEN);
+            SessionClose();
+
+            return View(copa);
         }
 
         // GET: Copa/Create

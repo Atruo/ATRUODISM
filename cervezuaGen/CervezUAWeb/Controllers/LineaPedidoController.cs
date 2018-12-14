@@ -27,7 +27,13 @@ namespace CervezUAWeb.Controllers
         // GET: LineaPedido/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            LineaPedidoViewModel copa = null;
+            SessionInitialize();
+            LineaPedidoEN copaEN = new LineaPedidoCAD(session).ReadOIDDefault(id);
+            copa = new AssemblerLineaPedido().ConvertENToModelUI(copaEN);
+            SessionClose();
+
+            return View(copa);
         }
 
         // GET: LineaPedido/Create
