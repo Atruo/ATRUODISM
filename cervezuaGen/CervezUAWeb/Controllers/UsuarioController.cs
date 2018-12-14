@@ -17,7 +17,7 @@ namespace CervezUAWeb.Controllers
         public ActionResult Index()
         {
             UsuarioCEN usuario = new UsuarioCEN();
-            IList<UsuarioEN> listUsuEn = usuario.ReadAll(0, -1);
+            IList<UsuarioEN> listUsuEn = usuario.ReadAll(0, -1).ToList();
             IEnumerable<UsuarioViewModel> listUsu = new AssemblerUsuario().ConvertListENToModel(listUsuEn).ToList();
             return View(listUsu);
         }
@@ -71,7 +71,7 @@ namespace CervezUAWeb.Controllers
             {
                 UsuarioCEN cen = new UsuarioCEN();
                 cen.Modify(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, usu.Foto, usu.Tipo, usu.Password);
-                return RedirectToAction("Index", new { id = usu.NUsuario});
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -82,26 +82,23 @@ namespace CervezUAWeb.Controllers
         // GET: Usuario/Delete/5
         public ActionResult Delete(String id)
         {
-            try
-            {
-                UsuarioCEN cen = new UsuarioCEN();
-                cen.Destroy(id);
-                return RedirectToAction(" Index");
-            }
-            catch
-            {
-                return View();
-            }
+            UsuarioViewModel usu = null;
+            SessionInitialize();
+            UsuarioEN usuEN = new UsuarioCAD(session).ReadOIDDefault(id);
+            usu = new AssemblerUsuario().ConvertENToModelUI(usuEN);
+            SessionClose();
+            return View(usu);
+
         }
 
         // POST: Usuario/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(UsuarioViewModel usuario)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                UsuarioCEN usu = new UsuarioCEN();
+                usu.Destroy(usuario.NUsuario);
                 return RedirectToAction("Index");
             }
             catch
@@ -111,3 +108,6 @@ namespace CervezUAWeb.Controllers
         }
     }
 }
+        
+    
+        

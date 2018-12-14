@@ -1,5 +1,6 @@
 ﻿
 using CervezUAGenNHibernate.EN.CervezUA;
+using CervezUAWeb.Models;
 using System.Collections.Generic;
 
 namespace CervezUAWeb.Models
@@ -11,7 +12,7 @@ namespace CervezUAWeb.Models
             PedidoViewModel ped = new PedidoViewModel();
             ped.Id = en.Id;
             ped.Lineas = en.Lineas;
-            ped.NombreUsuario = en.Usuario;
+            ped.NUsuaurio = en.Usuario;
             ped.Estado = en.Estado;
             ped.Factura = en.Factura;
             return ped;

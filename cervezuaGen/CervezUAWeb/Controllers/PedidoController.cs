@@ -2,6 +2,7 @@
 using CervezUAGenNHibernate.CEN.CervezUA;
 using CervezUAGenNHibernate.EN.CervezUA;
 using CervezUAWeb.Models;
+using CervezUAWeb.Assembler;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace CervezUAWeb.Controllers
         public ActionResult Index()
         {
             PedidoCEN Pedido = new PedidoCEN();
-            IList<PedidoEN> listUsuEn = Pedido.ReadAll(0, -1);
+            IList<PedidoEN> listUsuEn = Pedido.ReadAll(0, -1).ToList();
             IEnumerable<PedidoViewModel> listUsu = new AssemblerPedido().ConvertListENToModel(listUsuEn).ToList();
             return View(listUsu);
         }
@@ -30,7 +31,7 @@ namespace CervezUAWeb.Controllers
         public ActionResult Create()
         {
             PedidoViewModel ped = new PedidoViewModel();
-            return View();
+            return View(ped);
         }
 
         // POST: Pedido/Create
@@ -39,9 +40,9 @@ namespace CervezUAWeb.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                
                 PedidoCEN pedidoCEN = new PedidoCEN();
-                pedidoCEN.New_(ped.NombreUsuario.NUsuario);
+                pedidoCEN.New_(ped.NUsuaurio.NUsuario);
                 return RedirectToAction("Index");
             }
             catch
@@ -69,7 +70,7 @@ namespace CervezUAWeb.Controllers
             {
                 PedidoCEN cen = new PedidoCEN();
                 cen.Modify(ped.Id, ped.Estado);
-                return RedirectToAction("Index", new { id = ped.Id });
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -81,26 +82,25 @@ namespace CervezUAWeb.Controllers
         // GET: Pedido/Delete/5
         public ActionResult Delete(int id)
         {
-            try
-            {
-                PedidoCEN cen = new PedidoCEN();
-                cen.Destroy(id);
-                return RedirectToAction(" Index");
-            }
-            catch
-            {
-                return View();
-            }
+
+                PedidoViewModel ped = null;
+                SessionInitialize();
+                PedidoEN pedEN = new PedidoCAD(session).ReadOIDDefault(id);
+                ped = new AssemblerPedido().ConvertENToModelUI(pedEN);
+                SessionClose();
+                return View(ped);
+
+
         }
 
         // POST: Pedido/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(PedidoViewModel pedido)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                CopaCEN cop = new CopaCEN();
+                cop.Destroy(pedido.Id);
                 return RedirectToAction("Index");
             }
             catch

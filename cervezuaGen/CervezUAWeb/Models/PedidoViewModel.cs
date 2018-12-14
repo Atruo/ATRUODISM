@@ -15,7 +15,7 @@ namespace CervezUAWeb.Models
         public System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> Lineas { get; set; }
 
         [Display(Prompt = "Usuario con la línea de pedido", Description = "Usuario con la línea de pedido", Name = "Nombre usuario ")]
-        public CervezUAGenNHibernate.EN.CervezUA.UsuarioEN NombreUsuario { get; set; }
+        public CervezUAGenNHibernate.EN.CervezUA.UsuarioEN NUsuaurio { get; set; }
 
         [Display(Prompt = "Estado del Pedido", Description = "Estado del Pedido", Name = "Estado ")]
         [Required(ErrorMessage = "Debe indicar un estado")]
