@@ -46,12 +46,12 @@ namespace CervezUAWeb.Models
 
         [Display(Prompt = "Volumen del artículo", Description = "Volumen incial del artículo", Name = "Volumen ")]
         [Required(ErrorMessage = "Debe indicar un volumen para el artículo")]
-        [Range(minimum: 0, maximum: 10000, ErrorMessage = "El volumen debe ser mayor que cero y menor de 10000")]
+        [Range(minimum: 0, maximum: 100, ErrorMessage = "El volumen debe ser mayor que cero y menor de 100")]
         public double Volumen { get; set; }
 
         [Display(Prompt = "Unidades del artículo", Description = "Unidades del artículo", Name = "Unidades ")]
         [Required(ErrorMessage = "Debe indicar una cantidad para el artículo")]
-        [Range(minimum: 0, maximum: 24, ErrorMessage = "La cantidad debe ser mayor que cero y menor de 10000")]
+        [Range(minimum: 0, maximum: 24, ErrorMessage = "La cantidad debe ser mayor que cero y menor de 24")]
         public int Unidades { get; set; }
 
         [Display(Prompt = "Graduación de la cerveza", Description = "Graduación de la cerveza", Name = "Graduación ")]

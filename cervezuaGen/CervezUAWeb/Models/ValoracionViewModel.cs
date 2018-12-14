@@ -11,14 +11,19 @@ namespace CervezUAWeb.Models
         [ScaffoldColumn(false)]
         public int id { get; set; }
 
-        [Display(Prompt = "usuario", Description = "usuario creador de la valoracion ", Name = "usuario")]
+        [Display(Prompt = "Articulo a valorar", Description = "Articulo a valorar", Name = "Articulo a valorar ")]
+        [Required(ErrorMessage = "SE necesita saber el artículo a valorar.")]
+        [StringLength(maximumLength: 100, ErrorMessage = "el texto es demasiado largo")]
+        public int Articulo { get; set; }
+
+        [Display(Prompt = "usuario", Description = "usuario creador de la valoracion ", Name = "Usuario")]
         [Required(ErrorMessage = "se necesira un usuario")]
         [StringLength(maximumLength: 100, ErrorMessage = "el texto es demasiado largo")]
-        public CervezUAGenNHibernate.EN.CervezUA.UsuarioEN usuario { get; set; }
+        public string Usuario { get; set; }
 
-        [Display(Prompt = "Valoracion", Description = "Valoracion ", Name = "Valor")]
+        [Display(Prompt = "Valoracion", Description = "Valoracion ", Name = "Valoracion ")]
         [Required(ErrorMessage = "Debe tener una valoracion")]
-        [Range(minimum: 0, maximum: 5, ErrorMessage = "Se debe valorar del 1 al 5")]
+        //[Range(minimum: 0, maximum: 5, ErrorMessage = "Se debe valorar del 0 al 5")]
         public double Valoracion { get; set; }
 
 
@@ -26,6 +31,6 @@ namespace CervezUAWeb.Models
         [Display(Prompt = "Texto", Description = "Explicacion de la valoracion ", Name = "Texto")]
         [Required(ErrorMessage = "Se necesita un texto")]
         [StringLength(maximumLength: 5000, ErrorMessage = "el texto es demasiado largo")]
-        public String texto { get; set; }
+        public String Texto { get; set; }
     }
 }

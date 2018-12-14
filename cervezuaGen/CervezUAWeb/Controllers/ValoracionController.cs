@@ -49,7 +49,7 @@ namespace CervezUAWeb.Controllers
             try
             {
                 ValoracionCEN val = new ValoracionCEN();
-                val.New_(valoracion.id,valoracion.usuario.NUsuario, valoracion.Valoracion, valoracion.texto);
+                val.New_(valoracion.Articulo, valoracion.Usuario, valoracion.Valoracion, valoracion.Texto);
                 return RedirectToAction("Index");
             }
             catch
@@ -77,7 +77,7 @@ namespace CervezUAWeb.Controllers
             try
             {
                 ValoracionCEN val = new ValoracionCEN();
-                val.Modify(valoracion.id, valoracion.Valoracion, valoracion.texto);
+                val.Modify(valoracion.id, valoracion.Valoracion, valoracion.Texto);
                 return RedirectToAction("Index");
             }
             catch

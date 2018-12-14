@@ -10,9 +10,10 @@ namespace CervezUAWeb.Models
         {
             ValoracionViewModel val = new ValoracionViewModel();
             val.id = en.Id;
-            val.usuario = en.Usuario;
+            val.Articulo = en.Articulo.Id;
+            val.Usuario = en.Usuario.NUsuario;
             val.Valoracion = en.Valoracion;
-            val.texto = en.Texto;
+            val.Texto = en.Texto;
             return val;
         }
         public IList<ValoracionViewModel> ConvertListENToModel(IList<ValoracionEN> ens)
