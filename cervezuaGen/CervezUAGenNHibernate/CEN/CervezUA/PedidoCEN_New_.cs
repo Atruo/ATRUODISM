@@ -19,7 +19,7 @@ namespace CervezUAGenNHibernate.CEN.CervezUA
 {
 public partial class PedidoCEN
 {
-public int New_ (string p_usuario)
+public int New_ (System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> p_lineas, string p_usuario, CervezUAGenNHibernate.Enumerated.CervezUA.EstadoPedidoEnum p_estado)
 {
         /*PROTECTED REGION ID(CervezUAGenNHibernate.CEN.CervezUA_Pedido_new__customized) START*/
 
@@ -29,11 +29,15 @@ public int New_ (string p_usuario)
 
         //Initialized PedidoEN
         pedidoEN = new PedidoEN ();
+        pedidoEN.Lineas = p_lineas;
+
 
         if (p_usuario != null) {
                 pedidoEN.Usuario = new CervezUAGenNHibernate.EN.CervezUA.UsuarioEN ();
                 pedidoEN.Usuario.NUsuario = p_usuario;
         }
+
+        pedidoEN.Estado = p_estado;
 
         //Call to PedidoCAD
 
