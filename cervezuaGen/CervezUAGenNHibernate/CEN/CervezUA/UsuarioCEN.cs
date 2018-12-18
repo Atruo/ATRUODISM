@@ -119,7 +119,6 @@ public long DevuelveTipo (long tipo)
 private string Encode ()
 {
         var payload = new Dictionary<string, object>(){
-                {}
         };
         string token = Jose.JWT.Encode (payload, Utils.Util.getKey (), Jose.JwsAlgorithm.HS256);
 

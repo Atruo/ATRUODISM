@@ -76,7 +76,7 @@ namespace CervezUAWeb.Controllers
             try
             {
                 CervezaCEN cen = new CervezaCEN();
-                cen.Modify(articulo.id, articulo.Nombre, articulo.Stock, articulo.Precio, articulo.ValMedia, articulo.Descripcion, articulo.Imagen, articulo.Marca, articulo.Graduacion, articulo.Unidades, articulo.Volumen, articulo.Tipo);
+                cen.Modify(articulo.id, articulo.Nombre, articulo.Stock, articulo.Precio, articulo.ValMedia, articulo.Descripcion, articulo.Imagen, articulo.Marca, articulo.Volumen, articulo.Unidades, articulo.Graduacion, articulo.Tipo);
                 return RedirectToAction("Index", new { id = articulo.id });
             }
             catch

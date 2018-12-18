@@ -11,11 +11,11 @@ namespace CervezUAWeb.Models
         [ScaffoldColumn(false)]
         public int Id { get; set; }
 
-        [ScaffoldColumn(false)]
+        [Display(Prompt = "Usuario con la línea de pedido", Description = "Usuario con la línea de pedido", Name = "Articulos ")]
         public System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> Lineas { get; set; }
 
         [Display(Prompt = "Usuario con la línea de pedido", Description = "Usuario con la línea de pedido", Name = "Nombre usuario ")]
-        public CervezUAGenNHibernate.EN.CervezUA.UsuarioEN NUsuaurio { get; set; }
+        public string NUsuario { get; set; }
 
         [Display(Prompt = "Estado del Pedido", Description = "Estado del Pedido", Name = "Estado ")]
         [Required(ErrorMessage = "Debe indicar un estado")]

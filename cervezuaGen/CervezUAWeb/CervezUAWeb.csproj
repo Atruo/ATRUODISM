@@ -158,6 +158,7 @@
     <Compile Include="Assembler\AssemblerArticulo.cs" />
     <Compile Include="Assembler\AssemblerCerveza.cs" />
     <Compile Include="Assembler\AssemblerCopa.cs" />
+    <Compile Include="Assembler\AssemblerFactura.cs" />
     <Compile Include="Assembler\AssemblerPedido.cs" />
     <Compile Include="Assembler\AssemblerUsuario.cs" />
     <Compile Include="Assembler\AssemblerValoracion.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="Controllers\BasicController.cs" />
     <Compile Include="Controllers\CervezaController.cs" />
     <Compile Include="Controllers\CopaController.cs" />
+    <Compile Include="Controllers\FacturaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LineaPedidoController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
@@ -175,6 +177,7 @@
     </Compile>
     <Compile Include="Models\ArticuloViewModel.cs" />
     <Compile Include="Models\CervezaViewModel.cs" />
+    <Compile Include="Models\FaturaViewModel.cs" />
     <Compile Include="Models\LineaPedidoViewModel.cs" />
     <Compile Include="Models\CopaViewModel.cs" />
     <Compile Include="Models\PedidoViewModel.cs" />
@@ -232,8 +235,6 @@
     <Content Include="Views\Cerveza\Create.cshtml" />
     <Content Include="Views\Cerveza\Edit.cshtml" />
     <Content Include="Views\Cerveza\Delete.cshtml" />
-    <Content Include="Views\Pedido\Index.cshtml" />
-    <Content Include="Views\Pedido\Create.cshtml" />
     <Content Include="Views\Pedido\Edit.cshtml" />
     <Content Include="Views\Pedido\Delete.cshtml" />
     <Content Include="Views\Valoracion\Create.cshtml" />
@@ -257,6 +258,12 @@
     <Content Include="Views\Pedido\Details.cshtml" />
     <Content Include="Views\LineaPedido\Details.cshtml" />
     <Content Include="Views\Valoracion\Details.cshtml" />
+    <Content Include="Views\Pedido\Create.cshtml" />
+    <Content Include="Views\Pedido\Index.cshtml" />
+    <Content Include="Views\Factura\Create.cshtml" />
+    <Content Include="Views\Factura\Delete.cshtml" />
+    <Content Include="Views\Factura\Edit.cshtml" />
+    <Content Include="Views\Factura\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

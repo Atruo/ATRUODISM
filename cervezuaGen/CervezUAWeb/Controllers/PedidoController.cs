@@ -35,7 +35,13 @@ namespace CervezUAWeb.Controllers
         // GET: Pedido/Create
         public ActionResult Create()
         {
+            SessionInitialize();
             PedidoViewModel ped = new PedidoViewModel();
+            IList<ArticuloEN> listaArticulos = new ArticuloCAD().ReadAllDefault(0, -1);
+            IEnumerable<ArticuloViewModel> listaArtView = new AssemblerArticulo().ConvertListENToModel(listaArticulos);
+            ViewData["listaArticulos"] = listaArtView;
+            SessionClose();
+
             return View(ped);
         }
 
@@ -45,9 +51,8 @@ namespace CervezUAWeb.Controllers
         {
             try
             {
-                
                 PedidoCEN pedidoCEN = new PedidoCEN();
-                pedidoCEN.New_(ped.NUsuaurio.NUsuario);
+                pedidoCEN.New_(ped.Lineas, ped.NUsuario, ped.Estado);
                 return RedirectToAction("Index");
             }
             catch
