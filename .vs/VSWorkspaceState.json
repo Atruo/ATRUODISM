@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\cervezuaGen",
-    "\\cervezuaGen\\CervezUAWeb"
+    "\\cervezuaGen\\CervezUAWeb",
+    "\\cervezuaGen\\CervezUAWeb\\Views",
+    "\\cervezuaGen\\CervezUAWeb\\Views\\Home"
   ],
-  "SelectedNode": "\\cervezuaGen",
   "PreviewInSolutionExplorer": false
 }
