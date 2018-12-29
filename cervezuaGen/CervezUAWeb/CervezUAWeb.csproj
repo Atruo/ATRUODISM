@@ -279,6 +279,7 @@
     <Content Include="vendor\jquery\jquery.slim.js" />
     <Content Include="vendor\jquery\jquery.slim.min.js" />
     <None Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\IMG\coronita.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
