@@ -225,6 +225,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\shop-homepage.css" />
+    <Content Include="css\modern-business.css" />
     <Content Include="css\shop-homepage.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -279,7 +280,6 @@
     <Content Include="vendor\jquery\jquery.slim.js" />
     <Content Include="vendor\jquery\jquery.slim.min.js" />
     <None Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\IMG\coronita.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -352,6 +352,7 @@
     <Content Include="Views\Valoracion\Details.cshtml" />
     <Content Include="Views\Valoracion\Edit.cshtml" />
     <Content Include="Views\Valoracion\Index.cshtml" />
+    <Content Include="Views\Tienda\Index2.0.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
