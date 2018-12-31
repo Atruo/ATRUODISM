@@ -227,6 +227,7 @@
     <Content Include="Content\shop-homepage.css" />
     <Content Include="css\modern-business.css" />
     <Content Include="css\shop-homepage.css" />
+    <Content Include="css\shop-item.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -265,7 +266,6 @@
     <Content Include="vendor\jquery\jquery.min.map" />
     <Content Include="vendor\jquery\jquery.slim.min.map" />
     <Content Include="Views\Articulo\Index.cshtml" />
-    <None Include="Views\Articulo\Lista.cshtml" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -354,6 +354,7 @@
     <Content Include="Views\Valoracion\Edit.cshtml" />
     <Content Include="Views\Valoracion\Index.cshtml" />
     <Content Include="Views\Tienda\Index2.0.cshtml" />
+    <Content Include="Views\Nosotros\Nosotros.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

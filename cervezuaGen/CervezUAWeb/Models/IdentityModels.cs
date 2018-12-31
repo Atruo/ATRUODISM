@@ -29,5 +29,9 @@ namespace CervezUAWeb.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<CervezUAWeb.Models.ArticuloViewModel> ArticuloViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<CervezUAWeb.Models.CopaViewModel> CopaViewModels { get; set; }
     }
 }
