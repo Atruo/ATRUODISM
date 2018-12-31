@@ -264,6 +264,7 @@
     <Content Include="vendor\bootstrap\js\bootstrap.min.js.map" />
     <Content Include="vendor\jquery\jquery.min.map" />
     <Content Include="vendor\jquery\jquery.slim.min.map" />
+    <Content Include="Views\Articulo\Index.cshtml" />
     <None Include="Views\Articulo\Lista.cshtml" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
@@ -317,7 +318,7 @@
     <Content Include="Views\Articulo\Delete.cshtml" />
     <Content Include="Views\Articulo\Details.cshtml" />
     <Content Include="Views\Articulo\Edit.cshtml" />
-    <Content Include="Views\Articulo\Index.cshtml" />
+    <Content Include="Views\Articulo\Index2.cshtml" />
     <Content Include="Views\Cerveza\Create.cshtml" />
     <Content Include="Views\Cerveza\Delete.cshtml" />
     <Content Include="Views\Cerveza\Details.cshtml" />

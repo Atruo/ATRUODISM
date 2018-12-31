@@ -1,64 +1,131 @@
-﻿@model IEnumerable<CervezUAWeb.Models.ArticuloViewModel>
+﻿
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+@model IEnumerable<CervezUAWeb.Models.ArticuloViewModel>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<head>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Precio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Marca)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </th>
-        <th></th>
-    </tr>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Precio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Marca)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Imagen)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    <title>CervezUA</title>
 
-</table>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/shop-homepage.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3">
+
+                <h1 class="my-4">CervezUA</h1>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Abadia</a>
+                    <a href="#" class="list-group-item">ALE</a>
+                    <a href="#" class="list-group-item">Lager Pilsner</a>
+                    <a href="#" class="list-group-item">Lambica</a>
+                    <a href="#" class="list-group-item">Pale ALE IPA</a>
+                    <a href="#" class="list-group-item">Porter Stout</a>
+                    <a href="#" class="list-group-item">Temporada</a>
+                    <a href="#" class="list-group-item">Trapense</a>
+                    <a href="#" class="list-group-item">Trigo</a>
+                </div>
+
+            </div>
+            <!-- /.col-lg-3 -->
+
+            <div class="col-lg-9">
+
+                <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active" style="background-color: #343a40;"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1" style="background-color: #343a40;"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2" style="background-color: #343a40;"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <img class="d-block img-fluid" src="https://i.ibb.co/zfcFzQ4/image.png" alt="First slide" style="margin-left: 5em;"> <!--900x350-->
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="https://i.ibb.co/gVvx6NK/image.png" alt="Second slide" style="margin-left: 5em;">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="https://i.ibb.co/xJs3WCG/image.png" alt="Third slide" style="margin-left: 5em;">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: #343a40;"></span>
+                        <span class="sr-only" style="background-color: #343a40;">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: #343a40;"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <div class="row">
+
+
+                    @foreach (var item in Model)
+                    {
+                        var x = @Html.DisplayFor(modelItem => item.Imagen);
+
+                        <!-- Elementos de la tienda-->
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                                <a href="Articulo/Edit/@Html.DisplayFor(modelItem => item.id)"><img class="card-img-top" src=" @Html.DisplayFor(modelItem => item.Imagen)" alt="" style="width: 180px; height: 180px; margin-left: 2.5em; margin-top: 1em;"></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a href="Articulo/Edit/@Html.DisplayFor(modelItem => item.id)"> @Html.DisplayFor(modelItem => item.Nombre)</a>
+                                    </h4>
+                                    <h5> @Html.DisplayFor(modelItem => item.Precio)</h5>
+                                    <p class="card-text">@Html.DisplayFor(modelItem => item.Descripcion)</p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+
+
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.col-lg-9 -->
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
