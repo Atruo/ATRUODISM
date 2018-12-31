@@ -1,10 +1,9 @@
-﻿
-
-
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 @model IEnumerable<CervezUAWeb.Models.ArticuloViewModel>
+
+
 
 @{
     ViewBag.Title = "Index";
@@ -40,15 +39,15 @@
 
                 <h1 class="my-4">CervezUA</h1>
                 <div class="list-group">
-                    <a href="#" class="list-group-item">Abadia</a>
-                    <a href="#" class="list-group-item">ALE</a>
-                    <a href="#" class="list-group-item">Lager Pilsner</a>
-                    <a href="#" class="list-group-item">Lambica</a>
-                    <a href="#" class="list-group-item">Pale ALE IPA</a>
-                    <a href="#" class="list-group-item">Porter Stout</a>
-                    <a href="#" class="list-group-item">Temporada</a>
-                    <a href="#" class="list-group-item">Trapense</a>
-                    <a href="#" class="list-group-item">Trigo</a>
+                    <a href="/Articulo?categoria=Abadia" class="list-group-item">Abadia</a>
+                    <a href="/Articulo?categoria=ALE" class="list-group-item">ALE</a>
+                    <a href="/Articulo?categoria=LagerPilsner" class="list-group-item">Lager Pilsner</a>
+                    <a href="/Articulo?categoria=Lambica" class="list-group-item">Lambica</a>
+                    <a href="/Articulo?categoria=PaleALEIPA" class="list-group-item">Pale ALE IPA</a>
+                    <a href="/Articulo?categoria=PorterStout" class="list-group-item">Porter Stout</a>
+                    <a href="/Articulo?categoria=Temporada" class="list-group-item">Temporada</a>
+                    <a href="/Articulo?categoria=Trapense" class="list-group-item">Trapense</a>
+                    <a href="/Articulo?categoria=Trigo" class="list-group-item">Trigo</a>
                 </div>
 
             </div>
@@ -85,28 +84,44 @@
 
                 <div class="row">
 
-
-                    @foreach (var item in Model)
+                    @if (Request.QueryString.Count > 0)
                     {
-                        var x = @Html.DisplayFor(modelItem => item.Imagen);
+                        if (@Request.Params["categoria"] != "")
+                        {
+                            if (@Request.Params["categoria"] != "Abadia")
+                            {
 
-                        <!-- Elementos de la tienda-->
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="card h-100">
-                                <a href="Articulo/Edit/@Html.DisplayFor(modelItem => item.id)"><img class="card-img-top" src=" @Html.DisplayFor(modelItem => item.Imagen)" alt="" style="width: 180px; height: 180px; margin-left: 2.5em; margin-top: 1em;"></a>
-                                <div class="card-body">
-                                    <h4 class="card-title">
-                                        <a href="Articulo/Edit/@Html.DisplayFor(modelItem => item.id)"> @Html.DisplayFor(modelItem => item.Nombre)</a>
-                                    </h4>
-                                    <h5> @Html.DisplayFor(modelItem => item.Precio)</h5>
-                                    <p class="card-text">@Html.DisplayFor(modelItem => item.Descripcion)</p>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+
+
+                            <!-- Elementos de la tienda-->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <a href="Articulo/Edit/@Html.DisplayFor(modelItem => item.id)"><img class="card-img-top" src=" @Html.DisplayFor(modelItem => item.Imagen)" alt="" style="width: 180px; height: 180px; margin-left: 2.5em; margin-top: 1em;"></a>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="Articulo/Edit/@Html.DisplayFor(modelItem => item.id)"> @Html.DisplayFor(modelItem => item.Nombre)</a>
+                                        </h4>
+                                        <h5> @Html.DisplayFor(modelItem => item.Precio)</h5>
+                                        <p class="card-text">@Html.DisplayFor(modelItem => item.Descripcion)</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     }
+
+
+
+
 
 
 
