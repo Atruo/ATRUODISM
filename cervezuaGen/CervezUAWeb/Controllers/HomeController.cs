@@ -26,5 +26,12 @@ namespace CervezUAWeb.Controllers
 
             return View();
         }
+
+        public ActionResult Nosotros()
+        {
+            
+
+            return View();
+        }
     }
 }
