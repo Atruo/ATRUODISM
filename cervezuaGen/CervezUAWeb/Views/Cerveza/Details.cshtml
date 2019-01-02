@@ -5,87 +5,91 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Shop Item - Start Bootstrap Template</title>
+    <!-- Bootstrap core CSS -->
 
-<div>
-    <h4>CervezaViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
+    <link href="@Url.Content("~/vendor/bootstrap/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
 
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
+    <!-- Custom styles for this template -->
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Precio)
-        </dt>
+    <link href="@Url.Content("~/css/shop-item.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
 
-        <dd>
-            @Html.DisplayFor(model => model.Precio)
-        </dd>
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <h1 class="my-4">CervezUA</h1>
+                <div class="list-group">
+                    <a href="/Cerveza?categoria=Abadia" class="list-group-item">Abadia</a>
+                    <a href="/Cerveza?categoria=ALE" class="list-group-item">ALE</a>
+                    <a href="/Cerveza?categoria=LagerPilsner" class="list-group-item">Lager Pilsner</a>
+                    <a href="/Cerveza?categoria=Lambica" class="list-group-item">Lambica</a>
+                    <a href="/Cerveza?categoria=PaleALEIPA" class="list-group-item">Pale ALE IPA</a>
+                    <a href="/Cerveza?categoria=PorterStout" class="list-group-item">Porter Stout</a>
+                    <a href="/Cerveza?categoria=Temporada" class="list-group-item">Temporada</a>
+                    <a href="/Cerveza?categoria=Trapense" class="list-group-item">Trapense</a>
+                    <a href="/Cerveza?categoria=Trigo" class="list-group-item">Trigo</a>
+                </div>
+            </div>
+            <!-- /.col-lg-3 -->
+            <div class="col-lg-9">
+                <div class="card mt-4">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Stock)
-        </dt>
+                    <img class="card-img-top img-fluid" src="@Model.Imagen" alt="" style="width: 30%; height: 30%; margin: auto; padding: .5em;">
+                    <div class="card-body">
+                        <h3 class="card-title">@Model.Nombre</h3>
+                        <h4>@Model.Precio.00€</h4>
+                        <p class="card-text">@Model.Descripcion</p>
+                        <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                        <br />
+                        <button class="btn-primary" type="button" onclick="comprar();">Añadir a la Cesta</button>
+                        <script>
+                            function comprar() {
+                                var galleta = document.cookie.match(new RegExp('(^| )' + "carrito" + '=([^;]+)'));
+                                var num = parseInt(galleta[2]) + 1;
+                                document.cookie = "carrito=" + num + "; expires=Thu, 01 Jan 1970 00: 00: 01 GMT ; path=/";
+                                location.reload();
 
-        <dd>
-            @Html.DisplayFor(model => model.Stock)
-        </dd>
+                            }
+                        </script>
+                    </div>
+                </div>
+                <!-- /.card -->
+                <div class="card card-outline-secondary my-4">
+                    <div class="card-header">
+                        Opiniones:
+                    </div>
+                    <div class="card-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                        <hr>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                        <hr>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                        <hr>
+                        <a href="#" class="btn btn-success">Leave a Review</a>
+                    </div>
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col-lg-9 -->
+        </div>
+    </div>
+    <!-- /.container -->
+    <!-- Bootstrap core JavaScript -->
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Marca)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Marca)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Imagen)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Volumen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Volumen)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Unidades)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Unidades)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Graduacion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Graduacion)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

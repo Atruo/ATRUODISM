@@ -23,6 +23,7 @@ namespace CervezUAWeb.Assembler
             art.Graduacion = en.Graduacion;
             art.Unidades = en.Unidades;
             art.Volumen = en.Volumen;
+            art.Tipo = en.Tipo;
             return art;
 
 

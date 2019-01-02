@@ -151,7 +151,7 @@ namespace CervezUAWeb.Controllers
         }
         public ActionResult Denegado()
         {
-            return Redirect("/Articulo/Index");
+            return Redirect("/Cerveza/Index");
         }
 
         public ActionResult Pass(String id)
