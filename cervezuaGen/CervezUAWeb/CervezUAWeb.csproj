@@ -225,6 +225,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\shop-homepage.css" />
+    <Content Include="css\1-col-portfolio.css" />
     <Content Include="css\modern-business.css" />
     <Content Include="css\shop-homepage.css" />
     <Content Include="css\shop-item.css" />
@@ -357,6 +358,7 @@
     <Content Include="Views\Usuario\Login.cshtml" />
     <Content Include="Views\Usuario\Pass.cshtml" />
     <Content Include="Views\Usuario\Create.cshtml" />
+    <Content Include="Views\Usuario\Carrito.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

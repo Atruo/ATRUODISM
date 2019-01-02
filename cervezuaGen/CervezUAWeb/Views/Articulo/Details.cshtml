@@ -14,12 +14,15 @@
     <meta name="author" content="">
     <title>Shop Item - Start Bootstrap Template</title>
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="@Url.Content("~/vendor/bootstrap/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    
     <!-- Custom styles for this template -->
-    <link href="css/shop-item.css" rel="stylesheet">
+
+    <link href="@Url.Content("~/css/shop-item.css")" rel="stylesheet"  type="text/css"/>
 </head>
 <body>
-   
+
     <!-- Page Content -->
     <div class="container">
         <div class="row">
@@ -40,14 +43,24 @@
             <!-- /.col-lg-3 -->
             <div class="col-lg-9">
                 <div class="card mt-4">
-                    
-                    <img class="card-img-top img-fluid" src="@Model.Imagen" alt="" style="width: 30%; height: 30%; margin: auto">
+
+                    <img class="card-img-top img-fluid" src="@Model.Imagen" alt="" style="width: 30%; height: 30%; margin: auto; padding: .5em;">
                     <div class="card-body">
                         <h3 class="card-title">@Model.Nombre</h3>
-                        <h4>@Model.Precio</h4>
+                        <h4>@Model.Precio.00€</h4>
                         <p class="card-text">@Model.Descripcion</p>
                         <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                        
+                        <br />
+                        <button class="btn-primary" type="button" onclick="comprar();">Añadir a la Cesta</button>
+                        <script>
+                            function comprar() {
+                                var galleta = document.cookie.match(new RegExp('(^| )' + "carrito" + '=([^;]+)'));
+                                var num = parseInt(galleta[2]) + 1;
+                                document.cookie = "carrito=" + num + "; expires=Thu, 01 Jan 1970 00: 00: 01 GMT ; path=/";
+                                location.reload();
+                                
+                            }
+                        </script>
                     </div>
                 </div>
                 <!-- /.card -->
@@ -74,9 +87,9 @@
         </div>
     </div>
     <!-- /.container -->
-
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
