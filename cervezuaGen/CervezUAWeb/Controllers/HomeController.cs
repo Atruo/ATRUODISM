@@ -8,8 +8,9 @@ namespace CervezUAWeb.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(String id)
         {
+           
             return View();
         }
 

@@ -185,9 +185,7 @@ namespace CervezUAWeb.Controllers
                     {
                         if (item.Pass.Equals(CervezUAGenNHibernate.Utils.Util.GetEncondeMD5(psw)))
                         {
-                            url = "/Usuario/Pass/?id="+ item.Nombre;
-                            ViewBag.ID= item.Nombre;
-                            ViewData["nombre"] = "Pedro";
+                            url = "/?id="+ item.Nombre;                           
 
                         }
 
