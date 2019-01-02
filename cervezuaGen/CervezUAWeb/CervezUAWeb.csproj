@@ -343,7 +343,6 @@
     <Content Include="Views\Pedido\Details.cshtml" />
     <Content Include="Views\Pedido\Edit.cshtml" />
     <Content Include="Views\Pedido\Index.cshtml" />
-    <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Usuario\Delete.cshtml" />
     <Content Include="Views\Usuario\Details.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
@@ -355,6 +354,9 @@
     <Content Include="Views\Valoracion\Index.cshtml" />
     <Content Include="Views\Tienda\Index2.0.cshtml" />
     <Content Include="Views\Home\Nosotros.cshtml" />
+    <Content Include="Views\Usuario\Login.cshtml" />
+    <Content Include="Views\Usuario\Pass.cshtml" />
+    <Content Include="Views\Usuario\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

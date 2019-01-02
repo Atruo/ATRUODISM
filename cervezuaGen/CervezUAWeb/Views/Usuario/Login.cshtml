@@ -1,0 +1,97 @@
+﻿
+@model IEnumerable<CervezUAWeb.Models.UsuarioViewModel>
+@{
+    ViewBag.Title = "Iniciar sesión";
+}
+
+<h2 style="margin-left: 2em;">@ViewBag.Title.</h2>
+<div class="row">
+
+    <div class="col-md-8" style="margin: auto;">
+
+        <section id="loginForm">
+            <div class="form-control">
+
+
+
+
+                <h4>Introduzca su nombre de usuario y contraseña.</h4>
+                <hr />
+                @if (Request.QueryString.Count > 0)
+                {
+                    if (@Request.Params["access"] == "no")
+                    {
+                        <h5 style="color: red;">Los datos introducidos son incorrecos</h5>
+                    }
+                }
+
+                        <div class="form-group">
+
+                            <div class="col-md-10">
+                                <input type="text" name="Usuario" value="" class="form-control" id="usu" />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <!-- arrobaHtml.LabelFor(m => m.Password, new { arrobaclass = "col-md-2 control-label" })-->
+                            <div class="col-md-10">
+                                <input type="password" name="psw" value="" class="form-control" id="psw" />
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="checkbox" id="txt">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button class="btn btn-default" onclick="validar();">Iniciar Sesion</button>
+                                <script>
+
+                                    function validar() {
+                                        var usu = document.getElementById("usu").value;
+                                        var psw = document.getElementById("psw").value;
+                                        var txt = document.getElementById("txt");
+                                        var url = window.location.href;                                                                        
+                                        var newUrl = "";
+                                        var realUrl = new URL(url);
+                                        console.log(url[url.length - 1]);
+                                        if (url[url.length - 1] == "/") {
+                                            
+                                            for (var i = 0; i < url.length-1; i++) {
+                                                newUrl += url[i];
+                                            }
+                                        } else if (realUrl.searchParams.get("access") == "no") {
+                                            newUrl = url.split("/?")[0];
+                                        } 
+                                        else {
+                                            newUrl = url;
+                                        }
+                                        
+                                        
+                                        window.location.replace(newUrl+"V/?id=" + usu + "&psw=" + psw);
+
+                                    }
+
+                                </script>
+                            </div>
+                        </div>
+                        <p>
+                            @Html.ActionLink("Registrar como nuevo usuario", "../Usuario/Create")
+                        </p>
+                        @* Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña
+                <p>
+                    @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
+                </p>*@
+                    </div>
+        </section>
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

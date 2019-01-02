@@ -34,10 +34,18 @@ namespace CervezUAWeb.Controllers
         }
 
         // GET: Usuario/Create
-        public ActionResult Create()
+        public ActionResult Create(String access)
         {
-            UsuarioViewModel usu = new UsuarioViewModel();
-            return View(usu);
+            if (access != null)
+            {
+                return Redirect("/Usuario/Create/?access=no");
+            }
+            else
+            {
+                UsuarioViewModel usu = new UsuarioViewModel();
+                return View(usu);
+            }
+            
         }
 
         // POST: Usuario/Create
@@ -47,9 +55,31 @@ namespace CervezUAWeb.Controllers
             try
             {
                 // TODO: Add insert logic here
-                UsuarioCEN usuarioCEN = new UsuarioCEN();
-                usuarioCEN.New_(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, usu.Foto, usu.Tipo, usu.Password);
-                return RedirectToAction("Index");
+                UsuarioCEN usuario = new UsuarioCEN();
+                IList<UsuarioEN> listUsuEn = usuario.ReadAll(0, -1).ToList();
+                Boolean existe = false;
+                foreach (var item in listUsuEn)
+                {
+                    if(item.Nombre == usu.Nombre)
+                    {
+                        existe = true;
+                        break;
+                    }
+                }
+                if (!existe)
+                {
+                    UsuarioCEN usuarioCEN = new UsuarioCEN();
+                    usuarioCEN.New_(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, usu.Foto, usu.Tipo, usu.Password);
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return Redirect("/Usuario/Create/?access=no");
+                }
+
+                
+                
             }
             catch
             {
@@ -111,6 +141,71 @@ namespace CervezUAWeb.Controllers
                 return View();
             }
         }
+
+        public ActionResult Login()
+        {
+            UsuarioCEN usuario = new UsuarioCEN();
+            IList<UsuarioEN> listUsuEn = usuario.ReadAll(0, -1).ToList();
+            IEnumerable<UsuarioViewModel> listUsu = new AssemblerUsuario().ConvertListENToModel(listUsuEn).ToList();
+            return View(listUsu);
+        }
+        public ActionResult Denegado()
+        {
+            return Redirect("/Articulo/Index");
+        }
+
+        public ActionResult Pass(String id)
+        {
+            if (id != "")
+            {
+                ViewData["nombre"] = id;
+            }
+            else
+            {
+                ViewData["nombre"] = "";
+            }
+           
+            return View();
+        }
+
+        // GET: Usuario/LoginV/5
+        public ActionResult LoginV(String id, String psw)
+        {
+            
+            SessionInitialize();
+            UsuarioEN usuEN = new UsuarioCAD(session).ReadOIDDefault(id);
+            UsuarioCEN usuario = new UsuarioCEN();
+            IList<UsuarioEN> listUsuEn = usuario.ReadAll(0, -1).ToList();
+            String url = "/Usuario/Login/?access=no";
+            try
+            {
+                foreach (var item in listUsuEn)
+                {
+                    if (item.Nombre == usuEN.Nombre)
+                    {
+                        if (item.Pass.Equals(CervezUAGenNHibernate.Utils.Util.GetEncondeMD5(psw)))
+                        {
+                            url = "/Usuario/Pass/?id="+ item.Nombre;
+                            ViewBag.ID= item.Nombre;
+                            ViewData["nombre"] = "Pedro";
+
+                        }
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                
+            }
+            
+            SessionClose();
+            return Redirect(url);
+        }
+
+
+
     }
 }
         
