@@ -14,13 +14,65 @@ namespace CervezUAWeb.Controllers
     public class CervezaController : BasicController
     {
         // GET: Cerveza
-        public ActionResult Index()
+        public ActionResult Index(String data)
         {
-            CervezaCEN art = new CervezaCEN();
+            
+            if (data != null)
+            {
+                CervezaCEN art = new CervezaCEN();
+                
+                IList<CervezaEN> listaArticulos = art.ReadAll(0, -1).ToList();
+                IList<CervezaEN> listaArticulos2 = new List<CervezaEN>();
+                foreach (var item in listaArticulos)
+                {
+                    if (item.Nombre.Contains(data))
+                    {
+                        listaArticulos2.Add(item);
+                    }
+                }
+                IEnumerable<CervezaViewModel> list = new AssemblerCerveza().ConvertListENToModel(listaArticulos2).ToList();
+                return View(list);
+            }
+            else
+            {
+                CervezaCEN art = new CervezaCEN();
 
-            IList<CervezaEN> listaArticulos = art.ReadAll(0, -1).ToList();
-            IEnumerable<CervezaViewModel> list = new AssemblerCerveza().ConvertListENToModel(listaArticulos).ToList();
-            return View(list);
+                IList<CervezaEN> listaArticulos = art.ReadAll(0, -1).ToList();
+                IEnumerable<CervezaViewModel> list = new AssemblerCerveza().ConvertListENToModel(listaArticulos).ToList();
+                return View(list);
+            }
+           
+        }
+
+        public ActionResult Buscar(String data)
+        {
+            System.Diagnostics.Debug.WriteLine("Hola:; " + data);
+            if (data != null)
+            {
+                CervezaCEN art = new CervezaCEN();
+
+                IList<CervezaEN> listaArticulos = art.ReadAll(0, -1).ToList();
+                IList<CervezaEN> listaArticulos2 = new List<CervezaEN>();
+                foreach (var item in listaArticulos)
+                {
+                    if (item.Nombre.ToLower().Contains(data.ToLower()))
+                    {
+                        System.Diagnostics.Debug.WriteLine("Añado: " + item.Nombre);
+                        listaArticulos2.Add(item);
+                    }
+                }
+                IEnumerable<CervezaViewModel> list = new AssemblerCerveza().ConvertListENToModel(listaArticulos2).ToList();
+                return View(list);
+            }
+            else
+            {
+                CervezaCEN art = new CervezaCEN();
+
+                IList<CervezaEN> listaArticulos = art.ReadAll(0, -1).ToList();
+                IEnumerable<CervezaViewModel> list = new AssemblerCerveza().ConvertListENToModel(listaArticulos).ToList();
+                return View(list);
+            }
+
         }
 
         // GET: Cerveza/Details/5
@@ -111,5 +163,6 @@ namespace CervezUAWeb.Controllers
                 return View();
             }
         }
+       
     }
 }
