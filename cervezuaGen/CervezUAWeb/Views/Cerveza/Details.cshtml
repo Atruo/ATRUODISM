@@ -46,6 +46,7 @@
 
                     <img class="card-img-top img-fluid" src="@Model.Imagen" alt="" style="width: 30%; height: 30%; margin: auto; padding: .5em;">
                     <div class="card-body">
+                        <span id="cerv" style="display:none;">@Model.id</span>
                         <h3 class="card-title">@Model.Nombre</h3>
                         <h4>@Model.Precio.00€</h4>
                         <p class="card-text">@Model.Descripcion</p>
@@ -54,11 +55,48 @@
                         <button class="btn-primary" type="button" onclick="comprar();">Añadir a la Cesta</button>
                         <script>
                             function comprar() {
-                                var galleta = document.cookie.match(new RegExp('(^| )' + "carrito" + '=([^;]+)'));
-                                var num = parseInt(galleta[2]) + 1;
-                                document.cookie = "carrito=" + num + "; expires=Thu, 01 Jan 1970 00: 00: 01 GMT ; path=/";
+                                var galleta = getCookie("carrito");
+                                var id = document.getElementById("cerv").outerHTML;
+                                var item = [];
+                                id = id.split('">')[1];
+                                id = id.split('</')[0];
+                                console.log(id)
+                                item.push(id);
+                                item = JSON.stringify(item);
+                                console.log(galleta);
+                               
+                                if (galleta == "") {
+                                    document.cookie = "carrito=" + item + "; expires=Thu, 01 Jan 1970 00: 00: 01 GMT ; path=/";
+                                } else {
+                                    var extra = [];
+                                    var carr = getCookie("carrito");
+                                    console.log("Carr: " + carr);                                 
+                                    
+                                    extra = JSON.parse(carr);
+                                    console.log(extra);
+                                    extra.push(id);
+                                    document.cookie = "carrito=" + JSON.stringify(extra) + "; expires=Thu, 01 Jan 1970 00: 00: 01 GMT ; path=/";
+                                }
+                               
                                 location.reload();
 
+                            }
+
+                            function getCookie(cname) {
+                                var name = cname + "=";
+                                var decodedCookie = decodeURIComponent(document.cookie);
+                                console.log(decodedCookie);
+                                var ca = decodedCookie.split(';');
+                                for (var i = 0; i < ca.length; i++) {
+                                    var c = ca[i];
+                                    while (c.charAt(0) == ' ') {
+                                        c = c.substring(1);
+                                    }
+                                    if (c.indexOf(name) == 0) {
+                                        return c.substring(name.length, c.length);
+                                    }
+                                }
+                                return "";
                             }
                         </script>
                     </div>

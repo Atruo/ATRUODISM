@@ -23,7 +23,7 @@ else
         {
             Response.Cookies["id"].Value = Request.Params["id"];
             Response.Cookies["id"].Expires = DateTime.Now.AddYears(1);
-            Response.Cookies["carrito"].Value = "0";
+            Response.Cookies["carrito"].Value = "";
             Response.Cookies["carrito"].Expires = DateTime.Now.AddYears(1);
 
             <li class="nav-item" style="display: inline-block;">

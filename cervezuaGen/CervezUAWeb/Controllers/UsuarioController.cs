@@ -202,11 +202,7 @@ namespace CervezUAWeb.Controllers
             return Redirect(url);
         }
 
-        public ActionResult Carrito()
-        {
-            
-            return View();
-        }
+       
 
     }
 }

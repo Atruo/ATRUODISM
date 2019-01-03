@@ -283,6 +283,7 @@
     <Content Include="vendor\jquery\jquery.slim.min.js" />
     <Content Include="Views\Cerveza\1.png" />
     <Content Include="Views\Cerveza\Buscar.cshtml" />
+    <Content Include="Views\Cerveza\Carrito.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\IMG\1.png" />
     <Content Include="Web.config" />
