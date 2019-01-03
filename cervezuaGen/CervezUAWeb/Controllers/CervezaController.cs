@@ -46,7 +46,7 @@ namespace CervezUAWeb.Controllers
 
         public ActionResult Buscar(String data)
         {
-            System.Diagnostics.Debug.WriteLine("Hola:; " + data);
+         
             if (data != null)
             {
                 CervezaCEN art = new CervezaCEN();
