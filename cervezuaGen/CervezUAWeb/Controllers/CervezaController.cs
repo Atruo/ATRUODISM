@@ -6,6 +6,7 @@ using CervezUAWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -74,6 +75,31 @@ namespace CervezUAWeb.Controllers
             }
 
         }
+
+        public ActionResult Carrito()
+        {
+
+                string lista = Request.Cookies["carrito"].Value;
+                string[] listaAux = lista.Split(',');
+                List<int> converted = new List<int>(); 
+                foreach( var item in listaAux)
+                {
+                var aux = item.Replace("[","").Replace("]","").Replace("\"","");
+                System.Diagnostics.Debug.WriteLine("Añado: " + aux);
+                converted.Add(Int32.Parse(aux));
+            }
+                CervezaCEN art = new CervezaCEN();
+                IList<CervezaEN> listaArticulos = new List<CervezaEN>();
+                foreach (var item in converted)
+                {
+                
+                listaArticulos.Add(art.ReadOID(item));
+                }
+                IEnumerable<CervezaViewModel> list = new AssemblerCerveza().ConvertListENToModel(listaArticulos).ToList();
+                return View(list);
+
+        }
+
 
         // GET: Cerveza/Details/5
         public ActionResult Details(int id)
@@ -163,12 +189,5 @@ namespace CervezUAWeb.Controllers
                 return View();
             }
         }
-
-        public ActionResult Carrito()
-        {
-
-            return View();
-        }
-
     }
 }
