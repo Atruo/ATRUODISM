@@ -14,7 +14,7 @@
     <meta name="author" content="">
     <title>Shop Item - Start Bootstrap Template</title>
     <!-- Bootstrap core CSS -->
-
+    
     <link href="@Url.Content("~/vendor/bootstrap/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
 
     <!-- Custom styles for this template -->
@@ -60,24 +60,26 @@
                                 var item = [];
                                 id = id.split('">')[1];
                                 id = id.split('</')[0];
-                                console.log(id)
+                                //console.log(id)
                                 item.push(id);
                                 item = JSON.stringify(item);
-                                console.log(galleta);
-                               
+                                //console.log(item);
+                                //console.log(galleta);
+
                                 if (galleta == "") {
-                                    document.cookie = "carrito=" + item + "; expires=Thu, 01 Jan 1970 00: 00: 01 GMT ; path=/";
+                                    console.log(item);
+                                    setCookie("carrito", item, false);
                                 } else {
                                     var extra = [];
                                     var carr = getCookie("carrito");
-                                    console.log("Carr: " + carr);                                 
-                                    
+                                    console.log("Carr: " + carr);
+
                                     extra = JSON.parse(carr);
                                     console.log(extra);
                                     extra.push(id);
-                                    document.cookie = "carrito=" + JSON.stringify(extra) + "; expires=Thu, 01 Jan 1970 00: 00: 01 GMT ; path=/";
+                                    setCookie("carrito", JSON.stringify(extra), false);
                                 }
-                               
+
                                 location.reload();
 
                             }
@@ -97,6 +99,15 @@
                                     }
                                 }
                                 return "";
+                            }
+                            function setCookie(name, value, days) {
+                                var expires = "";
+                                if (days) {
+                                    var date = new Date();
+                                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                                    expires = "; expires=" + date.toUTCString();
+                                }
+                                document.cookie = name + "=" + (value || "") + expires + "; path=/";
                             }
                         </script>
                     </div>
@@ -126,7 +137,6 @@
     </div>
     <!-- /.container -->
     <!-- Bootstrap core JavaScript -->
-
     <script src="~/vendor/jquery/jquery.min.js"></script>
     <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
