@@ -61,7 +61,7 @@
                                 id = id.split('">')[1];
                                 id = id.split('</')[0];
                                 //console.log(id)
-                                item.push(id);
+                                item.push([id, 1]);
                                 item = JSON.stringify(item);
                                 //console.log(item);
                                 //console.log(galleta);
@@ -73,10 +73,21 @@
                                     var extra = [];
                                     var carr = getCookie("carrito");
                                     console.log("Carr: " + carr);
-
+                                    var control = false;
                                     extra = JSON.parse(carr);
                                     console.log(extra);
-                                    extra.push(id);
+                                    for (var i = 0; i < extra.length; i++) {
+                                        console.log((extra[i])[0]);
+                                        if ((extra[i])[0] == id) {
+                                            (extra[i])[1] += 1;
+                                            control = true;
+                                            break;
+                                        }
+                                    }
+                                    if (control == false) {
+                                        extra.push([id,1]);
+                                    }
+                                    
                                     setCookie("carrito", JSON.stringify(extra), false);
                                 }
 

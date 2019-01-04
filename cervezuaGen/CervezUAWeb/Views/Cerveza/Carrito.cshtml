@@ -14,7 +14,74 @@
     <link href="css/1-col-portfolio.css" rel="stylesheet">
 </head>
 <body>
+    <script>
+        function borrar(id) {
 
+
+            var galleta = getCookie("carrito");
+            var nuevo = [];
+            if (galleta != "") {
+                galleta = JSON.parse(galleta);
+                for (var i = 0; i < galleta.length; i++) {
+                    if (galleta[i] == id) {
+                        galleta[i] = "";
+                        for (var i = 0; i < galleta.length; i++) {
+                            if (galleta[i] != "") {
+                                nuevo.push(galleta[i]);
+                            }
+                        }
+                        break;
+                    }
+                }
+                if (nuevo.length == 0) {
+                    nuevo = "";
+                } else {
+                    nuevo = JSON.stringify(nuevo);
+                }
+
+                setCookie("carrito", nuevo, false);
+                location.reload();
+            }
+        }
+        function cantidad(id) {
+            console.log('entro');
+            var galleta = getCookie("carrito");
+            galleta = JSON.parse(galleta);
+            var cant = document.getElementById(id);
+            for (var i = 0; i < galleta.length; i++) {
+                if ((galleta[i])[0] == id) {
+                    console.log((galleta[i])[1]);
+                    cant.innerHTML = "x"+(galleta[i])[1];
+                    break;
+                }
+            }
+        }
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            console.log(decodedCookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+    </script>
     <!-- Page Content -->
     <div class="container">
         <!-- Page Heading -->
@@ -27,7 +94,7 @@
         {
             foreach (var item in Model)
             {
-              
+
                 <div class="row" style="border-bottom: dotted 1px; margin: 1em;">
                     <div class="col-md-7">
                         <a href="#">
@@ -35,69 +102,18 @@
                         </a>
                     </div>
                     <div class="col-md-5">
-                        <h3>@Html.DisplayFor(modelItem => item.Nombre)</h3>
-                        <p>@Html.DisplayFor(modelItem => item.Descripcion)</p>                       
+                        <h3>@Html.DisplayFor(modelItem => item.Nombre) <span id="@item.id" style="font-size: 17px;">1</span></h3>
+                        <p>@Html.DisplayFor(modelItem => item.Descripcion)</p>
                         <button class="btn btn-primary" onclick="borrar(@item.id);" style="margin-bottom: .5em;">Eliminar </button>
                     </div>
                 </div>
+                <script>cantidad(@item.id)</script>
             }
+            <button class="btn btn-primary" style="background-color: #FF6D3A; margin: auto">Comprar </button>
+
         }
 
-                <script>
-                    function borrar(id) {
-                        
-                      
-                        var galleta = getCookie("carrito");
-                        var nuevo = [];
-                        if (galleta != "") {
-                            galleta = JSON.parse(galleta);
-                            for (var i = 0; i < galleta.length; i++) {
-                                if (galleta[i] == id) {
-                                    galleta[i] = "";
-                                    for (var i = 0; i < galleta.length; i++) {
-                                        if (galleta[i] != "") {
-                                            nuevo.push(galleta[i]);
-                                        }
-                                    }
-                                    break;
-                                }
-                            }
-                            if (nuevo.length == 0) {
-                                nuevo = "";
-                            } else {
-                                nuevo = JSON.stringify(nuevo);
-                            }
-                            
-                            setCookie("carrito", nuevo, false);
-                            location.reload();
-                        }
-                    }
-                    function setCookie(name, value, days) {
-                        var expires = "";
-                        if (days) {
-                            var date = new Date();
-                            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                            expires = "; expires=" + date.toUTCString();
-                        }
-                        document.cookie = name + "=" + (value || "") + expires + "; path=/";
-                    }
-                    function getCookie(cname) {
-                        var name = cname + "=";
-                        var decodedCookie = decodeURIComponent(document.cookie);
-                        console.log(decodedCookie);
-                        var ca = decodedCookie.split(';');
-                        for (var i = 0; i < ca.length; i++) {
-                            var c = ca[i];
-                            while (c.charAt(0) == ' ') {
-                                c = c.substring(1);
-                            }
-                            if (c.indexOf(name) == 0) {
-                                return c.substring(name.length, c.length);
-                            }
-                        }
-                        return "";
-                    }
-                </script>
+
         <!-- /.row -->
         <hr>
 

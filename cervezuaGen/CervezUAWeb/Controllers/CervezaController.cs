@@ -80,15 +80,26 @@ namespace CervezUAWeb.Controllers
         {
 
                 string lista = Request.Cookies["carrito"].Value;
+                
                 if (lista != "")
-                {
+                    {
                     string[] listaAux = lista.Split(',');
+                    
                     List<int> converted = new List<int>();
+                    int control = 0;
                     foreach (var item in listaAux)
                     {
-                        var aux = item.Replace("[", "").Replace("]", "").Replace("\"", "");
-                        System.Diagnostics.Debug.WriteLine("Añado: " + aux);
-                        converted.Add(Int32.Parse(aux));
+                        if (control == 0)
+                        {
+                            var aux = item.Replace("[", "").Replace("]", "").Replace("\"", "");
+                            System.Diagnostics.Debug.WriteLine("Añado: " + aux);
+                            converted.Add(Int32.Parse(aux));
+                            control = 1;
+                        }else
+                        {
+                            control = 0;
+                        }
+                        
                     }
                     CervezaCEN art = new CervezaCEN();
                     IList<CervezaEN> listaArticulos = new List<CervezaEN>();
