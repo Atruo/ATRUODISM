@@ -1,5 +1,6 @@
 ﻿using CervezUAGenNHibernate.CAD.CervezUA;
 using CervezUAGenNHibernate.CEN.CervezUA;
+using CervezUAGenNHibernate.CP.CervezUA;
 using CervezUAGenNHibernate.EN.CervezUA;
 using CervezUAWeb.Assembler;
 using CervezUAWeb.Models;
@@ -206,6 +207,76 @@ namespace CervezUAWeb.Controllers
             {
                 return View();
             }
+        }
+        public ActionResult Comprar()
+        {
+            string lista = Request.Cookies["carrito"].Value;
+
+            if (lista != "")
+            {
+                string[] listaAux = lista.Split(',');
+                SessionInitialize();
+                List<int> converted = new List<int>();
+                List<int> converted2 = new List<int>();
+                int control = 0;
+                foreach (var item in listaAux)
+                {
+                    if (control == 0)
+                    {
+                        var aux = item.Replace("[", "").Replace("]", "").Replace("\"", "");
+                        System.Diagnostics.Debug.WriteLine("Añado: " + aux);
+                        converted.Add(Int32.Parse(aux));
+                        control = 1;
+                    }
+                    else
+                    {
+                        var aux = item.Replace("[", "").Replace("]", "").Replace("\"", "");
+                        System.Diagnostics.Debug.WriteLine("Añado: " + aux);
+                        converted2.Add(Int32.Parse(aux));
+                        control = 0;
+                    }
+
+                }
+                CervezaCEN cerv = new CervezaCEN();
+                IList<CervezaEN> listaArticulos = new List<CervezaEN>();
+                IList<LineaPedidoEN> linea = new List<LineaPedidoEN>();
+                System.Diagnostics.Debug.WriteLine("Antes for each");
+                foreach (var item in converted)
+                {
+
+                    listaArticulos.Add(cerv.ReadOID(item));
+                }
+                System.Diagnostics.Debug.WriteLine("Antes for for");
+                for (int i = 0; i < converted.Count(); i++)
+                {
+                    System.Diagnostics.Debug.WriteLine("Entro");
+                    LineaPedidoCEN lin = new LineaPedidoCEN();
+                    System.Diagnostics.Debug.WriteLine("Peto aqui");
+                    int id = lin.New_(-1, converted2[i], listaArticulos[i]);
+                    System.Diagnostics.Debug.WriteLine("Peto aqui 2");
+
+                    linea.Add(lin.ReadOID(id));
+                    System.Diagnostics.Debug.WriteLine("Peto aqui 3");
+
+                }
+                System.Diagnostics.Debug.WriteLine("Despues for ");
+
+                string usuario = Request.Cookies["id"].Value;
+                UsuarioCAD usu = new UsuarioCAD(session);              
+                UsuarioEN u = usu.ReadOIDDefault(usuario);
+                UsuarioCP usua = new UsuarioCP(session);
+                usua.Comprar(usuario, linea);
+                System.Diagnostics.Debug.WriteLine("Chorizo");
+                SessionClose();
+                return View(listaArticulos);
+            }
+            else
+            {
+                return Redirect("/Cerveza/Carrito"); 
+            }
+
+            
+
         }
     }
 }

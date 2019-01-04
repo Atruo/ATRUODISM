@@ -52,16 +52,20 @@ public int New_ (int p_pedido, int p_numero, CervezUAGenNHibernate.EN.CervezUA.A
                 // Lista de oids id
                 lineaPedidoEN.Pedido = new CervezUAGenNHibernate.EN.CervezUA.PedidoEN ();
                 lineaPedidoEN.Pedido.Id = p_pedido;
+        }else
+        {
+                lineaPedidoEN.Pedido.Id = 0;
         }
 
         lineaPedidoEN.Numero = p_numero;
 
         lineaPedidoEN.Articulo = p_articulo;
 
-        //Call to LineaPedidoCAD
-
-        oid = _ILineaPedidoCAD.New_ (lineaPedidoEN);
-        return oid;
+            //Call to LineaPedidoCAD
+            System.Diagnostics.Debug.WriteLine("Peto aqui");
+            oid = _ILineaPedidoCAD.New_ (lineaPedidoEN);
+            System.Diagnostics.Debug.WriteLine("Peto aqui2");
+            return oid;
 }
 
 public void Modify (int p_LineaPedido_OID, int p_numero)

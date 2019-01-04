@@ -56,6 +56,9 @@
                 }
             }
         }
+        function comprar() {
+            window.location.href = "/Cerveza/Comprar";
+        }
         function setCookie(name, value, days) {
             var expires = "";
             if (days) {
@@ -109,7 +112,7 @@
                 </div>
                 <script>cantidad(@item.id)</script>
             }
-            <button class="btn btn-primary" style="background-color: #FF6D3A; margin: auto">Comprar </button>
+            <button class="btn btn-primary" style="background-color: #FF6D3A; margin: auto" onclick="comprar();">Comprar </button>
 
         }
 
