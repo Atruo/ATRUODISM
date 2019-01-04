@@ -19,17 +19,6 @@
 			
 			
 		  			
-						<bag name="Lineas" cascade="delete">
-							<key>
-							
-								
-								<column name="FK_idPedido_idCesta"/>
-					      	</key>
-							<one-to-many class="CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN"/>
-					    </bag>
-					
-			
-		  			
 						<many-to-one name="Usuario" class="CervezUAGenNHibernate.EN.CervezUA.UsuarioEN" >	
 								<column name="FK_idUsuario_idUsuario"/> 
 						</many-to-one>
@@ -41,6 +30,17 @@
 							   <one-to-one name="Factura" class="CervezUAGenNHibernate.EN.CervezUA.FacturaEN" property-ref="Pedido" />							
 					 
 						
+			
+		  			
+						<bag name="Lineas" cascade="delete">
+							<key>
+							
+								
+								<column name="FK_idPedido_idPedido"/>
+					      	</key>
+							<one-to-many class="CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN"/>
+					    </bag>
+					
 					
 					
 					

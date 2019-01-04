@@ -6,13 +6,6 @@ namespace CervezUAGenNHibernate.EN.CervezUA
 public partial class LineaPedidoEN
 {
 /**
- *	Atributo pedido
- */
-private CervezUAGenNHibernate.EN.CervezUA.PedidoEN pedido;
-
-
-
-/**
  *	Atributo id
  */
 private int id;
@@ -33,12 +26,13 @@ private CervezUAGenNHibernate.EN.CervezUA.ArticuloEN articulo;
 
 
 
+/**
+ *	Atributo pedido
+ */
+private CervezUAGenNHibernate.EN.CervezUA.PedidoEN pedido;
 
 
 
-public virtual CervezUAGenNHibernate.EN.CervezUA.PedidoEN Pedido {
-        get { return pedido; } set { pedido = value;  }
-}
 
 
 
@@ -60,6 +54,12 @@ public virtual CervezUAGenNHibernate.EN.CervezUA.ArticuloEN Articulo {
 
 
 
+public virtual CervezUAGenNHibernate.EN.CervezUA.PedidoEN Pedido {
+        get { return pedido; } set { pedido = value;  }
+}
+
+
+
 
 
 public LineaPedidoEN()
@@ -68,29 +68,29 @@ public LineaPedidoEN()
 
 
 
-public LineaPedidoEN(int id, CervezUAGenNHibernate.EN.CervezUA.PedidoEN pedido, int numero, CervezUAGenNHibernate.EN.CervezUA.ArticuloEN articulo
+public LineaPedidoEN(int id, int numero, CervezUAGenNHibernate.EN.CervezUA.ArticuloEN articulo, CervezUAGenNHibernate.EN.CervezUA.PedidoEN pedido
                      )
 {
-        this.init (Id, pedido, numero, articulo);
+        this.init (Id, numero, articulo, pedido);
 }
 
 
 public LineaPedidoEN(LineaPedidoEN lineaPedido)
 {
-        this.init (Id, lineaPedido.Pedido, lineaPedido.Numero, lineaPedido.Articulo);
+        this.init (Id, lineaPedido.Numero, lineaPedido.Articulo, lineaPedido.Pedido);
 }
 
 private void init (int id
-                   , CervezUAGenNHibernate.EN.CervezUA.PedidoEN pedido, int numero, CervezUAGenNHibernate.EN.CervezUA.ArticuloEN articulo)
+                   , int numero, CervezUAGenNHibernate.EN.CervezUA.ArticuloEN articulo, CervezUAGenNHibernate.EN.CervezUA.PedidoEN pedido)
 {
         this.Id = id;
 
 
-        this.Pedido = pedido;
-
         this.Numero = numero;
 
         this.Articulo = articulo;
+
+        this.Pedido = pedido;
 }
 
 public override bool Equals (object obj)

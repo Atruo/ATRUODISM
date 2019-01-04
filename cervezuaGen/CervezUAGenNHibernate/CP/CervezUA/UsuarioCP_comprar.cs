@@ -21,36 +21,35 @@ namespace CervezUAGenNHibernate.CP.CervezUA
 {
 public partial class UsuarioCP : BasicCP
 {
-public void Comprar (string p_oid, IList<LineaPedidoEN> linea)
+public void Comprar (string p_oid, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> linea)
 {
         /*PROTECTED REGION ID(CervezUAGenNHibernate.CP.CervezUA_Usuario_comprar) ENABLED START*/
 
-            IUsuarioCAD usuarioCAD = null;
-            UsuarioCEN usuarioCEN = null;
-            IPedidoCAD pedidoCAD = null;
-            PedidoCEN pedidoCEN = null;
+        IUsuarioCAD usuarioCAD = null;
+        UsuarioCEN usuarioCEN = null;
+        IPedidoCAD pedidoCAD = null;
+        PedidoCEN pedidoCEN = null;
 
 
 
-            try
+        try
         {
                 SessionInitializeTransaction ();
                 usuarioCAD = new UsuarioCAD (session);
                 usuarioCEN = new  UsuarioCEN (usuarioCAD);
-                pedidoCAD = new PedidoCAD(session);
-                pedidoCEN = new PedidoCEN(pedidoCAD);
+                pedidoCAD = new PedidoCAD (session);
+                pedidoCEN = new PedidoCEN (pedidoCAD);
 
-                PedidoEN pedido = new PedidoEN();
+                PedidoEN pedido = new PedidoEN ();
 
-                pedidoCEN.New_(linea,p_oid, (Enumerated.CervezUA.EstadoPedidoEnum)0 );
-                foreach (var item in linea)
-                {
-                    ArticuloCAD art = new ArticuloCAD(session);                                  
-                    ArticuloCEN articulo = new ArticuloCEN(art);
-                    ArticuloEN a = art.ReadOIDDefault(item.Articulo.Id);
+                pedidoCEN.New_ (p_oid, (Enumerated.CervezUA.EstadoPedidoEnum) 0, linea);
+                foreach (var item in linea) {
+                        ArticuloCAD art = new ArticuloCAD (session);
+                        ArticuloCEN articulo = new ArticuloCEN (art);
+                        ArticuloEN a = art.ReadOIDDefault (item.Articulo.Id);
 
-                    articulo.Modify(a.Id, a.Nombre, a.Stock-item.Numero, a.Precio, a.ValMedia, a.Descripcion, a.Imagen, a.Marca);
-                }              
+                        articulo.Modify (a.Id, a.Nombre, a.Stock - item.Numero, a.Precio, a.ValMedia, a.Descripcion, a.Imagen, a.Marca);
+                }
 
 
 

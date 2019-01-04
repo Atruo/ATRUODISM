@@ -92,8 +92,8 @@ public void ModifyDefault (PedidoEN pedido)
                 PedidoEN pedidoEN = (PedidoEN)session.Load (typeof(PedidoEN), pedido.Id);
 
 
-
                 pedidoEN.Estado = pedido.Estado;
+
 
 
                 session.Update (pedidoEN);
@@ -120,18 +120,18 @@ public int New_ (PedidoEN pedido)
         try
         {
                 SessionInitializeTransaction ();
-                if (pedido.Lineas != null) {
-                        foreach (CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN item in pedido.Lineas) {
-                                item.Pedido = pedido;
-                                session.Save (item);
-                        }
-                }
                 if (pedido.Usuario != null) {
                         // Argumento OID y no colección.
                         pedido.Usuario = (CervezUAGenNHibernate.EN.CervezUA.UsuarioEN)session.Load (typeof(CervezUAGenNHibernate.EN.CervezUA.UsuarioEN), pedido.Usuario.NUsuario);
 
                         pedido.Usuario.Pedido
                         .Add (pedido);
+                }
+                if (pedido.Lineas != null) {
+                        foreach (CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN item in pedido.Lineas) {
+                                item.Pedido = pedido;
+                                session.Save (item);
+                        }
                 }
 
                 session.Save (pedido);

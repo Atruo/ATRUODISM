@@ -51,7 +51,7 @@ namespace CervezUAWeb.Controllers
             {
 
                 LineaPedidoCEN cop = new LineaPedidoCEN();
-                cop.New_(linea.id, linea.Numero, linea.Articulo);
+                cop.New_(linea.Numero, linea.Articulo);
                 return RedirectToAction("Index");
             }
             catch

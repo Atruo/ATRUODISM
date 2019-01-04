@@ -91,8 +91,8 @@ public void ModifyDefault (LineaPedidoEN lineaPedido)
                 SessionInitializeTransaction ();
                 LineaPedidoEN lineaPedidoEN = (LineaPedidoEN)session.Load (typeof(LineaPedidoEN), lineaPedido.Id);
 
-
                 lineaPedidoEN.Numero = lineaPedido.Numero;
+
 
 
                 session.Update (lineaPedidoEN);
@@ -119,13 +119,6 @@ public int New_ (LineaPedidoEN lineaPedido)
         try
         {
                 SessionInitializeTransaction ();
-                if (lineaPedido.Pedido != null) {
-                        // Argumento OID y no colección.
-                        lineaPedido.Pedido = (CervezUAGenNHibernate.EN.CervezUA.PedidoEN)session.Load (typeof(CervezUAGenNHibernate.EN.CervezUA.PedidoEN), lineaPedido.Pedido.Id);
-
-                        lineaPedido.Pedido.Lineas
-                        .Add (lineaPedido);
-                }
                 if (lineaPedido.Articulo != null) {
                         // p_articulo
                         lineaPedido.Articulo.LineaPedido.Add (lineaPedido);

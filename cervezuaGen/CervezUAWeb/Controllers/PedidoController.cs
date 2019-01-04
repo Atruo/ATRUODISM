@@ -52,7 +52,7 @@ namespace CervezUAWeb.Controllers
             try
             {
                 PedidoCEN pedidoCEN = new PedidoCEN();
-                pedidoCEN.New_(ped.Lineas, ped.NUsuario, ped.Estado);
+                pedidoCEN.New_( ped.NUsuario, ped.Estado, ped.Lineas);
                 return RedirectToAction("Index");
             }
             catch

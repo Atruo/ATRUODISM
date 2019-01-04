@@ -13,13 +13,6 @@ private int id;
 
 
 /**
- *	Atributo lineas
- */
-private System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineas;
-
-
-
-/**
  *	Atributo usuario
  */
 private CervezUAGenNHibernate.EN.CervezUA.UsuarioEN usuario;
@@ -40,17 +33,18 @@ private CervezUAGenNHibernate.EN.CervezUA.FacturaEN factura;
 
 
 
+/**
+ *	Atributo lineas
+ */
+private System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineas;
+
+
+
 
 
 
 public virtual int Id {
         get { return id; } set { id = value;  }
-}
-
-
-
-public virtual System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> Lineas {
-        get { return lineas; } set { lineas = value;  }
 }
 
 
@@ -73,6 +67,12 @@ public virtual CervezUAGenNHibernate.EN.CervezUA.FacturaEN Factura {
 
 
 
+public virtual System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> Lineas {
+        get { return lineas; } set { lineas = value;  }
+}
+
+
+
 
 
 public PedidoEN()
@@ -82,31 +82,31 @@ public PedidoEN()
 
 
 
-public PedidoEN(int id, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineas, CervezUAGenNHibernate.EN.CervezUA.UsuarioEN usuario, CervezUAGenNHibernate.Enumerated.CervezUA.EstadoPedidoEnum estado, CervezUAGenNHibernate.EN.CervezUA.FacturaEN factura
+public PedidoEN(int id, CervezUAGenNHibernate.EN.CervezUA.UsuarioEN usuario, CervezUAGenNHibernate.Enumerated.CervezUA.EstadoPedidoEnum estado, CervezUAGenNHibernate.EN.CervezUA.FacturaEN factura, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineas
                 )
 {
-        this.init (Id, lineas, usuario, estado, factura);
+        this.init (Id, usuario, estado, factura, lineas);
 }
 
 
 public PedidoEN(PedidoEN pedido)
 {
-        this.init (Id, pedido.Lineas, pedido.Usuario, pedido.Estado, pedido.Factura);
+        this.init (Id, pedido.Usuario, pedido.Estado, pedido.Factura, pedido.Lineas);
 }
 
 private void init (int id
-                   , System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineas, CervezUAGenNHibernate.EN.CervezUA.UsuarioEN usuario, CervezUAGenNHibernate.Enumerated.CervezUA.EstadoPedidoEnum estado, CervezUAGenNHibernate.EN.CervezUA.FacturaEN factura)
+                   , CervezUAGenNHibernate.EN.CervezUA.UsuarioEN usuario, CervezUAGenNHibernate.Enumerated.CervezUA.EstadoPedidoEnum estado, CervezUAGenNHibernate.EN.CervezUA.FacturaEN factura, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> lineas)
 {
         this.Id = id;
 
-
-        this.Lineas = lineas;
 
         this.Usuario = usuario;
 
         this.Estado = estado;
 
         this.Factura = factura;
+
+        this.Lineas = lineas;
 }
 
 public override bool Equals (object obj)

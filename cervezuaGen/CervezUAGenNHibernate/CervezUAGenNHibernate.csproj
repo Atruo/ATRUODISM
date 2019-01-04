@@ -177,7 +177,6 @@
 	<Compile Include="CAD\CervezUA\IPedidoCAD.cs" />
 	<Compile Include="CAD\CervezUA\PedidoCAD.cs" />
 	<Compile Include="CP\CervezUA\PedidoCP.cs" />
-			<Compile Include="CEN\CervezUA\PedidoCEN_New_.cs" />
 			
 			
 			

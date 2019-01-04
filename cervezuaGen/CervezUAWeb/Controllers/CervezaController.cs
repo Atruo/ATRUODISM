@@ -210,12 +210,13 @@ namespace CervezUAWeb.Controllers
         }
         public ActionResult Comprar()
         {
+            SessionInitialize();
             string lista = Request.Cookies["carrito"].Value;
 
             if (lista != "")
             {
                 string[] listaAux = lista.Split(',');
-                SessionInitialize();
+               
                 List<int> converted = new List<int>();
                 List<int> converted2 = new List<int>();
                 int control = 0;
@@ -252,7 +253,8 @@ namespace CervezUAWeb.Controllers
                     System.Diagnostics.Debug.WriteLine("Entro");
                     LineaPedidoCEN lin = new LineaPedidoCEN();
                     System.Diagnostics.Debug.WriteLine("Peto aqui");
-                    int id = lin.New_(-1, converted2[i], listaArticulos[i]);
+                    System.Diagnostics.Debug.WriteLine(converted2[i]+listaArticulos[i].Nombre);
+                    int id = lin.New_(converted2[i], listaArticulos[i]);
                     System.Diagnostics.Debug.WriteLine("Peto aqui 2");
 
                     linea.Add(lin.ReadOID(id));
@@ -267,6 +269,7 @@ namespace CervezUAWeb.Controllers
                 UsuarioCP usua = new UsuarioCP(session);
                 usua.Comprar(usuario, linea);
                 System.Diagnostics.Debug.WriteLine("Chorizo");
+                
                 SessionClose();
                 return View(listaArticulos);
             }
