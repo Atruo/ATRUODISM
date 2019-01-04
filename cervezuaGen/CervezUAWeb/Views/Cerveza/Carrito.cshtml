@@ -23,7 +23,7 @@
             if (galleta != "") {
                 galleta = JSON.parse(galleta);
                 for (var i = 0; i < galleta.length; i++) {
-                    if (galleta[i] == id) {
+                    if ((galleta[i])[0] == id) {
                         galleta[i] = "";
                         for (var i = 0; i < galleta.length; i++) {
                             if (galleta[i] != "") {
