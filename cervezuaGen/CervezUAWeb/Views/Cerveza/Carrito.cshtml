@@ -27,27 +27,26 @@
         {
             foreach (var item in Model)
             {
-                <span id="id" style="display:none;">@item.id</span>
-                <div class="row">
+              
+                <div class="row" style="border-bottom: dotted 1px; margin: 1em;">
                     <div class="col-md-7">
                         <a href="#">
-                            <img class="img-fluid rounded mb-3 mb-md-0" src="@Html.DisplayFor(modelItem => item.Imagen)" alt="" style="width: 40%;">
+                            <img class="img-fluid rounded mb-3 mb-md-0" src="@Html.DisplayFor(modelItem => item.Imagen)" alt="" style="width: 20%;">
                         </a>
                     </div>
                     <div class="col-md-5">
                         <h3>@Html.DisplayFor(modelItem => item.Nombre)</h3>
                         <p>@Html.DisplayFor(modelItem => item.Descripcion)</p>                       
-                        <button class="btn btn-primary" onclick="borrar();">Eliminar </button>
+                        <button class="btn btn-primary" onclick="borrar(@item.id);" style="margin-bottom: .5em;">Eliminar </button>
                     </div>
                 </div>
             }
         }
 
                 <script>
-                    function borrar() {
-                        var id = document.getElementById("id").outerHTML;
-                        id = id.split('">')[1];
-                        id = id.split('</')[0];
+                    function borrar(id) {
+                        
+                      
                         var galleta = getCookie("carrito");
                         var nuevo = [];
                         if (galleta != "") {
