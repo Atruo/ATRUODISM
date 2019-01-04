@@ -60,7 +60,7 @@ namespace CervezUAWeb.Controllers
                 Boolean existe = false;
                 foreach (var item in listUsuEn)
                 {
-                    if(item.Nombre == usu.Nombre)
+                    if(item.NUsuario == usu.NUsuario)
                     {
                         existe = true;
                         break;
@@ -181,11 +181,11 @@ namespace CervezUAWeb.Controllers
             {
                 foreach (var item in listUsuEn)
                 {
-                    if (item.Nombre == usuEN.Nombre)
+                    if (item.NUsuario == usuEN.NUsuario)
                     {
                         if (item.Pass.Equals(CervezUAGenNHibernate.Utils.Util.GetEncondeMD5(psw)))
                         {
-                            url = "/?id="+ item.Nombre;                           
+                            url = "/?id="+ item.NUsuario;                           
 
                         }
 

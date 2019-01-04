@@ -80,7 +80,7 @@ public static void InitializeData ()
                 // Insert the initilizations of entities using the CEN classes
 
 
-                UsuarioCEN customer = new UsuarioCEN ();
+                AdministradorCEN customer = new AdministradorCEN ();
                 PedidoCEN pedido = new PedidoCEN ();
                 LineaPedidoCEN lineaPedido = new LineaPedidoCEN ();
 
@@ -91,7 +91,7 @@ public static void InitializeData ()
                 // ArticuloEN articuloNuevo = new ArticuloEN ();
 
 
-                customer.New_ (p_nUsuario: "Mau", p_email: "mau@mau.mau", p_fecNam: DateTime.Parse ("2018-01-01"), p_nombre: "Mau", p_apellidos: "Morant", p_foto: "mau.png", p_tipo: (CervezUAGenNHibernate.Enumerated.CervezUA.TipoUsuarioEnum) 1, p_pass: "mau123");
+                customer.New_ (p_nUsuario: "Mau", p_email: "mau@mau.mau", p_fecNam: DateTime.Parse ("2018-01-01"), p_nombre: "Mau", p_apellidos: "Morant", p_foto: "mau.png", p_tipo: (CervezUAGenNHibernate.Enumerated.CervezUA.TipoUsuarioEnum) 3, p_pass: "123",p_sueldo: 610);
                 //pedido.New_ (p_usuario: "Mau");
                 //lineaPedido.New_ (p_pedido: 1, p_articulo: articuloNuevo, p_numero: 2);
                 //valoracion.New_ (p_articulo: 1, p_usuario: "Mau", p_valoracion: 3, p_texto: "Maravilloso licor de fresa");

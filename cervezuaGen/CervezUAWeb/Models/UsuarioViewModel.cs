@@ -48,5 +48,7 @@ namespace CervezUAWeb.Models
         [Required(ErrorMessage = "Debe indicar una contraseña")]
         [StringLength(maximumLength: 200, ErrorMessage = "La contraseña no puede tener más de 200 caracteres")]
         public string Password { get; set; }
+
+       
     }
 }

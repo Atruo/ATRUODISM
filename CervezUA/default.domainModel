@@ -250,6 +250,7 @@
     <elements xmi:type="es.ua.dlsi.ooh:Enumeration" xmi:id="_aFERcNa4EeiRncW1Ln6m6Q" name="tipoUsuario">
       <enumerationLiterals xmi:type="es.ua.dlsi.ooh:EnumerationLiteral" xmi:id="_cw7awNa4EeiRncW1Ln6m6Q" name="Normal" value="1"/>
       <enumerationLiterals xmi:type="es.ua.dlsi.ooh:EnumerationLiteral" xmi:id="_e_rKQNa4EeiRncW1Ln6m6Q" name="Critico" value="2"/>
+      <enumerationLiterals xmi:type="es.ua.dlsi.ooh:EnumerationLiteral" xmi:id="_CNW6gBBVEemL0ZBC1thgOg" name="Admin" value="3"/>
     </elements>
     <elements xmi:type="es.ua.dlsi.ooh:Association" xmi:id="_thd_wNa4EeiRncW1Ln6m6Q" name="cesta_usuario" alias="cesta_usuario" rolOrigin="_thd_wda4EeiRncW1Ln6m6Q" rolTarget="_thd_wta4EeiRncW1Ln6m6Q" classTarget="__7pG8Na2EeiRncW1Ln6m6Q" classOrigin="_vMQN8Na1EeiRncW1Ln6m6Q" rolOriginName="pedido" rolTargetName="usuario" rolOriginMultiplicity="0..*" rolTargetMultiplicity="1..1"/>
     <elements xmi:type="es.ua.dlsi.ooh:Enumeration" xmi:id="_PJoXQNa7EeiRncW1Ln6m6Q" name="tipoCerveza">
@@ -828,6 +829,10 @@
         <children xmi:type="notation:Shape" xmi:id="_e_rxUNa4EeiRncW1Ln6m6Q" type="3005" element="_e_rKQNa4EeiRncW1Ln6m6Q" fontName="Segoe UI">
           <children xmi:type="notation:DecorationNode" xmi:id="_e_sYYNa4EeiRncW1Ln6m6Q" type="5008"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_e_rxUda4EeiRncW1Ln6m6Q"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_CNuG4BBVEemL0ZBC1thgOg" type="3005" element="_CNW6gBBVEemL0ZBC1thgOg" fontName="Segoe UI">
+          <children xmi:type="notation:DecorationNode" xmi:id="_CNuG4hBVEemL0ZBC1thgOg" type="5008"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CNuG4RBVEemL0ZBC1thgOg"/>
         </children>
         <styles xmi:type="notation:SortingStyle" xmi:id="_aFGtsta4EeiRncW1Ln6m6Q"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_aFGts9a4EeiRncW1Ln6m6Q"/>
