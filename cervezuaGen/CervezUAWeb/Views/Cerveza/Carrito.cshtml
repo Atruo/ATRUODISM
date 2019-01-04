@@ -23,21 +23,82 @@
 
         </h1>
         <!-- Items -->
-        @foreach (var item in Model)
+        @if (Model != null)
         {
-            <div class="row">
-                <div class="col-md-7">
-                    <a href="#">
-                        <img class="img-fluid rounded mb-3 mb-md-0" src="@Html.DisplayFor(modelItem => item.Imagen)" alt="">
-                    </a>
+            foreach (var item in Model)
+            {
+                <span id="id" style="display:none;">@item.id</span>
+                <div class="row">
+                    <div class="col-md-7">
+                        <a href="#">
+                            <img class="img-fluid rounded mb-3 mb-md-0" src="@Html.DisplayFor(modelItem => item.Imagen)" alt="" style="width: 40%;">
+                        </a>
+                    </div>
+                    <div class="col-md-5">
+                        <h3>@Html.DisplayFor(modelItem => item.Nombre)</h3>
+                        <p>@Html.DisplayFor(modelItem => item.Descripcion)</p>                       
+                        <button class="btn btn-primary" onclick="borrar();">Eliminar </button>
+                    </div>
                 </div>
-                <div class="col-md-5">
-                    <h3>@Html.DisplayFor(modelItem => item.Nombre)</h3>
-                    <p>@Html.DisplayFor(modelItem => item.Descripcion)</p>
-                    <a class="btn btn-primary" href="#">Eliminar</a>
-                </div>
-            </div>
+            }
         }
+
+                <script>
+                    function borrar() {
+                        var id = document.getElementById("id").outerHTML;
+                        id = id.split('">')[1];
+                        id = id.split('</')[0];
+                        var galleta = getCookie("carrito");
+                        var nuevo = [];
+                        if (galleta != "") {
+                            galleta = JSON.parse(galleta);
+                            for (var i = 0; i < galleta.length; i++) {
+                                if (galleta[i] == id) {
+                                    galleta[i] = "";
+                                    for (var i = 0; i < galleta.length; i++) {
+                                        if (galleta[i] != "") {
+                                            nuevo.push(galleta[i]);
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                            if (nuevo.length == 0) {
+                                nuevo = "";
+                            } else {
+                                nuevo = JSON.stringify(nuevo);
+                            }
+                            
+                            setCookie("carrito", nuevo, false);
+                            location.reload();
+                        }
+                    }
+                    function setCookie(name, value, days) {
+                        var expires = "";
+                        if (days) {
+                            var date = new Date();
+                            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                            expires = "; expires=" + date.toUTCString();
+                        }
+                        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+                    }
+                    function getCookie(cname) {
+                        var name = cname + "=";
+                        var decodedCookie = decodeURIComponent(document.cookie);
+                        console.log(decodedCookie);
+                        var ca = decodedCookie.split(';');
+                        for (var i = 0; i < ca.length; i++) {
+                            var c = ca[i];
+                            while (c.charAt(0) == ' ') {
+                                c = c.substring(1);
+                            }
+                            if (c.indexOf(name) == 0) {
+                                return c.substring(name.length, c.length);
+                            }
+                        }
+                        return "";
+                    }
+                </script>
         <!-- /.row -->
         <hr>
 
