@@ -20,7 +20,7 @@
 			
 			
 		  			
-						<many-to-one name="Articulo" class="CervezUAGenNHibernate.EN.CervezUA.ArticuloEN" cascade="delete">	
+						<many-to-one name="Articulo" class="CervezUAGenNHibernate.EN.CervezUA.ArticuloEN" >	
 								<column name="FK_id_idArticulo"/> 
 						</many-to-one>
 											 					

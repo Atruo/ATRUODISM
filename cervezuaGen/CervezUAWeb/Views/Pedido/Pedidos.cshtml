@@ -14,15 +14,18 @@
             <th>Dirección</th>
             <th>Método de Pago</th>
             <th>Estado</th>
+            <th>Detalles</th>
         </tr>
         @foreach (var item in Model)
         {
         <tr>
             <td>@item.Id</td>
-            <td>@item.Importe</td>
+            <td>@item.Importe.00€</td>
+            <td>@item.Direccion</td>
             <td>@item.MPago</td>
             <td>@item.Estado</td>
-        </tr>
+            <td><a href="@Url.Action("Lista", "LineaPedido/", new { @item.Id })">Ver</a> </td>
+         </tr>
         }
 
 

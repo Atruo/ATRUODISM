@@ -39,7 +39,7 @@ public ILineaPedidoCAD get_ILineaPedidoCAD ()
         return this._ILineaPedidoCAD;
 }
 
-public int New_ (int p_numero, CervezUAGenNHibernate.EN.CervezUA.ArticuloEN p_articulo, int p_pedido)
+public int New_ (int p_numero, int p_articulo, int p_pedido)
 {
         LineaPedidoEN lineaPedidoEN = null;
         int oid;
@@ -48,7 +48,13 @@ public int New_ (int p_numero, CervezUAGenNHibernate.EN.CervezUA.ArticuloEN p_ar
         lineaPedidoEN = new LineaPedidoEN ();
         lineaPedidoEN.Numero = p_numero;
 
-        lineaPedidoEN.Articulo = p_articulo;
+
+        if (p_articulo != -1) {
+                // El argumento p_articulo -> Property articulo es oid = false
+                // Lista de oids id
+                lineaPedidoEN.Articulo = new CervezUAGenNHibernate.EN.CervezUA.ArticuloEN ();
+                lineaPedidoEN.Articulo.Id = p_articulo;
+        }
 
 
         if (p_pedido != -1) {

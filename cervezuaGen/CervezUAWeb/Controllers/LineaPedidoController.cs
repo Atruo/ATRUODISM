@@ -121,5 +121,24 @@ namespace CervezUAWeb.Controllers
             
             return View();
         }
+
+        public ActionResult Lista(int id)
+        {
+            LineaPedidoCEN art = new LineaPedidoCEN();
+           
+            IList<LineaPedidoEN> listaLin = art.ReadAll(0, -1).ToList();
+            IList<CervezaEN> converted = new List<CervezaEN>();
+            CervezaCEN cerv = new CervezaCEN();
+            
+            foreach (var item in listaLin)
+            {
+                if (id == item.Pedido.Id)
+                {                    
+                    converted.Add(cerv.ReadOID(item.Articulo.Id));
+                }
+            }
+            IEnumerable<CervezaViewModel> list = new AssemblerCerveza().ConvertListENToModel(converted).ToList();
+            return View(list);
+        }
     }
 }

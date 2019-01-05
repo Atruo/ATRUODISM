@@ -154,7 +154,7 @@ namespace CervezUAWeb.Controllers
                 CervezaCEN art = new CervezaCEN();
                     for (int i = 0; i < converted.Count(); i++)
                     {
-                        lineaCEN.New_( converted2[i], art.ReadOID(converted[i]), oid);
+                        lineaCEN.New_( converted2[i], art.ReadOID(converted[i]).Id, oid);
                     }
                
             

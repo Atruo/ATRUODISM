@@ -120,9 +120,11 @@ public int New_ (LineaPedidoEN lineaPedido)
         {
                 SessionInitializeTransaction ();
                 if (lineaPedido.Articulo != null) {
-                        // p_articulo
-                        lineaPedido.Articulo.LineaPedido.Add (lineaPedido);
-                        session.Save (lineaPedido.Articulo);
+                        // Argumento OID y no colección.
+                        lineaPedido.Articulo = (CervezUAGenNHibernate.EN.CervezUA.ArticuloEN)session.Load (typeof(CervezUAGenNHibernate.EN.CervezUA.ArticuloEN), lineaPedido.Articulo.Id);
+
+                        lineaPedido.Articulo.LineaPedido
+                        .Add (lineaPedido);
                 }
                 if (lineaPedido.Pedido != null) {
                         // Argumento OID y no colección.
