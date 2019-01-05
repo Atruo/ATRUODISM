@@ -3,6 +3,7 @@ using CervezUAGenNHibernate.EN.CervezUA;
 using CervezUAWeb.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -39,13 +40,27 @@ namespace CervezUAWeb.Controllers
 
         // POST: Admin/Create
         [HttpPost]
-        public ActionResult Create(AdministradorViewModel articulo)
+        public ActionResult Create(AdministradorViewModel articulo, HttpPostedFileBase file)
         {
+            string fileName = "", path = "";
+            // Verify that the user selected a file
+            if (file != null && file.ContentLength > 0)
+            {
+                System.Diagnostics.Debug.WriteLine("Entro en el if ");
+                // extract only the fielname
+                fileName = Path.GetFileName(file.FileName);
+                System.Diagnostics.Debug.WriteLine(fileName);
+                // store the file inside ~/App_Data/uploads folder
+                path = Path.Combine(Server.MapPath("~/Content/Profile"), fileName);
+                System.Diagnostics.Debug.WriteLine(path);
+                //string pathDef = path.Replace(@"\\", @"\");
+                file.SaveAs(path);
+            }
             try
             {
                 AdministradorCEN art = new AdministradorCEN();
-
-                art.New_(articulo.NUsuario, articulo.Email, articulo.FecNam, articulo.Nombre, articulo.Apellidos, articulo.Foto, articulo.Tipo, articulo.Password, articulo.Sueldo);
+                fileName = "/Content/IMG/" + fileName;
+                art.New_(articulo.NUsuario, articulo.Email, articulo.FecNam, articulo.Nombre, articulo.Apellidos, fileName, articulo.Tipo, articulo.Password, articulo.Sueldo);
                 return RedirectToAction("Index");
             }
             catch

@@ -6,6 +6,7 @@ using CervezUAWeb.Assembler;
 using CervezUAWeb.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -140,12 +141,28 @@ namespace CervezUAWeb.Controllers
 
         // POST: Cerveza/Create
         [HttpPost]
-        public ActionResult Create(CervezaViewModel articulo)
+        public ActionResult Create(CervezaViewModel cerveza, HttpPostedFileBase file)
         {
+            string fileName = "", path = "";
+            // Verify that the user selected a file
+            if (file != null && file.ContentLength > 0)
+            {
+                System.Diagnostics.Debug.WriteLine("Entro en el if ");
+                // extract only the fielname
+                fileName = Path.GetFileName(file.FileName);
+                System.Diagnostics.Debug.WriteLine(fileName);
+                // store the file inside ~/App_Data/uploads folder
+                path = Path.Combine(Server.MapPath("~/Content/IMG"), fileName);
+                System.Diagnostics.Debug.WriteLine(path);
+                //string pathDef = path.Replace(@"\\", @"\");
+                file.SaveAs(path);
+            }
             try
             {
+                fileName = "/Content/IMG/" + fileName;
+                System.Diagnostics.Debug.WriteLine("Nombre: "+ fileName);
                 CervezaCEN art = new CervezaCEN();
-                art.New_(articulo.Nombre, articulo.Stock, articulo.Precio, articulo.ValMedia, articulo.Descripcion, articulo.Imagen, articulo.Marca, articulo.Volumen, articulo.Unidades, articulo.Graduacion, articulo.Tipo);
+                art.New_(cerveza.Nombre, cerveza.Stock, cerveza.Precio, cerveza.ValMedia, cerveza.Descripcion, fileName, cerveza.Marca, cerveza.Volumen, cerveza.Unidades, cerveza.Graduacion, cerveza.Tipo);
                 return RedirectToAction("Index");
             }
             catch

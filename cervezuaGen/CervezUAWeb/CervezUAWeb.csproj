@@ -227,6 +227,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\IMG\1.png" />
     <Content Include="Content\shop-homepage.css" />
     <Content Include="css\1-col-portfolio.css" />
     <Content Include="css\modern-business.css" />
@@ -371,7 +372,8 @@
     <Content Include="Views\Usuario\Carrito.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Uploads\" />
+    <Folder Include="Content\Profile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

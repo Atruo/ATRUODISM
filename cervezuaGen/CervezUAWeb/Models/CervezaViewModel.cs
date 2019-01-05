@@ -41,7 +41,6 @@ namespace CervezUAWeb.Models
         public string Marca { get; set; }
 
         [Display(Prompt = "Imagen del artículo", Description = "Unidades del artículo", Name = "Imagen ")]
-        [Required(ErrorMessage = "Debe indicar una imagen del artículo")]
         public string Imagen { get; set; }
 
         [Display(Prompt = "Volumen del artículo", Description = "Volumen incial del artículo", Name = "Volumen ")]

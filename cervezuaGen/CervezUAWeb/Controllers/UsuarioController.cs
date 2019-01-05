@@ -4,6 +4,7 @@ using CervezUAGenNHibernate.EN.CervezUA;
 using CervezUAWeb.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -50,7 +51,7 @@ namespace CervezUAWeb.Controllers
 
         // POST: Usuario/Create
         [HttpPost]
-        public ActionResult Create(UsuarioViewModel usu)
+        public ActionResult Create(UsuarioViewModel usu, HttpPostedFileBase file)
         {
             try
             {
@@ -68,8 +69,24 @@ namespace CervezUAWeb.Controllers
                 }
                 if (!existe)
                 {
+                    string fileName = "", path = "";
+                    // Verify that the user selected a file
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Entro en el if ");
+                        // extract only the fielname
+                        fileName = Path.GetFileName(file.FileName);
+                        System.Diagnostics.Debug.WriteLine(fileName);
+                        // store the file inside ~/App_Data/uploads folder
+                        path = Path.Combine(Server.MapPath("~/Content/Profile"), fileName);
+                        System.Diagnostics.Debug.WriteLine(path);
+                        //string pathDef = path.Replace(@"\\", @"\");
+                        file.SaveAs(path);
+                    }
+
                     UsuarioCEN usuarioCEN = new UsuarioCEN();
-                    usuarioCEN.New_(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, usu.Foto, usu.Tipo, usu.Password);
+                    fileName = "/Content/IMG/" + fileName;
+                    usuarioCEN.New_(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, fileName, usu.Tipo, usu.Password);
 
                     return RedirectToAction("Index");
                 }
