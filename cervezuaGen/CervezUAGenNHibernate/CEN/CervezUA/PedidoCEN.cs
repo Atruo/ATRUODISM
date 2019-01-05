@@ -39,7 +39,7 @@ public IPedidoCAD get_IPedidoCAD ()
         return this._IPedidoCAD;
 }
 
-public int New_ (string p_usuario, CervezUAGenNHibernate.Enumerated.CervezUA.EstadoPedidoEnum p_estado, System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> p_lineas)
+public int New_ (string p_usuario, CervezUAGenNHibernate.Enumerated.CervezUA.EstadoPedidoEnum p_estado, double p_importe, string p_direccion, CervezUAGenNHibernate.Enumerated.CervezUA.MetodoPagoEnum p_attribute)
 {
         PedidoEN pedidoEN = null;
         int oid;
@@ -56,7 +56,11 @@ public int New_ (string p_usuario, CervezUAGenNHibernate.Enumerated.CervezUA.Est
 
         pedidoEN.Estado = p_estado;
 
-        pedidoEN.Lineas = p_lineas;
+        pedidoEN.Importe = p_importe;
+
+        pedidoEN.Direccion = p_direccion;
+
+        pedidoEN.Attribute = p_attribute;
 
         //Call to PedidoCAD
 
@@ -64,7 +68,7 @@ public int New_ (string p_usuario, CervezUAGenNHibernate.Enumerated.CervezUA.Est
         return oid;
 }
 
-public void Modify (int p_Pedido_OID, CervezUAGenNHibernate.Enumerated.CervezUA.EstadoPedidoEnum p_estado)
+public void Modify (int p_Pedido_OID, CervezUAGenNHibernate.Enumerated.CervezUA.EstadoPedidoEnum p_estado, double p_importe, string p_direccion, CervezUAGenNHibernate.Enumerated.CervezUA.MetodoPagoEnum p_attribute)
 {
         PedidoEN pedidoEN = null;
 
@@ -72,6 +76,9 @@ public void Modify (int p_Pedido_OID, CervezUAGenNHibernate.Enumerated.CervezUA.
         pedidoEN = new PedidoEN ();
         pedidoEN.Id = p_Pedido_OID;
         pedidoEN.Estado = p_estado;
+        pedidoEN.Importe = p_importe;
+        pedidoEN.Direccion = p_direccion;
+        pedidoEN.Attribute = p_attribute;
         //Call to PedidoCAD
 
         _IPedidoCAD.Modify (pedidoEN);

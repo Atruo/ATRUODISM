@@ -52,7 +52,7 @@ namespace CervezUAWeb.Controllers
             try
             {
                 PedidoCEN pedidoCEN = new PedidoCEN();
-                pedidoCEN.New_( ped.NUsuario, ped.Estado, ped.Lineas);
+               // pedidoCEN.New_( ped.NUsuario, ped.Estado, ped.Lineas);
                 return RedirectToAction("Index");
             }
             catch
@@ -79,7 +79,7 @@ namespace CervezUAWeb.Controllers
             try
             {
                 PedidoCEN cen = new PedidoCEN();
-                cen.Modify(ped.Id, ped.Estado);
+                //cen.Modify(ped.Id, ped.Estado);
                 return RedirectToAction("Index");
             }
             catch
@@ -117,6 +117,68 @@ namespace CervezUAWeb.Controllers
             {
                 return View();
             }
+        }
+        public ActionResult tramitar()
+        {
+            string id = Request.Cookies["id"].Value;
+            string importe = Request.Cookies["coste"].Value;
+            string mPago = Request.Cookies["mPago"].Value;
+            string direccion = Request.Cookies["direccion"].Value;
+            PedidoCEN pedidoCEN = new PedidoCEN();
+            int oid = pedidoCEN.New_(id,(CervezUAGenNHibernate.Enumerated.CervezUA.EstadoPedidoEnum)1 , Convert.ToDouble(importe),direccion, (CervezUAGenNHibernate.Enumerated.CervezUA.MetodoPagoEnum)Int32.Parse(mPago));
+            LineaPedidoCEN lineaCEN = new LineaPedidoCEN();
+
+            string lista = Request.Cookies["carrito"].Value;            
+                string[] listaAux = lista.Split(',');
+                List<int> converted = new List<int>();
+                List<int> converted2 = new List<int>();
+                int control = 0;
+                foreach (var item in listaAux)
+                {
+                    if (control == 0)
+                    {
+                        var aux = item.Replace("[", "").Replace("]", "").Replace("\"", "");
+                        System.Diagnostics.Debug.WriteLine("Añado: " + aux);
+                        converted.Add(Int32.Parse(aux));
+                        control = 1;
+                    }
+                    else
+                    {
+                        var aux = item.Replace("[", "").Replace("]", "").Replace("\"", "");
+                        System.Diagnostics.Debug.WriteLine("Añado: " + aux);
+                        converted2.Add(Int32.Parse(aux));
+                        control = 0;
+                    }
+
+                }
+                CervezaCEN art = new CervezaCEN();
+                    for (int i = 0; i < converted.Count(); i++)
+                    {
+                        lineaCEN.New_( converted2[i], art.ReadOID(converted[i]), oid);
+                    }
+               
+            
+            
+            
+            return Redirect("/Pedido/Pedidos");
+
+        }
+        public ActionResult Pedidos()
+        {
+            PedidoCEN art = new PedidoCEN();
+            string id = Request.Cookies["id"].Value;
+            IList<PedidoEN> listaPedidos = art.ReadAll(0, -1).ToList();
+            IList<PedidoEN> converted = new List<PedidoEN>();
+            foreach (var item in listaPedidos)
+            {
+                if (id == item.Usuario.NUsuario)
+                {
+                    converted.Add(item);
+                }
+            }
+            IEnumerable<PedidoViewModel> list = new AssemblerPedido().ConvertListENToModel(converted).ToList();
+            return View(list);
+           
         }
     }
 }

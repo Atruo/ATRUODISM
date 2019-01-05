@@ -215,6 +215,7 @@ namespace CervezUAWeb.Controllers
         {
             return Redirect("/Cerveza/Index");
         }
+       
 
         public ActionResult Pass(String id)
         {

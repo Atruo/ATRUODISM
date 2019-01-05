@@ -51,7 +51,7 @@ namespace CervezUAWeb.Controllers
             {
 
                 LineaPedidoCEN cop = new LineaPedidoCEN();
-                cop.New_(linea.Numero, linea.Articulo);
+                //cop.New_(linea.Numero, linea.Articulo);
                 return RedirectToAction("Index");
             }
             catch
@@ -113,6 +113,13 @@ namespace CervezUAWeb.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult Comprar()
+        {
+            PedidoCEN pedidoCEN = new PedidoCEN();
+            
+            return View();
         }
     }
 }

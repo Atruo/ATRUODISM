@@ -23,13 +23,12 @@ namespace CervezUAGenNHibernate.CEN.CervezUA
         {
             UsuarioCEN usuCEN = new UsuarioCEN();
             UsuarioEN usu = usuCEN.ReadOID(p_oid);
-           
-                usu.Tipo = (Enumerated.CervezUA.TipoUsuarioEnum)tipo;
-             
-            
+
+            usu.Tipo = (Enumerated.CervezUA.TipoUsuarioEnum)tipo;
+
+
             _IUsuarioCAD.Modify(usu);
 
         }
     }
 }
-

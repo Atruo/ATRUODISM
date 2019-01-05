@@ -185,7 +185,6 @@
     <Compile Include="Assembler\AssemblerArticulo.cs" />
     <Compile Include="Assembler\AssemblerCerveza.cs" />
     <Compile Include="Assembler\AssemblerCopa.cs" />
-    <Compile Include="Assembler\AssemblerFactura.cs" />
     <Compile Include="Assembler\AssemblerLineaPedido.cs" />
     <Compile Include="Assembler\AssemblerPedido.cs" />
     <Compile Include="Assembler\AssemblerUsuario.cs" />
@@ -197,7 +196,6 @@
     <Compile Include="Controllers\BasicController.cs" />
     <Compile Include="Controllers\CervezaController.cs" />
     <Compile Include="Controllers\CopaController.cs" />
-    <Compile Include="Controllers\FacturaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LineaPedidoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -212,7 +210,6 @@
     <Compile Include="Models\CervezaViewModel.cs" />
     <Compile Include="Models\AdministradorViewModel.cs" />
     <Compile Include="Models\CopaViewModel.cs" />
-    <Compile Include="Models\FaturaViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LineaPedidoViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -342,10 +339,6 @@
     <Content Include="Views\Copa\Details.cshtml" />
     <Content Include="Views\Copa\Edit.cshtml" />
     <Content Include="Views\Copa\Index.cshtml" />
-    <Content Include="Views\Factura\Create.cshtml" />
-    <Content Include="Views\Factura\Delete.cshtml" />
-    <Content Include="Views\Factura\Edit.cshtml" />
-    <Content Include="Views\Factura\Index.cshtml" />
     <Content Include="Views\LineaPedido\Create.cshtml" />
     <Content Include="Views\LineaPedido\Delete.cshtml" />
     <Content Include="Views\LineaPedido\Details.cshtml" />
@@ -371,6 +364,8 @@
     <Content Include="Views\Usuario\Pass.cshtml" />
     <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Usuario\Carrito.cshtml" />
+    <Content Include="Views\LineaPedido\Comprar.cshtml" />
+    <Content Include="Views\Pedido\Pedidos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Uploads\" />

@@ -27,7 +27,7 @@
 			
 		  			
 						<many-to-one name="Pedido" class="CervezUAGenNHibernate.EN.CervezUA.PedidoEN" >	
-								<column name="FK_idPedido_idPedido"/> 
+								<column name="FK_idPedido_idPedido_0"/> 
 						</many-to-one>
 											 					
 					

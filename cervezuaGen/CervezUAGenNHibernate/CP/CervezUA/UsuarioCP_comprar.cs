@@ -42,7 +42,7 @@ public void Comprar (string p_oid, System.Collections.Generic.IList<CervezUAGenN
 
                 PedidoEN pedido = new PedidoEN ();
 
-                pedidoCEN.New_ (p_oid, (Enumerated.CervezUA.EstadoPedidoEnum) 0, linea);
+                //pedidoCEN.New_ (p_oid, (Enumerated.CervezUA.EstadoPedidoEnum) 0);
                 foreach (var item in linea) {
                         ArticuloCAD art = new ArticuloCAD (session);
                         ArticuloCEN articulo = new ArticuloCEN (art);

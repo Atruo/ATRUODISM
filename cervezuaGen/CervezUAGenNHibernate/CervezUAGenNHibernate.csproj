@@ -213,18 +213,6 @@
 			
 			
 			
-	<Compile Include="EN\CervezUA\FacturaEN.cs" />
-	<Compile Include="CEN\CervezUA\FacturaCEN.cs" />
-	<Compile Include="CAD\CervezUA\IFacturaCAD.cs" />
-	<Compile Include="CAD\CervezUA\FacturaCAD.cs" />
-	<Compile Include="CP\CervezUA\FacturaCP.cs" />
-			
-			
-			
-			<Compile Include="CP\CervezUA\FacturaCP_CalculaIVA.cs" />
-			
-			
-			
 	<Compile Include="Enumerated\CervezUA\TipoUsuarioEnum.cs" />
 	<Compile Include="Enumerated\CervezUA\TipoCervezaEnum.cs" />
 	<Compile Include="Enumerated\CervezUA\TipoCopaEnum.cs" />
@@ -253,7 +241,6 @@
 	<EmbeddedResource Include="Mappings\CervezUA\pedido.hbm.xml" />
 	<EmbeddedResource Include="Mappings\CervezUA\lineapedido.hbm.xml" />
 	<EmbeddedResource Include="Mappings\CervezUA\valoracion.hbm.xml" />
-	<EmbeddedResource Include="Mappings\CervezUA\factura.hbm.xml" />
 	
 	
 

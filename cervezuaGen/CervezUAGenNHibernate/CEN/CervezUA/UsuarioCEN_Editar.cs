@@ -17,10 +17,10 @@ using CervezUAGenNHibernate.CAD.CervezUA;
 
 namespace CervezUAGenNHibernate.CEN.CervezUA
 {
-public partial class UsuarioCEN
-{
-public void Editar (CervezUAGenNHibernate.EN.CervezUA.UsuarioEN usu, string id, string foto)
-{
+    public partial class UsuarioCEN
+    {
+        public void Editar(CervezUAGenNHibernate.EN.CervezUA.UsuarioEN usu, string id, string foto)
+        {
             UsuarioCEN usuCEN = new UsuarioCEN();
             UsuarioEN compr = usuCEN.ReadOID(id);
 
@@ -41,7 +41,7 @@ public void Editar (CervezUAGenNHibernate.EN.CervezUA.UsuarioEN usu, string id, 
                 compr.FecNam = usu.FecNam;
             }
             if (foto != "" && compr.Foto != foto)
-            {                
+            {
                 compr.Foto = foto;
             }
             if (compr.Apellidos != usu.Apellidos)
@@ -54,5 +54,5 @@ public void Editar (CervezUAGenNHibernate.EN.CervezUA.UsuarioEN usu, string id, 
             }
             _IUsuarioCAD.Modify(usu);
         }
-}
+    }
 }

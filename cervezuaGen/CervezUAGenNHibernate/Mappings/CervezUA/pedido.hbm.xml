@@ -15,6 +15,15 @@
 					<property name="Estado" > 
 						<column name="estado"  not-null="true"/>
 					</property>
+					<property name="Importe" type="double"> 
+						<column name="importe"  not-null="true"/>
+					</property>
+					<property name="Direccion" type="string"> 
+						<column name="direccion"  not-null="true"/>
+					</property>
+					<property name="Attribute" > 
+						<column name="attribute"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -26,20 +35,19 @@
 			
 			
 		  			
-					
-							   <one-to-one name="Factura" class="CervezUAGenNHibernate.EN.CervezUA.FacturaEN" property-ref="Pedido" />							
-					 
-						
-			
-		  			
-						<bag name="Lineas" cascade="delete">
+						<bag name="Lineas" >
 							<key>
 							
 								
-								<column name="FK_idPedido_idPedido"/>
+								<column name="FK_idPedido_idPedido_0"/>
 					      	</key>
 							<one-to-many class="CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN"/>
 					    </bag>
+					
+			
+			
+			
+					
 					
 					
 					

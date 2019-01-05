@@ -1,8 +1,116 @@
-﻿@model CervezUAWeb.Models.CervezaViewModel
+﻿@model IEnumerable<CervezUAWeb.Models.CervezaViewModel>
 
 @{
     ViewBag.Title = "Comprar";
 }
 
-<h2>Comprar</h2>
+<script>
+    function quitar() {
+        if (JSON.parse(getCookie("coste")) > 0) {
+            setCookie("coste", "0", false);
+            setCookie("mPago", "", false);
+            setCookie("direccion", "", false);
+        }
+        
+    }
+    function tramitar() {
+        var mpago = document.getElementById("mpago");
+        var dire = document.getElementById("dire");
+
+        setCookie("mPago", mpago.value, false);
+        setCookie("direccion", dire.value, false);
+    }
+    function total() {
+        var total = document.getElementById("total");
+        total.innerHTML = JSON.parse(getCookie("coste"));
+    }
+    function cantidad(id, coste) {
+        var cant = document.getElementById(id);
+        var precio = document.getElementById("P_" + id);
+        var galleta = getCookie("carrito");
+        galleta = JSON.parse(galleta);
+        for (var i = 0; i < galleta.length; i++) {
+            if ((galleta[i])[0] == id) {
+                cant.innerHTML = (galleta[i])[1];
+                console.log((galleta[i])[1]);
+                console.log(coste);
+                precio.innerHTML = ((galleta[i])[1] * coste);
+                var dolars = getCookie("coste");
+                dolars = JSON.parse(dolars);
+
+                dolars += coste;
+                setCookie("coste", dolars, false);
+                break;
+            }
+        }
+
+    }
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        console.log(decodedCookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+</script>
+
+<h2>Tramitar Compra</h2>
+<script>quitar();</script>
+
+<div class="container">
+    <table style="width:100%; border-bottom: solid; margin-bottom: 2em;">
+        <tr>
+            <th>Cerveza</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.Nombre</td>
+                <td><span id="@item.id"></span></td>
+                <td><span id="P_@item.id"></span>.00€</td>
+            </tr>
+            <script>cantidad(@item.id, @item.Precio);</script>
+        }
+
+
+    </table>
+
+
+    <p>Total........................................................................... <span id="total"></span>,00€</p>
+    <script>total();</script>
+
+
+    <p>Dirección de envio:</p>
+    <input type="text" name="direccion" value="" class="form-control"  id="dire" onchange="tramitar();"/>
+    <p>Método de Pago: </p>
+    <select class="form-control" id="mpago" onchange="tramitar();">
+        <option value="1">Tarjeta de Crédito</option>
+        <option value="2">Paypal</option>
+        <option value="3">Contrarembolso</option>
+    </select>
+
+    <script>tramitar();</script>
+    <button class="btn btn-primary" style="background-color: #FF6D3A; margin-top: 2em;" onclick="location.href='/Pedido/Tramitar';">Realizar Pedido</button>
+</div>
 

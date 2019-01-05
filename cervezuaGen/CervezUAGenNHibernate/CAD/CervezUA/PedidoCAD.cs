@@ -96,6 +96,14 @@ public void ModifyDefault (PedidoEN pedido)
 
 
 
+                pedidoEN.Importe = pedido.Importe;
+
+
+                pedidoEN.Direccion = pedido.Direccion;
+
+
+                pedidoEN.Attribute = pedido.Attribute;
+
                 session.Update (pedidoEN);
                 SessionCommit ();
         }
@@ -127,12 +135,6 @@ public int New_ (PedidoEN pedido)
                         pedido.Usuario.Pedido
                         .Add (pedido);
                 }
-                if (pedido.Lineas != null) {
-                        foreach (CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN item in pedido.Lineas) {
-                                item.Pedido = pedido;
-                                session.Save (item);
-                        }
-                }
 
                 session.Save (pedido);
                 SessionCommit ();
@@ -162,6 +164,15 @@ public void Modify (PedidoEN pedido)
                 PedidoEN pedidoEN = (PedidoEN)session.Load (typeof(PedidoEN), pedido.Id);
 
                 pedidoEN.Estado = pedido.Estado;
+
+
+                pedidoEN.Importe = pedido.Importe;
+
+
+                pedidoEN.Direccion = pedido.Direccion;
+
+
+                pedidoEN.Attribute = pedido.Attribute;
 
                 session.Update (pedidoEN);
                 SessionCommit ();

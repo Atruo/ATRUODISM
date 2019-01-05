@@ -12,9 +12,12 @@ namespace CervezUAWeb.Models
             PedidoViewModel ped = new PedidoViewModel();
             ped.Id = en.Id;
             ped.Lineas = en.Lineas;
-            ped.NUsuario = en.Usuario.NUsuario;
+            ped.Importe = en.Importe;
             ped.Estado = en.Estado;
-            ped.Factura = en.Factura;
+            ped.MPago = en.Attribute;
+            ped.Direccion = en.Direccion;
+
+
             return ped;
 
 
