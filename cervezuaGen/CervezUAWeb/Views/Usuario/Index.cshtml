@@ -62,8 +62,9 @@
         </td>
       
         <td>
-            @Html.ActionLink("Convert to Admin", "toAdmin", new { id=item.NUsuario  }) |
-          
+            @Html.ActionLink("Convertir a Admin", "toAdmin", new { id = item.NUsuario, admin = true }) |
+            @Html.ActionLink("Revocar Admin", "toAdmin", new { id = item.NUsuario, admin = false }) 
+
         </td>
     </tr>
 }

@@ -129,6 +129,10 @@
 			
 			<Compile Include="CP\CervezUA\UsuarioCP_Comprar.cs" />
 			
+			<Compile Include="CEN\CervezUA\UsuarioCEN_ToAdmin.cs" />
+			
+			<Compile Include="CEN\CervezUA\UsuarioCEN_Editar.cs" />
+			
 	<Compile Include="EN\CervezUA\CervezaEN.cs" />
 	<Compile Include="CEN\CervezUA\CervezaCEN.cs" />
 	<Compile Include="CAD\CervezUA\ICervezaCAD.cs" />

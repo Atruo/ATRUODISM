@@ -157,6 +157,19 @@ namespace CervezUAWeb.Controllers
                 }
                 System.Diagnostics.Debug.WriteLine("Peto aqui3  ");
 
+
+                /*UsuarioCEN cen = new UsuarioCEN();
+                UsuarioEN usuario = new UsuarioEN();
+                usuario.NUsuario = usu.NUsuario;
+                usuario.Nombre = usu.Nombre;
+                usuario.Apellidos = usu.Apellidos;
+                usuario.Email = usu.Email;
+                usuario.FecNam = usu.FecNam;
+                usuario.Pass = usu.Password;
+                usuario.Foto = fileName;
+               
+                cen.Editar( usuario, Request.Cookies["id"].Value, fileName);*/
+
                 return RedirectToAction("Index");
             }
             catch
@@ -253,20 +266,12 @@ namespace CervezUAWeb.Controllers
             return Redirect(url);
         }
 
-        public ActionResult toAdmin(String id)
+        public ActionResult toAdmin(String id, Boolean admin)
         {
             try
-            {
-               
-                UsuarioCEN cen = new UsuarioCEN();
-                UsuarioEN usu = cen.ReadOID(id);              
-
-                usu.Tipo = (CervezUAGenNHibernate.Enumerated.CervezUA.TipoUsuarioEnum)3;
-                System.Diagnostics.Debug.WriteLine(usu.Tipo);
-
-                cen.Modify(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, usu.Foto, usu.Tipo, usu.Pass);
-
-              
+            {               
+                UsuarioCEN cen = new UsuarioCEN();              
+                cen.ToAdmin(id, admin);              
                 return Redirect("/Administrador/Panel");
             }
             catch (Exception)
@@ -276,7 +281,9 @@ namespace CervezUAWeb.Controllers
             }           
 
         }
-           
+
+        
+
     }
 
 }
