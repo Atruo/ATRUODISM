@@ -81,44 +81,47 @@ namespace CervezUAWeb.Controllers
         public ActionResult Carrito()
         {
 
-                string lista = Request.Cookies["carrito"].Value;
-                
-                if (lista != "")
-                    {
-                    string[] listaAux = lista.Split(',');
-                    
-                    List<int> converted = new List<int>();
-                    int control = 0;
-                    foreach (var item in listaAux)
-                    {
-                        if (control == 0)
-                        {
-                            var aux = item.Replace("[", "").Replace("]", "").Replace("\"", "");
-                            System.Diagnostics.Debug.WriteLine("Añado: " + aux);
-                            converted.Add(Int32.Parse(aux));
-                            control = 1;
-                        }else
-                        {
-                            control = 0;
-                        }
-                        
-                    }
-                    CervezaCEN art = new CervezaCEN();
-                    IList<CervezaEN> listaArticulos = new List<CervezaEN>();
-                    foreach (var item in converted)
-                    {
+            string lista = Request.Cookies["carrito"].Value;
 
-                        listaArticulos.Add(art.ReadOID(item));
-                    }
-                    IEnumerable<CervezaViewModel> list = new AssemblerCerveza().ConvertListENToModel(listaArticulos).ToList();
-                    return View(list);
-                }else
+            if (lista != "")
                 {
-                    return View();
-                }
-               
+                string[] listaAux = lista.Split(',');
 
-        }
+                List<int> converted = new List<int>();
+                int control = 0;
+                foreach (var item in listaAux)
+                {
+                    if (control == 0)
+                    {
+                        var aux = item.Replace("[", "").Replace("]", "").Replace("\"", "");
+                        System.Diagnostics.Debug.WriteLine("Añado: " + aux);
+                        converted.Add(Int32.Parse(aux));
+                        control = 1;
+                    }else
+                    {
+                        control = 0;
+                    }
+
+                }
+                CervezaCEN art = new CervezaCEN();
+                IList<CervezaEN> listaArticulos = new List<CervezaEN>();
+                foreach (var item in converted)
+                {
+
+                    listaArticulos.Add(art.ReadOID(item));
+                }
+                IEnumerable<CervezaViewModel> list = new AssemblerCerveza().ConvertListENToModel(listaArticulos).ToList();
+                return View(list);
+            }else
+            {
+                return View();
+            }
+            
+           
+
+
+
+            }
 
 
         // GET: Cerveza/Details/5
@@ -227,6 +230,7 @@ namespace CervezUAWeb.Controllers
         }
         public ActionResult Comprar()
         {
+    /*
             SessionInitialize();
             string lista = Request.Cookies["carrito"].Value;
 
@@ -293,9 +297,56 @@ namespace CervezUAWeb.Controllers
             else
             {
                 return Redirect("/Cerveza/Carrito"); 
-            }
+            }*/
 
-            
+            string lista = Request.Cookies["carrito"].Value;
+            string usu = Request.Cookies["id"].Value;
+
+            if (lista != "")
+            {
+                string[] listaAux = lista.Split(',');
+
+                List<int> converted = new List<int>();
+                List<int> converted2 = new List<int>();
+                int control = 0;
+                foreach (var item in listaAux)
+                {
+                    if (control == 0)
+                    {
+                        var aux = item.Replace("[", "").Replace("]", "").Replace("\"", "");
+                        System.Diagnostics.Debug.WriteLine("Añado: " + aux);
+                        converted.Add(Int32.Parse(aux));
+                        control = 1;
+                    }
+                    else
+                    {
+                        var aux = item.Replace("[", "").Replace("]", "").Replace("\"", "");
+                        System.Diagnostics.Debug.WriteLine("Añado: " + aux);
+                        converted2.Add(Int32.Parse(aux));
+                        control = 0;
+                        control = 0;
+                    }
+
+                }
+                CervezaCEN art = new CervezaCEN();
+                LineaPedidoCEN linea = new LineaPedidoCEN();
+                PedidoCEN pedido = new PedidoCEN();
+                IList<LineaPedidoEN> listaLineas = new List<LineaPedidoEN>();
+                System.Diagnostics.Debug.WriteLine("Hasta qui bien");
+                for (int i = 0; i < converted.Count(); i++)
+                {
+                    System.Diagnostics.Debug.WriteLine("Entro");
+                    LineaPedidoEN lin = linea.ReadOID(linea.New_(converted2[i], art.ReadOID(converted[i])));                    
+                    listaLineas.Add(lin);
+                }
+                 pedido.New_(usu, (CervezUAGenNHibernate.Enumerated.CervezUA.EstadoPedidoEnum)1, listaLineas);
+               
+                return View();
+
+            }else
+             {
+               return View();
+             }
 
         }
     }
