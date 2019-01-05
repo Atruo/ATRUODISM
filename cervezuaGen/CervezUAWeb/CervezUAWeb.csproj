@@ -291,6 +291,7 @@
     <Content Include="Views\Cerveza\Comprar.cshtml" />
     <Content Include="Views\Administrador\Index.cshtml" />
     <Content Include="Views\Administrador\Create.cshtml" />
+    <Content Include="Views\Administrador\Panel.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\IMG\1.png" />
     <Content Include="Web.config" />

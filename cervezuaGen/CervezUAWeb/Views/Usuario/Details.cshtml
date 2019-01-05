@@ -11,6 +11,15 @@
     <h4>UsuarioViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.Foto) " alt="Alternate Text" style="width: 10%;" />
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.NUsuario)
         </dt>
@@ -51,13 +60,7 @@
             @Html.DisplayFor(model => model.Apellidos)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Foto)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Foto)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Password)
@@ -74,8 +77,12 @@
 
 
     </dl>
+    @if (Model.Tipo.ToString() == "Admin")
+    {
+        <button type="button" class="btn btn-secondary" onclick="location.href='/Administrador/Panel';">Panel de Administrador</button>
+    }
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.NUsuario  }) 
+    <!--arroba Html.ActionLink("Back to List", "Index")-->
 </p>

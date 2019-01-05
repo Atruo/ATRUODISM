@@ -85,7 +85,7 @@ namespace CervezUAWeb.Controllers
                     }
 
                     UsuarioCEN usuarioCEN = new UsuarioCEN();
-                    fileName = "/Content/IMG/" + fileName;
+                    fileName = "/Content/Profile/" + fileName;
                     usuarioCEN.New_(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, fileName, usu.Tipo, usu.Password);
 
                     return RedirectToAction("Index");
@@ -117,12 +117,46 @@ namespace CervezUAWeb.Controllers
 
         // POST: Usuario/Edit/5
         [HttpPost]
-        public ActionResult Edit(UsuarioViewModel usu)
+        public ActionResult Edit(UsuarioViewModel usu, HttpPostedFileBase file)
         {
+            string fileName = "", path = "";
+            // Verify that the user selected a file
+            if (file != null && file.ContentLength > 0)
+            {
+                System.Diagnostics.Debug.WriteLine("Entro en el if ");
+                // extract only the fielname
+                fileName = Path.GetFileName(file.FileName);
+                System.Diagnostics.Debug.WriteLine(fileName);
+                // store the file inside ~/App_Data/uploads folder
+                path = Path.Combine(Server.MapPath("~/Content/Profile"), fileName);
+                System.Diagnostics.Debug.WriteLine(path);
+                //string pathDef = path.Replace(@"\\", @"\");
+                file.SaveAs(path);
+            }
             try
             {
                 UsuarioCEN cen = new UsuarioCEN();
-                cen.Modify(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, usu.Foto, usu.Tipo, usu.Password);
+                UsuarioCEN comp = new UsuarioCEN();
+                UsuarioEN compr = comp.ReadOID(usu.NUsuario);
+                System.Diagnostics.Debug.WriteLine("Peto aqui ");
+                String pass = "123";
+                if (compr.Pass != usu.Password)
+                {
+                    pass = usu.Password;
+                }
+                System.Diagnostics.Debug.WriteLine("Peto aqui 2 ");
+                if (fileName != "")
+                {
+                    fileName = "/Content/Profile/" + fileName;
+                    cen.Modify(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, fileName, usu.Tipo, pass);
+                }
+                else
+                {
+                   
+                    cen.Modify(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, compr.Foto, usu.Tipo, pass);
+                }
+                System.Diagnostics.Debug.WriteLine("Peto aqui3  ");
+
                 return RedirectToAction("Index");
             }
             catch
@@ -219,10 +253,33 @@ namespace CervezUAWeb.Controllers
             return Redirect(url);
         }
 
-       
+        public ActionResult toAdmin(String id)
+        {
+            try
+            {
+               
+                UsuarioCEN cen = new UsuarioCEN();
+                UsuarioEN usu = cen.ReadOID(id);              
 
+                usu.Tipo = (CervezUAGenNHibernate.Enumerated.CervezUA.TipoUsuarioEnum)3;
+                System.Diagnostics.Debug.WriteLine(usu.Tipo);
+
+                cen.Modify(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, usu.Foto, usu.Tipo, usu.Pass);
+
+              
+                return Redirect("/Administrador/Panel");
+            }
+            catch (Exception)
+            {
+
+                 return Redirect("/Administrador/Panel");
+            }           
+
+        }
+           
     }
+
 }
-        
+
     
         

@@ -59,7 +59,7 @@ namespace CervezUAWeb.Controllers
             try
             {
                 AdministradorCEN art = new AdministradorCEN();
-                fileName = "/Content/IMG/" + fileName;
+                fileName = "/Content/Profile/" + fileName;
                 art.New_(articulo.NUsuario, articulo.Email, articulo.FecNam, articulo.Nombre, articulo.Apellidos, fileName, articulo.Tipo, articulo.Password, articulo.Sueldo);
                 return RedirectToAction("Index");
             }
@@ -112,6 +112,10 @@ namespace CervezUAWeb.Controllers
             {
                 return View();
             }
+        }
+        public ActionResult Panel()
+        {
+            return View();
         }
     }
 }
