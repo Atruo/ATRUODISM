@@ -19,18 +19,14 @@ namespace CervezUAGenNHibernate.CEN.CervezUA
 {
     public partial class UsuarioCEN
     {
-        public void ToAdmin(string p_oid, bool admin)
+        public void ToAdmin(string p_oid, int tipo)
         {
             UsuarioCEN usuCEN = new UsuarioCEN();
             UsuarioEN usu = usuCEN.ReadOID(p_oid);
-            if (admin)
-            {
-                usu.Tipo = (Enumerated.CervezUA.TipoUsuarioEnum)3;
-            }
-            else
-            {
-                usu.Tipo = (Enumerated.CervezUA.TipoUsuarioEnum)1;
-            }
+           
+                usu.Tipo = (Enumerated.CervezUA.TipoUsuarioEnum)tipo;
+             
+            
             _IUsuarioCAD.Modify(usu);
 
         }

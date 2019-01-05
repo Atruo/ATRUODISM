@@ -86,7 +86,7 @@ namespace CervezUAWeb.Controllers
 
                     UsuarioCEN usuarioCEN = new UsuarioCEN();
                     fileName = "/Content/Profile/" + fileName;
-                    usuarioCEN.New_(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, fileName, usu.Tipo, usu.Password);
+                    usuarioCEN.New_(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, fileName, (CervezUAGenNHibernate.Enumerated.CervezUA.TipoUsuarioEnum)1, usu.Password);
 
                     return RedirectToAction("Index");
                 }
@@ -137,25 +137,23 @@ namespace CervezUAWeb.Controllers
             {
                 UsuarioCEN cen = new UsuarioCEN();
                 UsuarioCEN comp = new UsuarioCEN();
-                UsuarioEN compr = comp.ReadOID(usu.NUsuario);
-                System.Diagnostics.Debug.WriteLine("Peto aqui ");
+                UsuarioEN compr = comp.ReadOID(usu.NUsuario);               
                 String pass = "123";
                 if (compr.Pass != usu.Password)
                 {
                     pass = usu.Password;
                 }
-                System.Diagnostics.Debug.WriteLine("Peto aqui 2 ");
+                
                 if (fileName != "")
                 {
                     fileName = "/Content/Profile/" + fileName;
                     cen.Modify(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, fileName, usu.Tipo, pass);
                 }
                 else
-                {
-                   
+                {                   
                     cen.Modify(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, compr.Foto, usu.Tipo, pass);
                 }
-                System.Diagnostics.Debug.WriteLine("Peto aqui3  ");
+              
 
 
                 /*UsuarioCEN cen = new UsuarioCEN();
@@ -266,7 +264,7 @@ namespace CervezUAWeb.Controllers
             return Redirect(url);
         }
 
-        public ActionResult toAdmin(String id, Boolean admin)
+        public ActionResult toAdmin(String id, int admin)
         {
             try
             {               
