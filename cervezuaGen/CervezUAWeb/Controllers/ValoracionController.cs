@@ -195,5 +195,30 @@ namespace CervezUAWeb.Controllers
             IEnumerable<ValoracionViewModel> list = new AssemblerValoracion().ConvertListENToModel(listaValoraciones2).ToList();
             return View(list);
         }
+        public ActionResult Admin()
+        {
+            ValoracionCEN val = new ValoracionCEN();
+
+            IList<ValoracionEN> listaValoraciones = val.ReadAll(0, -1).ToList();
+
+            IEnumerable<ValoracionViewModel> list = new AssemblerValoracion().ConvertListENToModel(listaValoraciones).ToList();
+            return View(list);
+        }
+
+        public ActionResult Borrar(int id)
+        {
+            try
+            {
+                ValoracionCEN val = new ValoracionCEN();                
+                val.Destroy(id);
+                return RedirectToAction("Admin");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
     }
 }

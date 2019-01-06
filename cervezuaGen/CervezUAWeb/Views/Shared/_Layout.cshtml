@@ -39,9 +39,25 @@
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link">
-                            <img src="https://i.ibb.co/Fs7r2k9/image.png" alt="Search" onclick="buscar();" style="cursor: pointer;  margin-right: 1em; " />
+                            @if (HttpContext.Current.Request.Url.AbsolutePath.ToLower().Contains("cerveza"))
+                            {
+                                <img src="https://i.ibb.co/Fs7r2k9/image.png" alt="Search" onclick="buscar();" style="cursor: pointer;  margin-right: 1em; " />
 
+                            }
+                            else
+                            {
+                                <img src="https://i.ibb.co/Fs7r2k9/image.png" alt="Search" onclick="cambio();" style="cursor: pointer;  margin-right: 1em; " />
+
+                            }
                         </a>
+                        <script>
+                            function cambio() {
+
+                                var data = document.getElementById("buscar").value;
+
+                                window.location.href = '/Cerveza/Buscar?data='+data;
+                            }
+                        </script>
                     </li>
 
                     <li class="nav-item active">
@@ -68,6 +84,7 @@
    
  
         @RenderBody()
+   
         <hr />
         <!-- Footer -->
         <footer style="background-color: #FF6D3A; padding: 1.5em; width: 100%;">

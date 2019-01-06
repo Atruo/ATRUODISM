@@ -372,6 +372,7 @@
     <Content Include="Views\Pedido\Admin.cshtml" />
     <Content Include="Views\Valoracion\Valoraciones.cshtml" />
     <Content Include="Views\Valoracion\Create.cshtml" />
+    <Content Include="Views\Valoracion\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Uploads\" />

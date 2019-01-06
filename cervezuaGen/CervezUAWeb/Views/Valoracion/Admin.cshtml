@@ -1,0 +1,48 @@
+﻿
+@model IEnumerable<CervezUAWeb.Models.ValoracionViewModel>
+
+@{
+    ViewBag.Title = "Admin";
+}
+
+
+<div class="container">
+    <h2>Opiniones: </h2>
+
+    <table style="width:100%; border-bottom: solid; margin-bottom: 2em;" class="table">
+        <tr>
+            <th>ID</th>
+            <th>Cerveza ID</th>
+            <th>Usuario</th>
+            <th>Valoración</th>
+            <th>Texto</th>
+            <th>Cambio</th>
+
+        </tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.id </td>
+            <td>@item.Articulo</td>
+            <td>@item.Usuario</td>
+            <td>@item.Valoracion</td>
+            <td>@item.Texto</td>
+            <td>
+                <button class="btn btn-secondary" style="background-color: #FF6D3A;" onclick="cambiar(@item.id);">Eliminar</button>
+            </td>
+            
+
+        </tr>
+        }
+        <script>
+            function cambiar(id) {                
+                window.location.href = "/Valoracion/Borrar/"+id;
+            }
+        </script>
+
+
+
+
+    </table>
+</div>
+
