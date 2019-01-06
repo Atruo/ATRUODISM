@@ -73,7 +73,7 @@ namespace CervezUAWeb.Controllers
             bool crear = true;
             foreach (var item in list)
             {
-                if (item.Usuario == usuario)
+                if (item.Usuario == usuario && item.Articulo == articulo)
                 {
                     crear = false;
                 }

@@ -164,8 +164,10 @@
                         <h3 class="card-title">@Model.cerveza.Nombre</h3>
                         <h4>@Model.cerveza.Precio.00€</h4>
                         <p class="card-text">@Model.cerveza.Descripcion</p>
+                        <p><b>Graduación:</b> @Model.cerveza.Graduacion</p>
                         <label id="@Model.cerveza.id"></label>
                         <br />
+
                         <button class="btn-primary" type="button" onclick="comprar();">Añadir a la Cesta</button>
                         <script>stars2(@Model.cerveza.id,@Model.cerveza.ValMedia);</script>
                         <!-- /.card -->
