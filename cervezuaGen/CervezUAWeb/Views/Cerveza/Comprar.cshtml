@@ -38,7 +38,8 @@
                 var dolars = getCookie("coste");
                 dolars = JSON.parse(dolars);
 
-                dolars += coste;
+                dolars += (coste*(galleta[i])[1]);
+                console.log(dolars);
                 setCookie("coste", dolars, false);
                 break;
             }
@@ -72,11 +73,12 @@
     }
 </script>
 
-<h2>Tramitar Compra</h2>
+
 <script>quitar();</script>
 
 <div class="container">
-    <table style="width:100%; border-bottom: solid; margin-bottom: 2em;">
+    <h2 style="margin-top: 1em;">Tramitar Compra</h2>
+    <table style="width:100%; border-bottom: solid; margin-bottom: 2em;" class="table table-hover">
         <tr>
             <th>Cerveza</th>
             <th>Cantidad</th>
@@ -97,12 +99,12 @@
     </table>
 
 
-    <p>Total........................................................................... <span id="total"></span>,00€</p>
+    <p class="float-right">Total........................................................................... <span id="total"></span>,00€</p><br />
     <script>total();</script>
 
 
     <p>Dirección de envio:</p>
-    <input type="text" name="direccion" value="" class="form-control"  id="dire" onchange="tramitar();"/>
+    <input type="text" name="direccion" value="" class="form-control" id="dire" onchange="tramitar();" />
     <p>Método de Pago: </p>
     <select class="form-control" id="mpago" onchange="tramitar();">
         <option value="1">Tarjeta de Crédito</option>

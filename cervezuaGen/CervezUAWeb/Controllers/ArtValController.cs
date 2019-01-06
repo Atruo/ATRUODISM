@@ -40,6 +40,7 @@ namespace CervezUAWeb.Controllers
                     bueno.Add(item);
                 }
             }
+          
             usu = new AssemblerCerveza().ConvertENToModelUI(usuEN);
             val = new AssemblerValoracion().ConvertListENToModel(bueno).ToList();
             artVal.cerveza = usu;

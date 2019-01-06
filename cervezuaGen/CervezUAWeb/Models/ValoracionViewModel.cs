@@ -11,6 +11,8 @@ namespace CervezUAWeb.Models
         [ScaffoldColumn(false)]
         public int id { get; set; }
 
+ 
+
         [Display(Prompt = "Articulo a valorar", Description = "Articulo a valorar", Name = "Articulo a valorar ")]
         [Required(ErrorMessage = "SE necesita saber el artículo a valorar.")]
         [StringLength(maximumLength: 100, ErrorMessage = "el texto es demasiado largo")]

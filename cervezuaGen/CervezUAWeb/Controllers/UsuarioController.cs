@@ -76,6 +76,8 @@ namespace CervezUAWeb.Controllers
                         System.Diagnostics.Debug.WriteLine("Entro en el if ");
                         // extract only the fielname
                         fileName = Path.GetFileName(file.FileName);
+                        fileName = usu.NUsuario +"."+ fileName.Split('.')[1];
+                    
                         System.Diagnostics.Debug.WriteLine(fileName);
                         // store the file inside ~/App_Data/uploads folder
                         path = Path.Combine(Server.MapPath("~/Content/Profile"), fileName);
@@ -118,7 +120,7 @@ namespace CervezUAWeb.Controllers
 
         // POST: Usuario/Edit/5
         [HttpPost]
-        public ActionResult Edit(UsuarioViewModel usu, HttpPostedFileBase file)
+        public ActionResult Edit(UsuarioViewModel usu, HttpPostedFileBase file, string psw)
         {
             string fileName = "", path = "";
             // Verify that the user selected a file
@@ -140,10 +142,11 @@ namespace CervezUAWeb.Controllers
                 UsuarioCEN comp = new UsuarioCEN();
                 UsuarioEN compr = comp.ReadOID(usu.NUsuario);               
                 String pass = "123";
-                if (compr.Pass != usu.Password)
+                if (psw != "")
                 {
-                    pass = usu.Password;
-                }
+                    pass = psw;
+                }               
+                
                 
                 if (fileName != "")
                 {

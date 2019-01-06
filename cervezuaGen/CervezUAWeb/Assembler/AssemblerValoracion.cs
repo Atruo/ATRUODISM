@@ -13,7 +13,7 @@ namespace CervezUAWeb.Models
             val.Articulo = en.Articulo.Id;
             val.Usuario = en.Usuario.NUsuario;
             val.Valoracion = en.Valoracion;
-            val.Texto = en.Texto;
+            val.Texto = en.Texto;         
             return val;
         }
         public IList<ValoracionViewModel> ConvertListENToModel(IList<ValoracionEN> ens)
