@@ -1,0 +1,205 @@
+﻿@model CervezUAWeb.Models.ArtValViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Shop Item - Start Bootstrap Template</title>
+    <!-- Bootstrap core CSS -->
+
+    <link href="@Url.Content("~/vendor/bootstrap/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+
+    <!-- Custom styles for this template -->
+
+    <link href="@Url.Content("~/css/shop-item.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <script>
+        function stars(id, val) {
+            var stars = document.getElementById(id);
+            var res = "";
+            if (val == 0) {
+                res = "&#9734; &#9734; &#9734; &#9734; &#9734;";
+            }
+            if (val == 1) {
+                res = "&#9733; &#9734; &#9734; &#9734; &#9734;"
+            }
+            if (val == 2) {
+                res = "&#9733; &#9733; &#9734; &#9734; &#9734;"
+            }
+            if (val == 3) {
+                res = "&#9733; &#9733; &#9733; &#9734; &#9734;"
+            }
+            if (val == 4) {
+                res = "&#9733; &#9733; &#9733; &#9733; &#9734;"
+            }
+            if (val == 5) {
+                res = "&#9733; &#9733; &#9733; &#9733; &#9733;"
+            }
+            stars.innerHTML = " <span class='text - warning'>" + res + "</span>"
+        }
+        function stars2(id, val) {
+            var stars = document.getElementById(id);
+            var res = "";
+            if (val == 0) {
+                res = "&#9734; &#9734; &#9734; &#9734; &#9734;";
+            }
+            if (val == 1) {
+                res = "&#9733; &#9734; &#9734; &#9734; &#9734;"
+            }
+            if (val == 2) {
+                res = "&#9733; &#9733; &#9734; &#9734; &#9734;"
+            }
+            if (val == 3) {
+                res = "&#9733; &#9733; &#9733; &#9734; &#9734;"
+            }
+            if (val == 4) {
+                res = "&#9733; &#9733; &#9733; &#9733; &#9734;"
+            }
+            if (val == 5) {
+                res = "&#9733; &#9733; &#9733; &#9733; &#9733;"
+            }
+            stars.innerHTML = " <span class='text-warning'>" + res + "</span>"
+        }
+        function comprar() {
+            var galleta = getCookie("carrito");
+            var id = document.getElementById("cerv").outerHTML;
+            var item = [];
+            id = id.split('">')[1];
+            id = id.split('</')[0];
+            //console.log(id)
+            item.push([id, 1]);
+            item = JSON.stringify(item);
+            //console.log(item);
+            //console.log(galleta);
+
+            if (galleta == "") {
+                console.log(item);
+                setCookie("carrito", item, false);
+            } else {
+                var extra = [];
+                var carr = getCookie("carrito");
+                console.log("Carr: " + carr);
+                var control = false;
+                extra = JSON.parse(carr);
+                console.log(extra);
+                for (var i = 0; i < extra.length; i++) {
+                    console.log((extra[i])[0]);
+                    if ((extra[i])[0] == id) {
+                        (extra[i])[1] += 1;
+                        control = true;
+                        break;
+                    }
+                }
+                if (control == false) {
+                    extra.push([id, 1]);
+                }
+
+                setCookie("carrito", JSON.stringify(extra), false);
+            }
+
+            location.reload();
+
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            console.log(decodedCookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+    </script>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <h1 class="my-4">CervezUA</h1>
+                <div class="list-group">
+                    <a href="/Cerveza?categoria=Abadia" class="list-group-item">Abadia</a>
+                    <a href="/Cerveza?categoria=ALE" class="list-group-item">ALE</a>
+                    <a href="/Cerveza?categoria=LagerPilsner" class="list-group-item">Lager Pilsner</a>
+                    <a href="/Cerveza?categoria=Lambica" class="list-group-item">Lambica</a>
+                    <a href="/Cerveza?categoria=PaleALEIPA" class="list-group-item">Pale ALE IPA</a>
+                    <a href="/Cerveza?categoria=PorterStout" class="list-group-item">Porter Stout</a>
+                    <a href="/Cerveza?categoria=Temporada" class="list-group-item">Temporada</a>
+                    <a href="/Cerveza?categoria=Trapense" class="list-group-item">Trapense</a>
+                    <a href="/Cerveza?categoria=Trigo" class="list-group-item">Trigo</a>
+                </div>
+            </div>
+            <!-- /.col-lg-3 -->
+            <div class="col-lg-9">
+                <div class="card mt-4">
+
+                    <img class="card-img-top img-fluid" src="@Model.cerveza.Imagen" alt="" style="width: 30%; height: 30%; margin: auto; padding: .5em;">
+                    <div class="card-body">
+                        <span id="cerv" style="display:none;">@Model.cerveza.id</span>
+                        <h3 class="card-title">@Model.cerveza.Nombre</h3>
+                        <h4>@Model.cerveza.Precio.00€</h4>
+                        <p class="card-text">@Model.cerveza.Descripcion</p>
+                        <label id="@Model.cerveza.id"></label>
+                        <br />
+                        <button class="btn-primary" type="button" onclick="comprar();">Añadir a la Cesta</button>
+                        <script>stars2(@Model.cerveza.id,@Model.cerveza.ValMedia);</script>
+                        <!-- /.card -->
+
+                        <div class="card card-outline-secondary my-4">
+                            <div class="card-header">
+                                Opiniones:
+                            </div>
+                            <div class="card-body">
+                                @foreach (var item in Model.valoraciones)
+                                {
+                                    <p>@item.Texto</p>
+                                    <small class="text-muted">@item.Usuario <label id="@item.id"></label></small>
+                                    <hr>
+                                    <script>stars(@item.id,@item.Valoracion);</script>
+                                }
+
+
+                                <a href="/Valoracion/Create/@Model.cerveza.id" class="btn btn-success">Danos tu opinión</a>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.col-lg-9 -->
+        </div>
+    </div>
+    <!-- /.container -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

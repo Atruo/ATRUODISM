@@ -23,7 +23,7 @@ namespace CervezUAWeb.Models
 
         [Display(Prompt = "Valoracion", Description = "Valoracion ", Name = "Valoracion ")]
         [Required(ErrorMessage = "Debe tener una valoracion")]
-        //[Range(minimum: 0, maximum: 5, ErrorMessage = "Se debe valorar del 0 al 5")]
+        [Range(minimum: 0, maximum: 5, ErrorMessage = "Se debe valorar del 0 al 5")]
         public double Valoracion { get; set; }
 
 

@@ -81,6 +81,40 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+                <script>
+                    function buscar() {
+                        var buscar = document.getElementById("buscar").value;
+                        var articulos = document.getElementById("articulos");
+                        articulos.innerHTML = "";
+
+                        window.location.replace("/Cerveza/Buscar?data=" + buscar);
+
+
+                    }
+                    function stars(id, val) {
+                        var stars = document.getElementById(id);
+                        var res = "";
+                        if (val == 0) {
+                            res = "&#9734; &#9734; &#9734; &#9734; &#9734;";
+                        }
+                        if (val == 1) {
+                            res = "&#9733; &#9734; &#9734; &#9734; &#9734;"
+                        }
+                        if (val == 2) {
+                            res = "&#9733; &#9733; &#9734; &#9734; &#9734;"
+                        }
+                        if (val == 3) {
+                            res = "&#9733; &#9733; &#9733; &#9734; &#9734;"
+                        }
+                        if (val == 4) {
+                            res = "&#9733; &#9733; &#9733; &#9733; &#9734;"
+                        }
+                        if (val == 5) {
+                            res = "&#9733; &#9733; &#9733; &#9733; &#9733;"
+                        }
+                        stars.innerHTML = res;
+                    }
+                </script>
 
                 <div class="row" id="articulos">
 
@@ -96,19 +130,21 @@
                                     <!-- Elementos de la tienda-->
                                     <div class="col-lg-4 col-md-6 mb-4">
                                         <div class="card h-100">
-                                            <a href="Details/@Html.DisplayFor(modelItem => item.id)"><img class="card-img-top" src=" @Html.DisplayFor(modelItem => item.Imagen)" alt="" style="width: 180px; height: 180px; margin-left: 2.5em; margin-top: 1em;"></a>
+                                            <a href="/ArtVal/Details//@Html.DisplayFor(modelItem => item.id)"><img class="card-img-top" src=" @Html.DisplayFor(modelItem => item.Imagen)" alt="" style="width: 180px; height: 180px; margin-left: 2.5em; margin-top: 1em;"></a>
                                             <div class="card-body">
                                                 <h4 class="card-title">
-                                                    <a href="Details/@Html.DisplayFor(modelItem => item.id)"> @Html.DisplayFor(modelItem => item.Nombre)</a>
+                                                    <a href="/ArtVal/Details/@Html.DisplayFor(modelItem => item.id)"> @Html.DisplayFor(modelItem => item.Nombre)</a>
                                                 </h4>
                                                 <h5> @Html.DisplayFor(modelItem => item.Precio)</h5>
                                                 <p class="card-text">@Html.DisplayFor(modelItem => item.Descripcion)</p>
                                             </div>
                                             <div class="card-footer">
-                                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                                <small class="text-muted"><span id="@Html.DisplayFor(modelItem => item.id)"></span></small>
                                             </div>
                                         </div>
                                     </div>
+                                    <script>stars(@Html.DisplayFor(modelItem => item.id), @Html.DisplayFor(modelItem => item.ValMedia));</script>
+
                                 }
 
                             }
@@ -122,19 +158,21 @@
                                 <!-- Elementos de la tienda-->
                                 <div class="col-lg-4 col-md-6 mb-4">
                                     <div class="card h-100">
-                                        <a href="Details/@Html.DisplayFor(modelItem => item.id)"><img class="card-img-top" src=" @Html.DisplayFor(modelItem => item.Imagen)" alt="" style="width: 180px; height: 180px; margin-left: 2.5em; margin-top: 1em;"></a>
+                                        <a href="/ArtVal/Details/@Html.DisplayFor(modelItem => item.id)"><img class="card-img-top" src=" @Html.DisplayFor(modelItem => item.Imagen)" alt="" style="width: 180px; height: 180px; margin-left: 2.5em; margin-top: 1em;"></a>
                                         <div class="card-body">
                                             <h4 class="card-title">
-                                                <a href="Details/@Html.DisplayFor(modelItem => item.id)"> @Html.DisplayFor(modelItem => item.Nombre)</a>
+                                                <a href="/ArtVal/Details/@Html.DisplayFor(modelItem => item.id)"> @Html.DisplayFor(modelItem => item.Nombre)</a>
                                             </h4>
                                             <h5> @Html.DisplayFor(modelItem => item.Precio)</h5>
                                             <p class="card-text">@Html.DisplayFor(modelItem => item.Descripcion)</p>
                                         </div>
                                         <div class="card-footer">
-                                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                            <small class="text-muted"><span id="@Html.DisplayFor(modelItem => item.id)"></span></small>
                                         </div>
                                     </div>
                                 </div>
+                                <script>stars(@Html.DisplayFor(modelItem => item.id), @Html.DisplayFor(modelItem => item.ValMedia));</script>
+
                             }
                         }
                     }
@@ -156,26 +194,18 @@
                                         <p class="card-text">@Html.DisplayFor(modelItem => item.Descripcion)</p>
                                     </div>
                                     <div class="card-footer">
-                                        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                        <small class="text-muted"><span id="@Html.DisplayFor(modelItem => item.id)"></span></small>
                                     </div>
                                 </div>
                             </div>
+                            <script>stars(@Html.DisplayFor(modelItem => item.id), @Html.DisplayFor(modelItem => item.ValMedia));</script>
+
                         }
                     }
 
 
 
-                    <script>
-                        function buscar() {
-                            var buscar = document.getElementById("buscar").value;
-                            var articulos = document.getElementById("articulos");
-                            articulos.innerHTML = "";
 
-                            window.location.replace("/Cerveza/Buscar?data=" + buscar);
-
-
-                        }
-                    </script>
 
 
 

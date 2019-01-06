@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CervezUAWeb.Models.PedidoViewModel>
+@{
+    ViewBag.Title = "Admin";
+}
+
+
+<div class="container">
+    <h2>Pedidos:</h2>
+
+    <table style="width:100%; border-bottom: solid; margin-bottom: 2em;">
+        <tr>
+            <th>Id</th>
+            <th>Usuario</th>
+            <th>Importe</th>
+            <th>Dirección</th>
+            <th>Método de Pago</th>
+            <th>Estado</th>
+            <th>Detalles</th>
+            <th>Cambiar Estado</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Usuario.NUsuario</td>
+                <td>@item.Importe.00€</td>
+                <td>@item.Direccion</td>
+                <td>@item.MPago</td>
+                <td>@item.Estado</td>
+                <td><a href="@Url.Action("Lista", "LineaPedido/", new { @item.Id })">Ver</a> </td>
+                <td>
+                    <select id="estado">
+                        <option value="1">EsperaPago</option>
+                        <option value="2">PagoAceptado</option>
+                        <option value="3">Procesando</option>
+                        <option value="4">Enviado</option>
+                        <option value="5">Cancelado</option>
+                    </select>
+                </td>
+                <td>
+                    <button class="btn btn-secondary" onclick="cambiar(@item.Id);">Guardar</button>
+                </td>
+
+            </tr>
+        }
+        <script>
+            function cambiar(id) {
+                var estado = document.getElementById("estado").value;
+                id = id + "," + estado;
+                console.log(id);
+                window.location.href = "/Pedido/Estado/"+id;
+            }
+        </script>
+
+
+
+
+    </table>
+</div>
+

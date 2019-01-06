@@ -16,6 +16,7 @@ namespace CervezUAWeb.Models
             ped.Estado = en.Estado;
             ped.MPago = en.Attribute;
             ped.Direccion = en.Direccion;
+            ped.Usuario = en.Usuario;
 
 
             return ped;

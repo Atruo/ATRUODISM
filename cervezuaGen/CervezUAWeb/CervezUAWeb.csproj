@@ -193,6 +193,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministradorController.cs" />
     <Compile Include="Controllers\ArticuloController.cs" />
+    <Compile Include="Controllers\ArtValController.cs" />
     <Compile Include="Controllers\BasicController.cs" />
     <Compile Include="Controllers\CervezaController.cs" />
     <Compile Include="Controllers\CopaController.cs" />
@@ -215,6 +216,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PedidoViewModel.cs" />
     <Compile Include="Models\UsuarioViewModel.cs" />
+    <Compile Include="Models\ArtValModelView.cs" />
     <Compile Include="Models\ValoracionViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -289,6 +291,7 @@
     <Content Include="Views\Administrador\Index.cshtml" />
     <Content Include="Views\Administrador\Create.cshtml" />
     <Content Include="Views\Administrador\Panel.cshtml" />
+    <Content Include="Views\ArtVal\Details.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <Content Include="Views\IMG\1.png" />
     <Content Include="Web.config" />
@@ -353,7 +356,6 @@
     <Content Include="Views\Usuario\Details.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
-    <Content Include="Views\Valoracion\Create.cshtml" />
     <Content Include="Views\Valoracion\Delete.cshtml" />
     <Content Include="Views\Valoracion\Details.cshtml" />
     <Content Include="Views\Valoracion\Edit.cshtml" />
@@ -367,6 +369,9 @@
     <Content Include="Views\LineaPedido\Comprar.cshtml" />
     <Content Include="Views\Pedido\Pedidos.cshtml" />
     <Content Include="Views\LineaPedido\Lista.cshtml" />
+    <Content Include="Views\Pedido\Admin.cshtml" />
+    <Content Include="Views\Valoracion\Valoraciones.cshtml" />
+    <Content Include="Views\Valoracion\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Uploads\" />

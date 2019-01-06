@@ -14,6 +14,9 @@ namespace CervezUAWeb.Models
         [Display(Prompt = "Usuario con la línea de pedido", Description = "Usuario con la línea de pedido", Name = "Articulos ")]
         public System.Collections.Generic.IList<CervezUAGenNHibernate.EN.CervezUA.LineaPedidoEN> Lineas { get; set; }
 
+        [Display(Prompt = "Usuario del pedido", Description = "Usuario del pedido", Name = "Usuario ")]
+        public CervezUAGenNHibernate.EN.CervezUA.UsuarioEN Usuario { get; set; }
+
         [Display(Prompt = "Dirección del pedido", Description = "Dirección del pedido", Name = "Dirección ")]
         [Required(ErrorMessage = "Debe indicar una dirección para el Pedido")]
         [StringLength(maximumLength: 200, ErrorMessage = "La dirección no puede tener más de 200 caracteres")]

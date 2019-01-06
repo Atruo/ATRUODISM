@@ -51,7 +51,7 @@ namespace CervezUAWeb.Controllers
 
         // POST: Usuario/Create
         [HttpPost]
-        public ActionResult Create(UsuarioViewModel usu, HttpPostedFileBase file)
+        public ActionResult Create(UsuarioViewModel usu, HttpPostedFileBase file, String psw)
         {
             try
             {
@@ -83,12 +83,13 @@ namespace CervezUAWeb.Controllers
                         //string pathDef = path.Replace(@"\\", @"\");
                         file.SaveAs(path);
                     }
-
+                    System.Diagnostics.Debug.WriteLine(psw);
+                    
                     UsuarioCEN usuarioCEN = new UsuarioCEN();
                     fileName = "/Content/Profile/" + fileName;
-                    usuarioCEN.New_(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, fileName, (CervezUAGenNHibernate.Enumerated.CervezUA.TipoUsuarioEnum)1, usu.Password);
+                    usuarioCEN.New_(usu.NUsuario, usu.Email, usu.FecNam, usu.Nombre, usu.Apellidos, fileName, (CervezUAGenNHibernate.Enumerated.CervezUA.TipoUsuarioEnum)1, psw);
 
-                    return RedirectToAction("Index");
+                    return Redirect("Login");
                 }
                 else
                 {

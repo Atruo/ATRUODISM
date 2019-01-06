@@ -155,6 +155,9 @@ namespace CervezUAWeb.Controllers
                     for (int i = 0; i < converted.Count(); i++)
                     {
                         lineaCEN.New_( converted2[i], art.ReadOID(converted[i]).Id, oid);
+                        CervezaEN cerveza = art.ReadOID(converted[i]);
+                        cerveza.Stock = (cerveza.Stock - converted2[i]);//Estoy quitando el stock, hay que probarlo
+                        art.Modify(cerveza.Id,cerveza.Nombre,cerveza.Stock, cerveza.Precio, cerveza.ValMedia, cerveza.Descripcion, cerveza.Imagen, cerveza.Marca,cerveza.Volumen, cerveza.Unidades,cerveza.Graduacion, cerveza.Tipo);
                     }
                
             
@@ -180,5 +183,32 @@ namespace CervezUAWeb.Controllers
             return View(list);
            
         }
+
+        public ActionResult Admin()
+        {
+            PedidoCEN art = new PedidoCEN();           
+            IList<PedidoEN> listaPedidos = art.ReadAll(0, -1).ToList();     
+                      
+            
+            IEnumerable<PedidoViewModel> list = new AssemblerPedido().ConvertListENToModel(listaPedidos).ToList();
+            return View(list);
+
+        }
+
+        public ActionResult Estado(string id)
+        {
+            string[] listaAux = id.Split(',');
+            System.Diagnostics.Debug.WriteLine(listaAux[0]);
+            System.Diagnostics.Debug.WriteLine(listaAux[1]);
+            PedidoCEN art = new PedidoCEN();
+            PedidoEN ped = art.ReadOID(Int32.Parse(listaAux[0]));
+            ped.Estado =  (CervezUAGenNHibernate.Enumerated.CervezUA.EstadoPedidoEnum)Int32.Parse(listaAux[1]);
+            art.Modify(ped.Id,ped.Estado, ped.Importe, ped.Direccion, ped.Attribute);
+
+            return Redirect("/Pedido/Admin");
+
+        }
+
+
     }
 }

@@ -53,6 +53,28 @@
                         <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
                         <br />
                         <button class="btn-primary" type="button" onclick="comprar();">Añadir a la Cesta</button>
+
+                        <!-- /.card -->
+                   
+                        <div class="card card-outline-secondary my-4">
+                            <div class="card-header">
+                                Opiniones:
+                            </div>
+                            <div class="card-body">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                                <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                                <hr>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                                <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                                <hr>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                                <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+                                <hr>
+                                <a href="#" class="btn btn-success">Leave a Review</a>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+
                         <script>
                             function comprar() {
                                 var galleta = getCookie("carrito");
@@ -85,9 +107,9 @@
                                         }
                                     }
                                     if (control == false) {
-                                        extra.push([id,1]);
+                                        extra.push([id, 1]);
                                     }
-                                    
+
                                     setCookie("carrito", JSON.stringify(extra), false);
                                 }
 
@@ -123,25 +145,7 @@
                         </script>
                     </div>
                 </div>
-                <!-- /.card -->
-                <div class="card card-outline-secondary my-4">
-                    <div class="card-header">
-                        Opiniones:
-                    </div>
-                    <div class="card-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-                        <hr>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-                        <hr>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-                        <hr>
-                        <a href="#" class="btn btn-success">Leave a Review</a>
-                    </div>
-                </div>
-                <!-- /.card -->
+                
             </div>
             <!-- /.col-lg-9 -->
         </div>
